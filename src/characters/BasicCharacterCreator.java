@@ -38,8 +38,7 @@ public class BasicCharacterCreator implements CharacterCreator {
         }
         List<Character> characters = new ArrayList<Character>();
         try {
-            JSONObject object = new JSONObject(builder.toString());
-            JSONArray array = object.getJSONArray("basicCharacters");
+            JSONArray array = new JSONArray(builder.toString());
             int length = array.length();
             for (int i = 0; i < length; i++) {
                 JSONObject obj = array.getJSONObject(i);

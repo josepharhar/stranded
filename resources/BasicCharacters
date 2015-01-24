@@ -1,32 +1,30 @@
-{
-    "basicCharacters" : [
-        {
-            "firstName" : "Leopold",
-            "lastName" : "Leopold",
-            "occupation" : "Engineer",
-            "health" : 100,
-            "stamina" : 10,
-            "loyalty" : 10,
-            "learningPotential" : 10,
-            "fighting" : 12,
-            "scavenging" : 8,
-            "engineering" : 16,
-            "deception" : 6,
-            "luck" : 10
-        },
-        {
-            "firstName" : "Jenna",
-            "lastName" : "Dune",
-            "occupation" : "Hairdresser",
-            "health" : 80,
-            "stamina" : 10,
-            "loyalty" : 10,
-            "learningPotential" : 10,
-            "fighting" : 8,
-            "scavenging" : 15,
-            "engineering" : 7,
-            "deception" : 9,
-            "luck" : 12
-        }
-    ]
-}
+[
+    {
+        "firstName" : "Leopold",
+        "lastName" : "Leopold",
+        "occupation" : "Engineer",
+        "health" : 100,
+        "stamina" : 10,
+        "loyalty" : 10,
+        "learningPotential" : 10,
+        "fighting" : 12,
+        "scavenging" : 8,
+        "engineering" : 16,
+        "deception" : 6,
+        "luck" : 10
+    },
+    {
+        "firstName" : "Jenna",
+        "lastName" : "Dune",
+        "occupation" : "Hairdresser",
+        "health" : 80,
+        "stamina" : 10,
+        "loyalty" : 10,
+        "learningPotential" : 10,
+        "fighting" : 8,
+        "scavenging" : 15,
+        "engineering" : 7,
+        "deception" : 9,
+        "luck" : 12
+    }
+]
