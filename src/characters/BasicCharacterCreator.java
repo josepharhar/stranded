@@ -21,7 +21,7 @@ public class BasicCharacterCreator implements CharacterCreator {
         if (characterList.size() < 1) {
             throw new RuntimeException("out of basic characters");
         }
-        return characterList.get((int) (Math.random() * characterList.size()));
+        return characterList.remove((int) (Math.random() * characterList.size()));
     }
     
     private List<Character> readCharacterFile(String fileName) {

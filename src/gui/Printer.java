@@ -34,8 +34,12 @@ public class Printer {
     
     public void print(String text) {
         if (text.length() > MAX_TERMINAL_WIDTH) {
-            print(text.substring(0, MAX_TERMINAL_WIDTH));
-            print(text.substring(MAX_TERMINAL_WIDTH));
+            int splitPos = MAX_TERMINAL_WIDTH;
+            while (text.charAt(splitPos) != ' ') {
+                splitPos--;
+            }
+            print(text.substring(0, splitPos));
+            print(text.substring(splitPos));
             return;
         }
         if (textQueue.size() >= MAX_TERMINAL_LINES) {

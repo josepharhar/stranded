@@ -36,7 +36,7 @@ public class RandomPhraseAccessor {
         }
     }
     
-    public static String getRandomObject() {
+    public static String getRandomPhrase() {
         return randomPhrases.get(RandomNumberGenerator.getRandomInteger(randomPhrases.size()));
     }
 }

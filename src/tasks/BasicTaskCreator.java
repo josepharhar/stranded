@@ -22,7 +22,7 @@ public class BasicTaskCreator implements TaskCreator{
         if (taskList.size() < 1) {
             throw new RuntimeException("out of basic tasks");
         }
-        return taskList.get((int) (Math.random() * taskList.size()));
+        return taskList.remove((int) (Math.random() * taskList.size()));
     }
     
     private List<Task> readTaskFile(String fileName) {

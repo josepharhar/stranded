@@ -10,6 +10,7 @@ import tasks.BasicTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
 import tasks.TaskRunner;
+import util.RandomPhraseAccessor;
 import characters.BasicCharacterCreator;
 import characters.Character;
 import characters.CharacterCreator;
@@ -35,7 +36,8 @@ public class Game {
     }
     
     public void promptNextCharacter() {
-        applet.printer.print(characters.get(0).getFirstName() + ": " + characters.get(0).getPrompt());
+        Character c = characters.get(0);
+        applet.printer.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.getRandomPhrase());
     }
     
     public void assignTask(Task task, Character character) {
