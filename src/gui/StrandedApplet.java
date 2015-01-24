@@ -122,6 +122,10 @@ public class StrandedApplet extends PApplet {
             if (game.tasks.size() > 0) {
                 game.assignTask(game.tasks.get(taskPosition), game.characters.get(0));
             }
+            taskPosition -= 1;
+            if (taskPosition < 0) {
+                taskPosition = game.tasks.size() - 1;
+            }
         } else if (rightButton.isClicked(x, y)) {
             System.out.println("right");
             taskPosition += 1;
