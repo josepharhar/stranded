@@ -63,7 +63,7 @@ public class Game {
     public void updateTasks() {
         boolean shouldNotify = characters.size() == 0;
         for (Task t : taskRunner.getCompletedTasks()) {
-            applet.consolePrinter.print("Task " + (t.getSucceeded() ? "failed" : "succeeded") + ": " + t.getName());
+            applet.consolePrinter.print("Task " + (t.getSucceeded() ? "succeeded" : "failed") + ": " + t.getName());
             characters.add(t.getCharacter());
         }
         if (shouldNotify && characters.size() > 0) {
