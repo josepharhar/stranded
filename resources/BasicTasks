@@ -1,0 +1,34 @@
+{
+    "basicTasks" : [
+        {
+            "name" : "Get Scrap",
+            "fighting" : 2,
+            "scavenging" : 17,
+            "engineering" : 8,
+        },
+        {
+            "name" : "Fix Engines",
+            "fighting" : 3,
+            "scavenging" : 9,
+            "engineering" : 15,
+        },
+        {
+            "name" : "Intruders on board",
+            "fighting" : 19,
+            "scavenging" : 9,
+            "engineering" : 5,
+        },
+        {
+            "name" : "Robots are attacking",
+            "fighting" : 18,
+            "scavenging" : 3,
+            "engineering" : 10,
+        },
+        {
+            "name" : "Fix the Toilets",
+            "fighting" : 12,
+            "scavenging" : 9,
+            "engineering" : 11,
+        }
+    ]
+}
