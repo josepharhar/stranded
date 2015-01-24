@@ -68,4 +68,9 @@ public class Audio {
         SamplePlayer fight = new SamplePlayer(ac, SampleManager.sample("Fight_Sounds.wav"));
         ac.out.addInput(fight);
     }
+    
+    public void failSound() {
+        SamplePlayer fail = new SamplePlayer(ac, SampleManager.sample("Task_Time_Out.wav"));
+        ac.out.addInput(fail);
+    }
 }
