@@ -29,6 +29,10 @@
         "rewards" : {
             "SCRAP" : 20,
         },
+        "penalty" : {
+            "SCRAP" : 30,
+        },
+        "duration" : 30,
     },
     {
         "name" : "Fight off robots",

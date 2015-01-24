@@ -7,6 +7,8 @@ import characters.Character;
 import characters.Skill;
 
 public class Task {
+    private boolean expires = false;
+    private long expirationTime;
     private long completionTime;
     private boolean completed = false;
     private boolean succeeded = false;
@@ -16,6 +18,7 @@ public class Task {
     private int difficulty;
     private Map<Resource, Double> costs = new HashMap<>();
     private Map<Resource, Double> rewards = new HashMap<>();
+    private Map<Resource, Double> penalty = new HashMap<>();
     
     public String getName() {
         return name;
@@ -70,5 +73,23 @@ public class Task {
     }
     public void setRewards(Map<Resource, Double> rewards) {
         this.rewards = rewards;
+    }
+    public Map<Resource, Double> getPenalty() {
+        return penalty;
+    }
+    public boolean isExpires() {
+        return expires;
+    }
+    public void setExpires(boolean expires) {
+        this.expires = expires;
+    }
+    public long getExpirationTime() {
+        return expirationTime;
+    }
+    public void setExpirationTime(long expirationTime) {
+        this.expirationTime = expirationTime;
+    }
+    public void setPenalty(Map<Resource, Double> penalty) {
+        this.penalty = penalty;
     }
 }

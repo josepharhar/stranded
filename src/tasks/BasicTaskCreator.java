@@ -69,6 +69,17 @@ public class BasicTaskCreator implements TaskCreator{
                         map.put(Resource.valueOf(resource), costs.getDouble(resource));
                     }
                 }
+                if (obj.has("penalty")) {
+                    Map<Resource, Double> map = new HashMap<>();
+                    JSONObject penalty = obj.getJSONObject("penalty");
+                    for (String resource : JSONObject.getNames(penalty)) {
+                        map.put(Resource.valueOf(resource), penalty.getDouble(resource));
+                    }
+                }
+                if (obj.has("duration")) {
+                    t.setExpires(true);
+                    t.setExpirationTime(System.currentTimeMillis() + obj.getInt("duration") * 1000L);
+                }
                 tasks.add(t);
             }
             return tasks;

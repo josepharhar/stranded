@@ -70,6 +70,18 @@ public class Game {
             }
             characters.add(t.getCharacter());
         }
+        long now = System.currentTimeMillis();
+        for (int i = 0; i < tasks.size(); i++) {
+            Task t = tasks.get(i);
+            if (t.isExpires() && t.getExpirationTime() < now) {
+                t.setCompleted(true);
+                t.setSucceeded(false);
+                resources.subtract(t.getPenalty());
+                applet.consolePrinter.print("Task " + t.getName() + " has expired");
+                tasks.remove(i);
+                i--;
+            }
+        }
         if (shouldNotify && characters.size() > 0) {
             promptNextCharacter();
         }
