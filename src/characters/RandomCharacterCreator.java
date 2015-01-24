@@ -12,7 +12,6 @@ public class RandomCharacterCreator implements CharacterCreator {
     private static List<String> firsts = new ArrayList<String>();
     private static List<String> lasts = new ArrayList<String>();
     List<Character> characters = new ArrayList<Character>();
-    int i = 0;
     
     static {
         Scanner scanFirsts, scanLasts;
@@ -50,9 +49,8 @@ public class RandomCharacterCreator implements CharacterCreator {
         //String[] lasts = new String[20];
         //List<Character> characters = new ArrayList<Character>();
         while(num-- > 0) {
-            i = getRandomInteger(20);
-            int j = getRandomInteger(20);
-            int k = getRandomInteger(20);
+            int i = getRandomInteger(firsts.size());
+            int j = getRandomInteger(lasts.size());
             
             Character c = new Character();
             c.setDeception(getRandomInteger(20));
