@@ -29,6 +29,9 @@ public class Button {
      * @return true if the coordinates are in the button
      */
     public boolean isClicked(float x, float y) {
+        //sets the incoming mouse coordinates to be relative to the control box
+        x -= (GAME_WIDTH - CONTROL_WIDTH);
+        y -= (GAME_HEIGHT - CONTROL_HEIGHT);
         return rect.contains((int)x, (int)y);
     }
     

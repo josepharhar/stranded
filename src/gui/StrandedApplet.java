@@ -30,9 +30,9 @@ public class StrandedApplet extends PApplet {
     private Button centerButton;
     private Button rightButton;
     
-    public static void main(String[] args) {
-        PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
-    }
+    //public static void main(String[] args) {
+        //PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
+    //}
     
     public void setup() {
         printer = new Printer(this);
@@ -72,5 +72,17 @@ public class StrandedApplet extends PApplet {
             image(centerButton.getImage(), centerButton.getx(), centerButton.gety());
             image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
         popMatrix();
+    }
+    
+    public void mousePressed() {
+        float x = mouseX;
+        float y = mouseY;
+        if (leftButton.isClicked(x, y)) {
+            System.out.println("left");
+        } else if (centerButton.isClicked(x, y)) {
+            System.out.println("center");
+        } else if (rightButton.isClicked(x, y)) {
+            System.out.println("right");
+        }
     }
 }
