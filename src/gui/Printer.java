@@ -5,10 +5,17 @@ import java.util.List;
 
 import processing.core.*;
 
+import static gui.StrandedApplet.*;
+
 public class Printer {
+    //Maximum number of lines to print out at once
+    public static final int MAX_TERMINAL_LINES = 3;
+    
     //The PApplet to draw to
     private StrandedApplet applet;
     
+    //The List that contains all of the text
+    //the front of the list is the bottom, or newest, line
     private List<String> textQueue;
     private PFont font;
     
@@ -24,10 +31,10 @@ public class Printer {
     }
     
     public void print(String text) {
-        if (textQueue.size() > 3) {
+        if (textQueue.size() >= MAX_TERMINAL_LINES) {
             textQueue.remove(0);
-            textQueue.add(text);
         }
+        textQueue.add(text);
     }
     
     public void clear() {
@@ -37,9 +44,15 @@ public class Printer {
     /**
      * To be called every frame
      * @precondition The screen has been translated to the
-     *          correct location for the "textbox" on screen
+     *               top-left corner of the "terminal"
      */
     public void draw() {
-        applet.text("asdf", 10, 10);
+        //go to the bottom of the terminal screen
+        applet.translate(0, TERMINAL_HEIGHT);
+        //green color for text
+        applet.fill(0, 255, 0);
+        for (int i = 0; i < textQueue.size(); i++) {
+            applet.text(textQueue.get(i), 0, 12 * i);
+        }
     }
 }
