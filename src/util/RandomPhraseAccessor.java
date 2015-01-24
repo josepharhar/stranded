@@ -11,22 +11,22 @@ import org.json.JSONException;
 
 import characters.Character;
 
-public class RandomObjectAccessor {
-    public static List<String> randomObjects;
+public class RandomPhraseAccessor {
+    public static List<String> randomPhrases;
     
     static {
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("RandomObjects"));
+            scanner = new Scanner(new File("RandomPhrases"));
             StringBuilder builder = new StringBuilder();
             while (scanner.hasNextLine()) {
                 builder.append(scanner.nextLine() + "\n");
             }
-            randomObjects = new ArrayList<String>();
+            randomPhrases = new ArrayList<String>();
             JSONArray array = new JSONArray(builder.toString());
             int length = array.length();
             for (int i = 0; i < length; i++) {
-                randomObjects.add(array.getString(i));
+                randomPhrases.add(array.getString(i));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -37,6 +37,6 @@ public class RandomObjectAccessor {
     }
     
     public static String getRandomObject() {
-        return randomObjects.get(RandomNumberGenerator.getRandomInteger(randomObjects.size()));
+        return randomPhrases.get(RandomNumberGenerator.getRandomInteger(randomPhrases.size()));
     }
 }
