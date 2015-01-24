@@ -14,14 +14,14 @@ public class Character {
     private int health;
     private int stamina; //ability to take an action
     private int loyalty; //willingness to do something
-    private int learningPotential; //how quickly stat ups happen
+    private double learningPotential; //how quickly stat ups happen
 
     // skill stats
     private int fighting;
     private int scavenging;
     private int engineering;
     private int deception; //possibly that a person lies
-    private int luck; //ability to do something they're not qualified for [also for scavenging]
+    private double luck; //ability to do something they're not qualified for [also for scavenging]
     
     
     public boolean isAvailable() {
@@ -121,7 +121,7 @@ public class Character {
         this.occupation = occupation;
     }
 
-    public int getLearning_potential() {
+    public double getLearning_potential() {
         return learningPotential;
     }
 
@@ -129,7 +129,7 @@ public class Character {
         this.learningPotential = learning_potential;
     }
 
-    public int getLuck() {
+    public double getLuck() {
         return luck;
     }
 
