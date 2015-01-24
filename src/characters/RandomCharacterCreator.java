@@ -1,12 +1,13 @@
 package characters;
 
+import static util.RandomNumberGenerator.getRandomInteger;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
-
-import static util.RandomNumberGenerator.*;
 
 public class RandomCharacterCreator implements CharacterCreator {
     private static List<String> firsts = new ArrayList<String>();
@@ -54,15 +55,18 @@ public class RandomCharacterCreator implements CharacterCreator {
             
             Character c = new Character();
             c.setDeception(getRandomInteger(20));
-            c.setEngineering(getRandomInteger(20));
-            c.setFighting(getRandomInteger(20));
             c.setFirstName(firsts.get(i));
             c.setHealth(70 + getRandomInteger(50));
             c.setLastName(lasts.get(j));
             c.setLearning_potential(getRandomInteger(20));
             c.setLoyalty(getRandomInteger(20));
             c.setLuck(getRandomInteger(20));
-            c.setPrompt("");
+            
+            Map<Skill, Double> skills = c.getSkills();
+            skills.put(Skill.ENGINEERING, (double) getRandomInteger(20));
+            skills.put(Skill.FIGHTING, (double) getRandomInteger(20));
+            skills.put(Skill.SCAVENGING, (double) getRandomInteger(20));
+            
             characters.add(c);
         }
         return characters;

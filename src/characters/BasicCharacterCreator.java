@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 import characters.Character;
+import main.Resource;
 
 import org.json.*;
 
@@ -46,15 +47,20 @@ public class BasicCharacterCreator implements CharacterCreator {
                 JSONObject obj = array.getJSONObject(i);
                 Character c = new Character();
                 c.setDeception(obj.getInt("deception"));
-                c.setEngineering(obj.getInt("engineering"));
-                c.setFighting(obj.getInt("fighting"));
                 c.setFirstName(obj.getString("firstName"));
                 c.setHealth(obj.getInt("health"));
                 c.setLastName(obj.getString("lastName"));
                 c.setLearning_potential(obj.getInt("learningPotential"));
                 c.setLoyalty(obj.getInt("loyalty"));
                 c.setLuck(obj.getInt("luck"));
-                c.setPrompt(obj.getString("prompt"));
+                
+                Map<Skill, Double> skillMap = new HashMap<>();
+                JSONObject skills = obj.getJSONObject("skills");
+                for (String skill : JSONObject.getNames(skills)) {
+                    skillMap.put(Skill.valueOf(skill), skills.getDouble(skill));
+                }
+                c.setSkills(skillMap);
+                    
                 characters.add(c);
             }
             return characters;

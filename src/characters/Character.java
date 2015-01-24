@@ -1,4 +1,7 @@
 package characters;
+import java.util.HashMap;
+import java.util.Map;
+
 import tasks.Task;
 
 public class Character {
@@ -16,15 +19,9 @@ public class Character {
     private int loyalty; //willingness to do something
     private double learningPotential; //how quickly stat ups happen
 
-    // skill stats
-    private int fighting;
-    private int scavenging;
-    private int engineering;
+    private Map<Skill, Double> skills = new HashMap<>();
     private int deception; //possibly that a person lies
     private double luck; //ability to do something they're not qualified for [also for scavenging]
-    
-    private String prompt;
-    
     
     public double getLearningPotential() {
         return learningPotential;
@@ -32,14 +29,6 @@ public class Character {
 
     public void setLearningPotential(double learningPotential) {
         this.learningPotential = learningPotential;
-    }
-
-    public String getPrompt() {
-        return prompt;
-    }
-
-    public void setPrompt(String prompt) {
-        this.prompt = prompt;
     }
 
     public void setLuck(double luck) {
@@ -86,30 +75,14 @@ public class Character {
         this.loyalty = loyalty;
     }
 
-    public int getFighting() {
-        return fighting;
+    public Map<Skill, Double> getSkills() {
+        return skills;
     }
-
-    public void setFighting(int fighting) {
-        this.fighting = fighting;
+    
+    public void setSkills(Map<Skill, Double> skills) {
+        this.skills = skills;
     }
-
-    public int getScavenging() {
-        return scavenging;
-    }
-
-    public void setScavenging(int scavenging) {
-        this.scavenging = scavenging;
-    }
-
-    public int getEngineering() {
-        return engineering;
-    }
-
-    public void setEngineering(int engineering) {
-        this.engineering = engineering;
-    }
-
+    
     public int getDeception() {
         return deception;
     }
@@ -157,6 +130,10 @@ public class Character {
 
     public void setLuck(int luck) {
         this.luck = luck;
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
 }
