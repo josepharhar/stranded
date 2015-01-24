@@ -10,10 +10,24 @@ import org.json.*;
 
 public class BasicCharacterCreator implements CharacterCreator {
     
-    public List<Character> readCharacterFile() {
+    private List<Character> characterList;
+    
+    public BasicCharacterCreator() {
+        characterList = readCharacterFile("BasicCharacters");
+    }
+    
+    @Override
+    public Character createCharacter() {
+        if (characterList.size() < 1) {
+            throw new RuntimeException("out of basic characters");
+        }
+        return characterList.get((int) (Math.random() * characterList.size()));
+    }
+    
+    private List<Character> readCharacterFile(String fileName) {
         Scanner scanner;
         try {
-            scanner = new Scanner(new File("resources/BasicCharacters"));
+            scanner = new Scanner(new File(fileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -48,10 +62,5 @@ public class BasicCharacterCreator implements CharacterCreator {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public Character createCharacter() {
-        return null;
     }
 }
