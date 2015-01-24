@@ -99,7 +99,13 @@ public class StrandedApplet extends PApplet {
             image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
         popMatrix();
         
-        text(game.tasks.get(taskPosition).getName(), 525, 450);
+        game.updateTasks();
+        
+        if (game.tasks.size() > 0) {
+            text(game.tasks.get(taskPosition).getName(), 525, 450);
+        } else {
+            text("No tasks available", 525, 450);
+        }
     }
     
     public void mousePressed() {
@@ -113,7 +119,9 @@ public class StrandedApplet extends PApplet {
             }
         } else if (centerButton.isClicked(x, y)) {
             System.out.println("center");
-            game.assignTask(game.tasks.get(taskPosition), game.characters.get(0));
+            if (game.tasks.size() > 0) {
+                game.assignTask(game.tasks.get(taskPosition), game.characters.get(0));
+            }
         } else if (rightButton.isClicked(x, y)) {
             System.out.println("right");
             taskPosition += 1;

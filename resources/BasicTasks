@@ -6,19 +6,19 @@
         "engineering" : 8,
     },
     {
-        "name" : "Fix Engines",
+        "name" : "Repair hull damage",
         "fighting" : 3,
         "scavenging" : 9,
         "engineering" : 15,
     },
     {
-        "name" : "Intruders on board",
+        "name" : "Fight off intruders",
         "fighting" : 19,
         "scavenging" : 9,
         "engineering" : 5,
     },
     {
-        "name" : "Robots are attacking",
+        "name" : "Fight off robots",
         "fighting" : 18,
         "scavenging" : 3,
         "engineering" : 10,

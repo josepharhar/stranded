@@ -7,7 +7,9 @@ import java.util.ArrayList;
 public class Task {
     //task name
     private String name;
-    
+    private long completionTime;
+    private boolean successful = false;
+
     //list of characters
     List<Character> characters = new ArrayList<Character>();
     
@@ -65,10 +67,28 @@ public class Task {
         this.engineering = engineering;
     }
 
-    //addCharacter
     public void addCharacter(Character crew)
     {
         characters.add(crew);
+    }
+    
+    public long getCompletionTime() {
+        return completionTime;
+    }
+
+
+    public void setCompletionTime(long completionTime) {
+        this.completionTime = completionTime;
+    }
+
+
+    public boolean isSuccessful() {
+        return successful;
+    }
+
+
+    public void setSuccessful(boolean successful) {
+        this.successful = successful;
     }
 
 }

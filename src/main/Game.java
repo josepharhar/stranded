@@ -20,7 +20,9 @@ public class Game {
     private StrandedApplet applet;
     public List<Task> tasks = new ArrayList<Task>();
     public List<Character> characters = new ArrayList<Character>();
-    public TaskRunner taskRunner = new TaskRunner();
+    public Resources resources = new Resources(5);
+    public TaskRunner taskRunner = new TaskRunner(this);
+    
     
     public Game(StrandedApplet applet) {
         this.applet = applet;
@@ -45,8 +47,23 @@ public class Game {
     public void assignTask(Task task, Character character) {
         applet.printer.print("Task: " + task.getName() + " assigned to character: " + character.getFirstName());
         task.addCharacter(character);
-        applet.printer.print("Task: " + task.getName() + " completed with status: " + (taskRunner.completeTask(task) ? "complete" : "failed"));
-        characters.add(characters.remove(0));
-        promptNextCharacter();
+        taskRunner.startTask(task);
+        tasks.remove(task);
+        characters.remove(0);
+        updateTasks();
+        if (characters.size() > 0) {
+            promptNextCharacter();
+        }
+    }
+    
+    public void updateTasks() {
+        boolean shouldNotify = characters.size() == 0;
+        for (Task t : taskRunner.getCompletedTasks()) {
+            applet.printer.print("Task " + (t.isSuccessful() ? "failed" : "succeeded") + ": " + t.getName());
+            characters.addAll(t.getCharacters());
+        }
+        if (shouldNotify && characters.size() > 0) {
+            promptNextCharacter();
+        }
     }
 }
