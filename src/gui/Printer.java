@@ -47,8 +47,6 @@ public class Printer {
      *               top-left corner of the "terminal"
      */
     public void draw() {
-        //go to the bottom of the terminal screen
-        applet.translate(0, TERMINAL_HEIGHT);
         //green color for text
         applet.fill(0, 255, 0);
         for (int i = 0; i < textQueue.size(); i++) {
