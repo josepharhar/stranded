@@ -12,7 +12,7 @@ public class TaskRunner {
         }
         
         totalLuck = totalLuck * Math.random();
-        totalLuck = 1 + (totalLuck/100);
+        totalLuck = 1 + (totalLuck/10);
         
         int totalFighting = 0;
         for (Character c : crew) {
@@ -73,7 +73,7 @@ public class TaskRunner {
                 c.setLoyalty(c.getLoyalty() - totalMental);
                 
                 //changes in skills
-                int exp = (int) (((c.getLearning_potential()/100)+ 1) * statChanges[3]);
+                int exp = (int) (((c.getLearning_potential()/10)+ 1) * statChanges[3]);
                 int scavExp = (int) (exp * Math.random());
                 int engiExp = (int) (exp * Math.random());;
                 int fightExp = (int) (exp * Math.random());
@@ -100,7 +100,7 @@ public class TaskRunner {
                 c.setLoyalty(c.getLoyalty() - totalMental);
                 
                 //changes in skills
-                int exp = (int) (((c.getLearning_potential()/100)+ 1) * statChanges[3]);
+                int exp = (int) (((c.getLearning_potential()/10)+ 1) * statChanges[3]);
                 int scavExp = (int) (exp * Math.random());
                 int engiExp = (int) (exp * Math.random());;
                 int fightExp = (int) (exp * Math.random());
