@@ -25,7 +25,6 @@ public class ConsolePrinter {
         this.applet = applet;
         
         //Set up the text font and size once here
-        //applet.textSize(32);
         font = applet.createFont("Monospaced.bold", 18);
         applet.textFont(font);
         

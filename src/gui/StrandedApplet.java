@@ -29,14 +29,13 @@ public class StrandedApplet extends PApplet {
     public static final int TERMINAL_Y = GAME_HEIGHT - TERMINAL_HEIGHT;
     public static final int CONTROL_X = TERMINAL_WIDTH;
     public static final int CONTROL_Y = GAME_HEIGHT - CONTROL_HEIGHT;
-    
 
-    private int taskPosition = 0;
     private Game game;
     
     private PImage background;
 
-    public ConsolePrinter printer;
+    public ConsolePrinter consolePrinter;
+    public ControlPrinter controlPrinter;
     
     private Button leftButton;
     private Button centerButton;
@@ -49,7 +48,11 @@ public class StrandedApplet extends PApplet {
     }
     
     public void setup() {
-        printer = new ConsolePrinter(this);
+        game = new Game(this);
+        
+        consolePrinter = new ConsolePrinter(this);
+        controlPrinter = new ControlPrinter(this, game);
+        
         leftButton = new Button(26, 156, 72, 32, loadImage("pictures/leftButton.png"));
         centerButton = new Button(leftButton.getx() + leftButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/centerButton.png"));
         rightButton = new Button(centerButton.getx() + centerButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/rightButton.png"));
@@ -60,7 +63,7 @@ public class StrandedApplet extends PApplet {
         
         //temp
         for (int i = 0; i < 15; i++) {
-            printer.print("text #" + i);
+            consolePrinter.print("text #" + i);
         }
         try {
             mainAudio.startMainAudio();
@@ -72,7 +75,6 @@ public class StrandedApplet extends PApplet {
         
         size(GAME_WIDTH, GAME_HEIGHT);
         
-        game = new Game(this);
         game.start();
     }
     
@@ -88,7 +90,7 @@ public class StrandedApplet extends PApplet {
         // Draw Terminal
         pushMatrix();
             translate(TERMINAL_X, TERMINAL_Y);
-            printer.draw();
+            consolePrinter.draw();
         popMatrix();
         
         // Draw Control
@@ -97,15 +99,11 @@ public class StrandedApplet extends PApplet {
             image(leftButton.getImage(), leftButton.getx(), leftButton.gety());
             image(centerButton.getImage(), centerButton.getx(), centerButton.gety());
             image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
+            controlPrinter.draw();
         popMatrix();
         
         game.updateTasks();
         
-        if (game.tasks.size() > 0) {
-            text(game.tasks.get(taskPosition).getName(), 525, 450);
-        } else {
-            text("No tasks available", 525, 450);
-        }
     }
     
     public void mousePressed() {
@@ -113,26 +111,26 @@ public class StrandedApplet extends PApplet {
         float y = mouseY;
         if (leftButton.isClicked(x, y)) {
             System.out.println("left");
-            taskPosition -= 1;
-            if (taskPosition < 0) {
-                taskPosition = game.tasks.size() - 1;
+            controlPrinter.taskPosition -= 1;
+            if (controlPrinter.taskPosition < 0) {
+                controlPrinter.taskPosition = game.tasks.size() - 1;
             }
             this.mainAudio.sideBeep();
         } else if (centerButton.isClicked(x, y)) {
             System.out.println("center");
             if (game.tasks.size() > 0) {
-                game.assignTask(game.tasks.get(taskPosition), game.characters.get(0));
+                game.assignTask(game.tasks.get(controlPrinter.taskPosition), game.characters.get(0));
             }
-            taskPosition -= 1;
-            if (taskPosition < 0) {
-                taskPosition = game.tasks.size() - 1;
+            controlPrinter.taskPosition -= 1;
+            if (controlPrinter.taskPosition < 0) {
+                controlPrinter.taskPosition = game.tasks.size() - 1;
             }
             this.mainAudio.centerBeep();
         } else if (rightButton.isClicked(x, y)) {
             System.out.println("right");
-            taskPosition += 1;
-            if (taskPosition >= game.tasks.size()) {
-                taskPosition = 0;
+            controlPrinter.taskPosition += 1;
+            if (controlPrinter.taskPosition >= game.tasks.size()) {
+                controlPrinter.taskPosition = 0;
             }
             this.mainAudio.sideBeep();
         }

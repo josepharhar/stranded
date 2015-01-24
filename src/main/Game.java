@@ -40,12 +40,12 @@ public class Game {
     
     public void promptNextCharacter() {
         Character c = characters.get(0);
-        applet.printer.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.getRandomPhrase());
+        applet.consolePrinter.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.getRandomPhrase());
         applet.mainAudio.updateBeep();
     }
     
     public void assignTask(Task task, Character character) {
-        applet.printer.print("Task: " + task.getName() + " assigned to character: " + character.getFirstName());
+        applet.consolePrinter.print("Task: " + task.getName() + " assigned to character: " + character.getFirstName());
         task.addCharacter(character);
         taskRunner.startTask(task);
         tasks.remove(task);
@@ -59,7 +59,7 @@ public class Game {
     public void updateTasks() {
         boolean shouldNotify = characters.size() == 0;
         for (Task t : taskRunner.getCompletedTasks()) {
-            applet.printer.print("Task " + (t.isSuccessful() ? "failed" : "succeeded") + ": " + t.getName());
+            applet.consolePrinter.print("Task " + (t.isSuccessful() ? "failed" : "succeeded") + ": " + t.getName());
             characters.addAll(t.getCharacters());
         }
         if (shouldNotify && characters.size() > 0) {
