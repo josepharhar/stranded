@@ -23,7 +23,29 @@ public class Character {
     private int deception; //possibly that a person lies
     private double luck; //ability to do something they're not qualified for [also for scavenging]
     
+    private String prompt;
     
+    
+    public double getLearningPotential() {
+        return learningPotential;
+    }
+
+    public void setLearningPotential(double learningPotential) {
+        this.learningPotential = learningPotential;
+    }
+
+    public String getPrompt() {
+        return prompt;
+    }
+
+    public void setPrompt(String prompt) {
+        this.prompt = prompt;
+    }
+
+    public void setLuck(double luck) {
+        this.luck = luck;
+    }
+
     public boolean isAvailable() {
         return available;
     }

@@ -56,6 +56,7 @@ public class BasicCharacterCreator implements CharacterCreator {
                 c.setLearning_potential(obj.getInt("learningPotential"));
                 c.setLoyalty(obj.getInt("loyalty"));
                 c.setLuck(obj.getInt("luck"));
+                c.setPrompt(obj.getString("prompt"));
                 characters.add(c);
             }
             return characters;
