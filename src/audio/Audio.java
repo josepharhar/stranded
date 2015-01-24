@@ -53,4 +53,13 @@ public class Audio {
         SamplePlayer beep = new SamplePlayer(ac, SampleManager.sample("Status_Update.wav"));
         ac.out.addInput(beep);
     }
+    
+    public void sideBeep() {
+        SamplePlayer Sbeep = new SamplePlayer(ac, SampleManager.sample("Status_Update.wav"));
+        ac.out.addInput(Sbeep);
+    }
+    
+    public void centerBeep() {
+        
+    }
 }
