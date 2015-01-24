@@ -1,11 +1,5 @@
 package gui;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import processing.core.*;
 
 public class StrandedApplet extends PApplet {
@@ -31,6 +25,10 @@ public class StrandedApplet extends PApplet {
     private PImage background;
 
     private Printer printer;
+    
+    public static void main(String[] args) {
+        PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
+    }
     
     public void setup() {
         printer = new Printer(this);
