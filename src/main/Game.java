@@ -77,7 +77,7 @@ public class Game {
                 t.setCompleted(true);
                 t.setSucceeded(false);
                 resources.subtract(t.getPenalty());
-                applet.consolePrinter.print("Task " + t.getName() + " has expired");
+                applet.consolePrinter.print("Task " + t.getName() + " has expired", applet.color(128,0,0));
                 tasks.remove(i);
                 i--;
             }
