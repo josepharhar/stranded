@@ -56,7 +56,11 @@ public class Printer {
         for (int i = 0; i < textQueue.size(); i++) {
             String output = "";
             if (i == 0) {
-                output += ">";
+                if ((System.currentTimeMillis() / 500) % 2 == 0) {
+                    output += " ";
+                } else {
+                    output += ">";
+                }
             } else {
                 output += " ";
             }

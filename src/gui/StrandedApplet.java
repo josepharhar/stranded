@@ -30,9 +30,9 @@ public class StrandedApplet extends PApplet {
     private Button centerButton;
     private Button rightButton;
     
-    //public static void main(String[] args) {
-        //PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
-    //}
+    public static void main(String[] args) {
+        PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
+    }
     
     public void setup() {
         printer = new Printer(this);
