@@ -18,7 +18,7 @@ public class BasicTaskCreator implements TaskCreator{
     @Override
     public Task createTask() {
         if (taskList.size() < 1) {
-            throw new RuntimeException("out of basic characters");
+            throw new RuntimeException("out of basic tasks");
         }
         return taskList.get((int) (Math.random() * taskList.size()));
     }

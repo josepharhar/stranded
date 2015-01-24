@@ -40,6 +40,62 @@
         "engineering" : 15,
         "deception" : 8,
         "luck" : 12
+    },
+    {
+        "firstName" : "Francois",
+        "lastName" : "Pierre",
+        "occupation" : "Chef",
+        "health" : 80,
+        "stamina" : 8,
+        "loyalty" : 10,
+        "learningPotential" : 3,
+        "fighting" : 18,
+        "scavenging" : 15,
+        "engineering" : 3,
+        "deception" : 13,
+        "luck" : 8
+    },
+    {
+        "firstName" : "Captain",
+        "lastName" : "Brain",
+        "occupation" : "The Voice Inside Your Head",
+        "health" : 50,
+        "stamina" : 45,
+        "loyalty" : 10,
+        "learningPotential" : 15,
+        "fighting" : 0,
+        "scavenging" : 15,
+        "engineering" : 15,
+        "deception" : 20,
+        "luck" : 2
+    },
+    {
+        "firstName" : "Mike",
+        "lastName" : "Tyson",
+        "occupation" : "Brute",
+        "health" : 100,
+        "stamina" : 50,
+        "loyalty" : 12,
+        "learningPotential" : 5,
+        "fighting" : 20,
+        "scavenging" : 8,
+        "engineering" : 4,
+        "deception" : 3,
+        "luck" : 8
+    },
+    {
+        "firstName" : "Lucky",
+        "lastName" : "Gambler",
+        "occupation" : "Slot Machine Operator",
+        "health" : 30,
+        "stamina" : 10,
+        "loyalty" : 7,
+        "learningPotential" : 7,
+        "fighting" : 3,
+        "scavenging" : 3,
+        "engineering" : 3,
+        "deception" : 10,
+        "luck" : 40
     }
     
 ]
