@@ -26,12 +26,19 @@ public class StrandedApplet extends PApplet {
 
     private Printer printer;
     
+    private Button leftButton;
+    private Button centerButton;
+    private Button rightButton;
+    
     public static void main(String[] args) {
         PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
     }
     
     public void setup() {
         printer = new Printer(this);
+        leftButton = new Button(26, 156, 72, 32, loadImage("pictures/leftButton.png"));
+        centerButton = new Button(leftButton.getx() + leftButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/centerButton.png"));
+        rightButton = new Button(centerButton.getx() + centerButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/rightButton.png"));
         
         background = loadImage("pictures/background.png");
         
@@ -61,6 +68,9 @@ public class StrandedApplet extends PApplet {
         // Draw Control
         pushMatrix();
             translate(CONTROL_X, CONTROL_Y);
+            image(leftButton.getImage(), leftButton.getx(), leftButton.gety());
+            image(centerButton.getImage(), centerButton.getx(), centerButton.gety());
+            image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
         popMatrix();
     }
 }

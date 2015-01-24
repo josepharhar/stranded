@@ -11,6 +11,13 @@ public class Button {
     //picture of the button
     private PImage image;
     
+    /**
+     * @param x coordinate of top-left corner in relation to the control box
+     * @param y coordinate of top-left corner in relation to the control box
+     * @param width of button
+     * @param height of button
+     * @param image of button
+     */
     public Button(int x, int y, int width, int height, PImage image) {
         rect = new Rectangle(x, y, width, height);
         this.image = image;
@@ -23,5 +30,25 @@ public class Button {
      */
     public boolean isClicked(float x, float y) {
         return rect.contains((int)x, (int)y);
+    }
+    
+    public PImage getImage() {
+        return image;
+    }
+    
+    public int getx() {
+        return rect.x;
+    }
+    
+    public int gety() {
+        return rect.y;
+    }
+    
+    public int getWidth() {
+        return rect.width;
+    }
+    
+    public int getHeight() {
+        return rect.height;
     }
 }
