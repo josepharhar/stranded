@@ -1,6 +1,6 @@
 package characters;
 
-public class Base {
+public class Character {
 
     private boolean available;
     
