@@ -44,6 +44,7 @@ public class TaskRunner {
         job.setSucceeded(succeeded);
         if (succeeded) {
             game.resources.add(job.getRewards());
+            job.getCharacter().levelUp(job);
         } else {
             game.resources.subtract(job.getPenalty());
         }
