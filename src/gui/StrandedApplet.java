@@ -1,6 +1,9 @@
 package gui;
 
+import java.io.IOException;
+
 import processing.core.*;
+import audio.*;
 
 public class StrandedApplet extends PApplet {
     
@@ -30,6 +33,8 @@ public class StrandedApplet extends PApplet {
     private Button centerButton;
     private Button rightButton;
     
+    private Audio mainAudio;
+    
     public static void main(String[] args) {
         PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
     }
@@ -42,10 +47,19 @@ public class StrandedApplet extends PApplet {
         
         background = loadImage("pictures/background.png");
         
+        mainAudio = new Audio(this);
+        
         //temp
         for (int i = 0; i < 15; i++) {
             printer.print("text #" + i);
         }
+        try {
+            mainAudio.testAudio();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        //mainAudio.startMainAudio();
         
         size(GAME_WIDTH, GAME_HEIGHT);
     }
