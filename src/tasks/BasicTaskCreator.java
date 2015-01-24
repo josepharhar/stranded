@@ -14,7 +14,7 @@ public class BasicTaskCreator implements TaskCreator{
     private List<Task> taskList;
     
     public BasicTaskCreator(){
-        taskList = readTaskFile("resources/BasicTasks");
+        taskList = readTaskFile("BasicTasks");
     }
 
     @Override

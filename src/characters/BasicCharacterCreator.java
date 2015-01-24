@@ -13,7 +13,7 @@ public class BasicCharacterCreator implements CharacterCreator {
     private List<Character> characterList;
     
     public BasicCharacterCreator() {
-        characterList = readCharacterFile("resources/BasicCharacters");
+        characterList = readCharacterFile("BasicCharacters");
     }
     
     @Override

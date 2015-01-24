@@ -11,7 +11,7 @@ public class Printer {
     //Maximum number of lines to print out at once
     public static final int MAX_TERMINAL_LINES = 10;
     //Maximum number of chars before wrapping the line
-    public static final int MAX_TERMINAL_WIDTH = 50;
+    public static final int MAX_TERMINAL_WIDTH = 43;
     
     //The PApplet to draw to
     private StrandedApplet applet;
@@ -33,6 +33,11 @@ public class Printer {
     }
     
     public void print(String text) {
+        if (text.length() > MAX_TERMINAL_WIDTH) {
+            print(text.substring(0, MAX_TERMINAL_WIDTH));
+            print(text.substring(MAX_TERMINAL_WIDTH));
+            return;
+        }
         if (textQueue.size() >= MAX_TERMINAL_LINES) {
             textQueue.remove(textQueue.size() - 1);
         }

@@ -40,7 +40,7 @@ public class Audio {
          * keeps track of loaded audio files according to their file names, so
          * you don't have to load them again.
          */
-        String audioFile = "resources/Stranded_Theme_Ext.wav";
+        String audioFile = "Stranded_Theme_Ext.wav";
         // SampleManager.setBufferingRegime(Sample.Regime.newStreamingRegime(1000));
         SamplePlayer player = new SamplePlayer(ac, new Sample(audioFile));
         /*

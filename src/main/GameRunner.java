@@ -1,8 +1,9 @@
 package main;
 
+import processing.core.PApplet;
+
 public class GameRunner {
     public static void main(String args[]) {
-        Game game = new Game();
-        game.start();
+        PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
     }
 }

@@ -1,12 +1,17 @@
 package gui;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
+import main.Game;
 import processing.core.*;
+import tasks.Task;
 import audio.*;
 
 public class StrandedApplet extends PApplet {
-    
+       
     // Sizes of "frames" on the screen
     public static final int GAME_WIDTH = 800;
     public static final int GAME_HEIGHT = 600;
@@ -25,9 +30,13 @@ public class StrandedApplet extends PApplet {
     public static final int CONTROL_X = TERMINAL_WIDTH;
     public static final int CONTROL_Y = GAME_HEIGHT - CONTROL_HEIGHT;
     
+
+    private int taskPosition = 0;
+    private Game game;
+    
     private PImage background;
 
-    private Printer printer;
+    public Printer printer;
     
     private Button leftButton;
     private Button centerButton;
@@ -62,6 +71,9 @@ public class StrandedApplet extends PApplet {
         //mainAudio.startMainAudio();
         
         size(GAME_WIDTH, GAME_HEIGHT);
+        
+        game = new Game(this);
+        game.start();
     }
     
     public void draw() {
@@ -86,6 +98,8 @@ public class StrandedApplet extends PApplet {
             image(centerButton.getImage(), centerButton.getx(), centerButton.gety());
             image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
         popMatrix();
+        
+        text(game.tasks.get(taskPosition).getName(), 525, 450);
     }
     
     public void mousePressed() {
@@ -93,10 +107,20 @@ public class StrandedApplet extends PApplet {
         float y = mouseY;
         if (leftButton.isClicked(x, y)) {
             System.out.println("left");
+            taskPosition -= 1;
+            if (taskPosition < 0) {
+                taskPosition = game.tasks.size() - 1;
+            }
         } else if (centerButton.isClicked(x, y)) {
             System.out.println("center");
+            game.assignTask(game.tasks.get(taskPosition), game.characters.get(0));
         } else if (rightButton.isClicked(x, y)) {
             System.out.println("right");
+            taskPosition += 1;
+            if (taskPosition >= game.tasks.size()) {
+                taskPosition = 0;
+            }
         }
     }
+    
 }
