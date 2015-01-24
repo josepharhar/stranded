@@ -1,30 +1,57 @@
 [
     {
         "name" : "Get Scrap",
-        "fighting" : 2,
-        "scavenging" : 17,
-        "engineering" : 8,
+        "difficulty" : 3,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 20,
+        },
     },
     {
         "name" : "Repair hull damage",
+        "difficulty" : 5,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 20,
+        },
         "fighting" : 3,
         "scavenging" : 9,
         "engineering" : 15,
     },
     {
         "name" : "Fight off intruders",
+        "difficulty" : 3,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 20,
+        },
         "fighting" : 19,
         "scavenging" : 9,
         "engineering" : 5,
     },
     {
         "name" : "Fight off robots",
+        "difficulty" : 3,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 20,
+        },
         "fighting" : 18,
         "scavenging" : 3,
         "engineering" : 10,
     },
     {
         "name" : "Fix the Toilets",
+        "difficulty" : 3,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 20,
+        },
         "fighting" : 12,
         "scavenging" : 9,
         "engineering" : 11,

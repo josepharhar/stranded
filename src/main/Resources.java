@@ -1,15 +1,32 @@
 package main;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Resources {
-    public double scrapMetal;
-    public double stationDefenses;
-    public double stationIntegrity;
-    public double electronicEquipment;
+    private Map<Resource, Double> map = new HashMap<>();
+     
+    public Resources() {
+        map.put(Resource.ELECTRONICS, 20.0);
+        map.put(Resource.FUEL, 20.0);
+        map.put(Resource.SCRAP, 20.0);
+        map.put(Resource.STATION_DEFENSES, 20.0);
+        map.put(Resource.STATION_HEALTH, 20.0);
+    }
     
-    public Resources(int difficulty) {
-        scrapMetal = Math.random() * 40 + 20 * difficulty;
-        stationDefenses = Math.random() * 40 + 20 * difficulty;
-        stationIntegrity = Math.random() * 40 + 20 * difficulty;
-        electronicEquipment = Math.random() * 20 + 10 * difficulty;
+    public double getResource(Resource resource) {
+        return map.get(resource);
+    }
+
+    public void subtract(Map<Resource, Double> values) {
+        for (Map.Entry<Resource, Double> entry : values.entrySet()) {
+            map.put(entry.getKey(), map.get(entry.getKey()) - entry.getValue());
+        }
+    }
+    
+    public void add(Map<Resource, Double> values) {
+        for (Map.Entry<Resource, Double> entry : values.entrySet()) {
+            map.put(entry.getKey(), map.get(entry.getKey()) + entry.getValue());
+        }
     }
 }
