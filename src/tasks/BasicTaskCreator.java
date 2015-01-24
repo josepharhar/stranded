@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 
 import org.json.*;
 
+import characters.Character;
+
 public class BasicTaskCreator implements TaskCreator{
     
     private List<Task> taskList;
@@ -24,21 +26,22 @@ public class BasicTaskCreator implements TaskCreator{
     }
     
     private List<Task> readTaskFile(String fileName) {
-        Scanner scanner;
+        Scanner scanner = null;
+        StringBuilder builder = new StringBuilder();
         try {
             scanner = new Scanner(new File(fileName));
+            while (scanner.hasNextLine()) {
+                builder.append(scanner.nextLine() + "\n");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
-        }
-        StringBuilder builder = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            builder.append(scanner.nextLine() + "\n");
+        } finally {
+            scanner.close();
         }
         List<Task> tasks = new ArrayList<Task>();
         try {
-            JSONObject object = new JSONObject(builder.toString());
-            JSONArray array = object.getJSONArray("basicCharacters");
+            JSONArray array = new JSONArray(builder.toString());
             int length = array.length();
             for (int i = 0; i < length; i++) {
                 JSONObject obj = array.getJSONObject(i);
@@ -47,7 +50,6 @@ public class BasicTaskCreator implements TaskCreator{
                 t.setEngineering(obj.getInt("engineering"));
                 t.setScavenging(obj.getInt("scavenging"));
                 t.setFighting(obj.getInt("fighting"));
-                
                 tasks.add(t);
             }
             return tasks;
@@ -56,5 +58,5 @@ public class BasicTaskCreator implements TaskCreator{
             throw new RuntimeException(e);
         }
     }
-
 }
+
