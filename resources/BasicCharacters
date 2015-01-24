@@ -11,7 +11,7 @@
         "scavenging" : 8,
         "engineering" : 16,
         "deception" : 6,
-        "luck" : 10
+        "luck" : 10,
         "prompt" : "What do I do?"
     },
     {
@@ -26,7 +26,7 @@
         "scavenging" : 15,
         "engineering" : 7,
         "deception" : 9,
-        "luck" : 12
+        "luck" : 12,
         "prompt": "Hi"
     },
     {
@@ -41,7 +41,7 @@
         "scavenging" : 9,
         "engineering" : 15,
         "deception" : 8,
-        "luck" : 12
+        "luck" : 12,
         "prompt": "Bye"
     },
     {
@@ -56,7 +56,7 @@
         "scavenging" : 15,
         "engineering" : 3,
         "deception" : 13,
-        "luck" : 8
+        "luck" : 8,
         "prompt": "bananas"
     },
     {
@@ -71,7 +71,7 @@
         "scavenging" : 15,
         "engineering" : 15,
         "deception" : 20,
-        "luck" : 2
+        "luck" : 2,
         "prompt": "jello"
     },
     {
@@ -86,7 +86,7 @@
         "scavenging" : 8,
         "engineering" : 4,
         "deception" : 3,
-        "luck" : 8
+        "luck" : 8,
         "prompt": "I need help"
     },
     {
@@ -101,7 +101,7 @@
         "scavenging" : 3,
         "engineering" : 3,
         "deception" : 10,
-        "luck" : 40
+        "luck" : 40,
         "prompt": "I think I broke something"
     }
     
