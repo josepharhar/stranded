@@ -1,10 +1,11 @@
 package tasks;
 import java.util.ArrayList;
+import java.util.List;
 import characters.Character;
 
 public class TaskRunner {
     
-    public int[] sumStats(ArrayList<Character> crew)
+    public int[] sumStats(List<Character> crew)
     {
         double totalLuck = 0;
         for (Character c : crew) {
@@ -56,8 +57,11 @@ public class TaskRunner {
         return taskEffects;
     }
     
-    public boolean completeTask(Task job, int[] crewStats, ArrayList<Character> crew)
+    public boolean completeTask(Task job)
     {
+        List<Character> crew = job.getCharacters();
+        int [] crewStats = sumStats(crew);
+        
         if((crewStats[0] >= job.getEngineering()) && (crewStats[1] >= job.getFighting()) 
                 && (crewStats[2] >= job.getScavenging()))
         {
