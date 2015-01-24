@@ -45,8 +45,6 @@ public class BasicCharacterCreator implements CharacterCreator {
             for (int i = 0; i < length; i++) {
                 JSONObject obj = array.getJSONObject(i);
                 Character c = new Character();
-                c.setFirstName(obj.getString("firstName"));
-                c.setLastName(obj.getString("lastName"));
                 c.setDeception(obj.getInt("deception"));
                 c.setEngineering(obj.getInt("engineering"));
                 c.setFighting(obj.getInt("fighting"));
