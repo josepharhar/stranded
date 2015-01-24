@@ -9,7 +9,7 @@ import static gui.StrandedApplet.*;
 
 public class Printer {
     //Maximum number of lines to print out at once
-    public static final int MAX_TERMINAL_LINES = 11;
+    public static final int MAX_TERMINAL_LINES = 10;
     //Maximum number of chars before wrapping the line
     public static final int MAX_TERMINAL_WIDTH = 50;
     
@@ -34,7 +34,6 @@ public class Printer {
     
     public void print(String text) {
         if (textQueue.size() >= MAX_TERMINAL_LINES) {
-            textQueue.remove(0);
             textQueue.remove(textQueue.size() - 1);
         }
         textQueue.add(0, text);
@@ -62,7 +61,7 @@ public class Printer {
                 output += " ";
             }
             output += textQueue.get(i);
-            applet.text(output, 10, -18 * i - 10);
+            applet.text(output, 10, -18 * i - 14);
         }
     }
 }
