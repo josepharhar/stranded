@@ -27,6 +27,9 @@ public class ControlPrinter {
     }
     
     public void draw() {
+        if (taskPosition >= game.tasks.size()) {
+            taskPosition--;
+        }
         //translate to the bottom-left text position
         applet.translate(20, CONTROL_HEIGHT - 100);
         if (game.tasks.size() > 0) {
