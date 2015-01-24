@@ -9,7 +9,9 @@ import static gui.StrandedApplet.*;
 
 public class Printer {
     //Maximum number of lines to print out at once
-    public static final int MAX_TERMINAL_LINES = 3;
+    public static final int MAX_TERMINAL_LINES = 11;
+    //Maximum number of chars before wrapping the line
+    public static final int MAX_TERMINAL_WIDTH = 50;
     
     //The PApplet to draw to
     private StrandedApplet applet;
@@ -24,7 +26,7 @@ public class Printer {
         
         //Set up the text font and size once here
         //applet.textSize(32);
-        font = applet.createFont("Monospaced.plain", 16);
+        font = applet.createFont("Monospaced.bold", 18);
         applet.textFont(font);
         
         textQueue = new ArrayList<String>();
@@ -33,8 +35,9 @@ public class Printer {
     public void print(String text) {
         if (textQueue.size() >= MAX_TERMINAL_LINES) {
             textQueue.remove(0);
+            textQueue.remove(textQueue.size() - 1);
         }
-        textQueue.add(text);
+        textQueue.add(0, text);
     }
     
     public void clear() {
@@ -47,10 +50,19 @@ public class Printer {
      *               top-left corner of the "terminal"
      */
     public void draw() {
+        //translate to the bottom of the terminal
+        applet.translate(0, TERMINAL_HEIGHT);
         //green color for text
         applet.fill(0, 255, 0);
         for (int i = 0; i < textQueue.size(); i++) {
-            applet.text(textQueue.get(i), 0, 12 * i);
+            String output = "";
+            if (i == 0) {
+                output += ">";
+            } else {
+                output += " ";
+            }
+            output += textQueue.get(i);
+            applet.text(output, 10, -18 * i - 10);
         }
     }
 }

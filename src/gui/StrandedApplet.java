@@ -38,19 +38,14 @@ public class StrandedApplet extends PApplet {
         background = loadImage("pictures/background.png");
         
         //temp
-        printer.print("some text");
-        printer.print("more text");
-        printer.print("third text");
-        printer.print("fourth text");
+        for (int i = 0; i < 15; i++) {
+            printer.print("text #" + i);
+        }
         
         size(GAME_WIDTH, GAME_HEIGHT);
     }
     
     public void draw() {
-        background(0);
-        fill(255, 0, 0);
-        ellipse(width / 2, height / 2, 50, 50);
-        
         // Draw Background
         image(background, 0, 0);
         
