@@ -25,16 +25,18 @@ public class BasicCharacterCreator implements CharacterCreator {
     }
     
     private List<Character> readCharacterFile(String fileName) {
-        Scanner scanner;
+        Scanner scanner = null;
+        StringBuilder builder = new StringBuilder();
         try {
             scanner = new Scanner(new File(fileName));
+            while (scanner.hasNextLine()) {
+                builder.append(scanner.nextLine() + "\n");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
-        }
-        StringBuilder builder = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            builder.append(scanner.nextLine() + "\n");
+        } finally {
+            scanner.close();
         }
         List<Character> characters = new ArrayList<Character>();
         try {
