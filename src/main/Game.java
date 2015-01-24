@@ -15,6 +15,7 @@ import util.RandomPhraseAccessor;
 import characters.BasicCharacterCreator;
 import characters.Character;
 import characters.CharacterCreator;
+import characters.Skill;
 
 public class Game {
     private StrandedApplet applet;
@@ -50,6 +51,9 @@ public class Game {
         taskRunner.startTask(task);
         tasks.remove(task);
         characters.remove(0);
+        if(task.getPrimarySkill() == Skill.FIGHTING) {
+            applet.mainAudio.fightSounds();
+        }
         updateTasks();
         if (characters.size() > 0) {
             promptNextCharacter();

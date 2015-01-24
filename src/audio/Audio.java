@@ -63,4 +63,9 @@ public class Audio {
         SamplePlayer Mbeep = new SamplePlayer(ac, SampleManager.sample("Menu_Center_Beep.wav"));
         ac.out.addInput(Mbeep);
     }
+    
+    public void fightSounds() {
+        SamplePlayer fight = new SamplePlayer(ac, SampleManager.sample("Fight_Sounds.wav"));
+        ac.out.addInput(fight);
+    }
 }
