@@ -12,6 +12,7 @@ public class Task {
     private long completionTime;
     private boolean completed = false;
     private boolean succeeded = false;
+    private boolean canRetry = false;
     private Character character;
     private String name;
     private Skill primarySkill;
@@ -85,6 +86,12 @@ public class Task {
     }
     public long getExpirationTime() {
         return expirationTime;
+    }
+    public boolean getCanRetry() {
+        return canRetry;
+    }
+    public void setCanRetry(boolean canRetry) {
+        this.canRetry = canRetry;
     }
     public void setExpirationTime(long expirationTime) {
         this.expirationTime = expirationTime;

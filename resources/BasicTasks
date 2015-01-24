@@ -39,19 +39,22 @@
         "difficulty" : 3,
         "risk" : 1,
         "skill" : "FIGHTING",
+        "canRetry" : true,
         "rewards" : {
             "SCRAP" : 20,
         },
     },
     {
         "name" : "Fix the Toilets",
-        "difficulty" : 3,
+        "difficulty" : 100,
+        "canRetry" : true,
         "risk" : 1,
         "skill" : "ENGINEERING",
     },
     {
         "name" : "Repair engines",
         "difficulty" : 7,
+        "canRetry" : true,
         "risk" : 1,
         "skill" : "ENGINEERING",
         "costs" : {

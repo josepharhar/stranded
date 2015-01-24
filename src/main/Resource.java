@@ -6,4 +6,5 @@ public enum Resource {
     FUEL,
     STATION_HEALTH,
     STATION_DEFENSES,
+    MORALE,
 }

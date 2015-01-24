@@ -119,7 +119,7 @@ public class StrandedApplet extends PApplet {
             }
             controlPrinter.taskPosition -= 1;
             if (controlPrinter.taskPosition < 0) {
-                controlPrinter.taskPosition = game.tasks.size() - 1;
+                controlPrinter.taskPosition = Math.max(game.tasks.size() - 1, 0);
             }
             this.mainAudio.centerBeep();
         } else if (rightButton.isClicked(x, y)) {

@@ -66,7 +66,12 @@ public class Game {
             if (t.getSucceeded()) {
                 applet.consolePrinter.print("Task succeeded: " + t.getName(), applet.color(0, 255, 0));
             } else {
-                applet.consolePrinter.print("Task failed: " + t.getName(), applet.color(255, 0, 0));
+                if (t.getCanRetry()) {
+                    applet.consolePrinter.print("Retryable task failed: " + t.getName(), applet.color(255, 0, 0));
+                    tasks.add(t);
+                } else {
+                    applet.consolePrinter.print("Task failed: " + t.getName(), applet.color(255, 0, 0));
+                }
             }
             characters.add(t.getCharacter());
         }

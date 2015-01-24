@@ -80,6 +80,9 @@ public class BasicTaskCreator implements TaskCreator{
                     t.setExpires(true);
                     t.setExpirationTime(System.currentTimeMillis() + obj.getInt("duration") * 1000L);
                 }
+                if (obj.has("canRetry")) {
+                    t.setCanRetry(obj.getBoolean("canRetry"));
+                }
                 tasks.add(t);
             }
             return tasks;
