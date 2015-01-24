@@ -26,5 +26,20 @@
         "engineering" : 7,
         "deception" : 9,
         "luck" : 12
+    },
+    {
+        "firstName" : "Lulu",
+        "lastName" : "Lamp",
+        "occupation" : "Engineer",
+        "health" : 100,
+        "stamina" : 10,
+        "loyalty" : 10,
+        "learningPotential" : 10,
+        "fighting" : 12,
+        "scavenging" : 9,
+        "engineering" : 15,
+        "deception" : 8,
+        "luck" : 12
     }
+    
 ]
