@@ -13,13 +13,14 @@ import audio.*;
 public class StrandedApplet extends PApplet {
        
     // Sizes of "frames" on the screen
-    public static final int GAME_WIDTH = 800;
+    //game is the ENTIRE size
+    public static final int GAME_WIDTH = 1000;
     public static final int GAME_HEIGHT = 600;
     public static final int VIEW_HEIGHT = 400;
     public static final int VIEW_WIDTH = 800;
     public static final int TERMINAL_HEIGHT = 200;
     public static final int TERMINAL_WIDTH = 500;
-    public static final int CONTROL_HEIGHT = 200;
+    public static final int CONTROL_HEIGHT = 600;
     public static final int CONTROL_WIDTH = 300;
     
     // Locations of "frames" on the screen
@@ -37,6 +38,11 @@ public class StrandedApplet extends PApplet {
     public ConsolePrinter consolePrinter;
     public ControlPrinter controlPrinter;
     
+    public SidebarItem currentSidebar;
+    public JobList jobList;
+    public 
+    //public JobDetail jobDetail;
+    
     private Button leftButton;
     private Button centerButton;
     private Button rightButton;
@@ -52,6 +58,10 @@ public class StrandedApplet extends PApplet {
         
         consolePrinter = new ConsolePrinter(this);
         controlPrinter = new ControlPrinter(this, game);
+        
+        jobList = new JobList();
+        //jobDetail = new JobDetail();
+        currentSidebar = jobList;
         
         leftButton = new Button(26, 156, 72, 32, loadImage("pictures/leftButton.png"));
         centerButton = new Button(leftButton.getx() + leftButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/centerButton.png"));

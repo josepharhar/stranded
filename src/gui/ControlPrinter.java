@@ -3,6 +3,7 @@ package gui;
 import static gui.StrandedApplet.*;
 import main.Game;
 import processing.core.*;
+import tasks.Task;
 
 public class ControlPrinter {
 
@@ -31,9 +32,17 @@ public class ControlPrinter {
             taskPosition--; 
         }
         //translate to the bottom-left text position
-        applet.translate(20, CONTROL_HEIGHT - 100);
+        applet.translate(20, CONTROL_HEIGHT);
+        
         if (game.tasks.size() > 0) {
-            applet.text(game.tasks.get(taskPosition).getName(), 0, 0);
+            Task currentTask = game.tasks.get(taskPosition);
+            
+            applet.text("Task: " + currentTask.getName(), 0, -100);
+//            applet.text("Cost: " + currentTask.getCost(), 0, 80);
+//            applet.text("Reward", x, y);
+//            applet.text("Penalty: " + currentTask.getP)
+            applet.text("Difficulty: " + currentTask.getDifficulty(), 0, -80);
+            applet.text("Skill: " + currentTask.getPrimarySkill(), 0, -60);
         } else {
             applet.text("No tasks available", 0, 0);
         }
