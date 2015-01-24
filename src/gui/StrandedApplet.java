@@ -61,10 +61,6 @@ public class StrandedApplet extends PApplet {
         
         mainAudio = new Audio(this);
         
-        //temp
-        for (int i = 0; i < 15; i++) {
-            consolePrinter.print("text #" + i);
-        }
         try {
             mainAudio.startMainAudio();
         } catch (IOException e) {

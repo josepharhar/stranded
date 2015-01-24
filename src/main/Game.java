@@ -41,12 +41,12 @@ public class Game {
     
     public void promptNextCharacter() {
         Character c = characters.get(0);
-        applet.consolePrinter.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.getRandomPhrase());
+        applet.consolePrinter.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.getRandomPhrase(), applet.color(0, 128, 0));
         applet.mainAudio.updateBeep();
     }
     
     public void assignTask(Task task, Character character) {
-        applet.consolePrinter.print("Task: " + task.getName() + " assigned to character: " + character.getFirstName());
+        applet.consolePrinter.print("Task: " + task.getName() + " assigned to character: " + character.getFirstName(), applet.color(255, 255, 0));
         task.setCharacter(character);
         taskRunner.startTask(task);
         tasks.remove(task);
@@ -63,7 +63,11 @@ public class Game {
     public void updateTasks() {
         boolean shouldNotify = characters.size() == 0;
         for (Task t : taskRunner.getCompletedTasks()) {
-            applet.consolePrinter.print("Task " + (t.getSucceeded() ? "succeeded" : "failed") + ": " + t.getName());
+            if (t.getSucceeded()) {
+                applet.consolePrinter.print("Task succeeded: " + t.getName(), applet.color(0, 255, 0));
+            } else {
+                applet.consolePrinter.print("Task failed: " + t.getName(), applet.color(255, 0, 0));
+            }
             characters.add(t.getCharacter());
         }
         if (shouldNotify && characters.size() > 0) {

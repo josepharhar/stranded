@@ -18,7 +18,7 @@ public class ConsolePrinter {
     
     //The List that contains all of the text
     //the front of the list is the bottom, or newest, line
-    private List<String> textQueue;
+    private List<TextLine> textQueue;
     private PFont font;
     
     public ConsolePrinter(StrandedApplet applet) {
@@ -28,23 +28,27 @@ public class ConsolePrinter {
         font = applet.createFont("Monospaced.bold", 18);
         applet.textFont(font);
         
-        textQueue = new ArrayList<String>();
+        textQueue = new ArrayList<TextLine>();
     }
     
-    public void print(String text) {
+    public void print(String text, int color) {
+        print(text, color, false);
+    }
+    
+    private void print(String text, int color, boolean isWrapped) {
         if (text.length() > MAX_TERMINAL_WIDTH) {
             int splitPos = MAX_TERMINAL_WIDTH;
             while (text.charAt(splitPos) != ' ') {
                 splitPos--;
             }
-            print(text.substring(0, splitPos));
-            print(text.substring(splitPos));
+            print(text.substring(0, splitPos), color, false);
+            print(text.substring(splitPos), color, true);
             return;
         }
         if (textQueue.size() >= MAX_TERMINAL_LINES) {
             textQueue.remove(textQueue.size() - 1);
         }
-        textQueue.add(0, text);
+        textQueue.add(0, new TextLine(text, color, isWrapped));
     }
     
     public void clear() {
@@ -59,21 +63,41 @@ public class ConsolePrinter {
     public void draw() {
         //translate to the bottom of the terminal
         applet.translate(0, TERMINAL_HEIGHT);
-        //green color for text
-        applet.fill(0, 255, 0);
+        
+        boolean usedCarrot = false;
         for (int i = 0; i < textQueue.size(); i++) {
             String output = "";
-            if (i == 0) {
+            if (!usedCarrot && !textQueue.get(i).isWrapped) {
+                usedCarrot = true;
                 if ((System.currentTimeMillis() / 500) % 2 == 0) {
-                    output += " ";
-                } else {
                     output += ">";
+                } else {
+                    output += " ";
                 }
             } else {
                 output += " ";
             }
-            output += textQueue.get(i);
+            output += textQueue.get(i).text;
+            
+            applet.fill(textQueue.get(i).lineColor);
             applet.text(output, 10, -18 * i - 14);
+        }
+    }
+    
+    // Class that represents a line of text and includes formatting
+    class TextLine {
+        //color int determined by processing
+        public int lineColor;
+        
+        //is this line part of a wrapped line?
+        public boolean isWrapped;
+        
+        public String text;
+        
+        public TextLine(String text, int lineColor, boolean isWrapped) {
+            this.text = text;
+            this.lineColor = lineColor;
+            this.isWrapped = isWrapped;
         }
     }
 }
