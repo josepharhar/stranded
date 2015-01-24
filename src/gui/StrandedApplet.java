@@ -69,6 +69,10 @@ public class StrandedApplet extends PApplet {
         }
         //mainAudio.startMainAudio();
         
+        if (frame != null) {
+            frame.setResizable(true);
+            frame.setSize(GAME_WIDTH, GAME_HEIGHT);
+        }
         size(GAME_WIDTH, GAME_HEIGHT);
         
         game.start();
