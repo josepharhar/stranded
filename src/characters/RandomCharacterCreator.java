@@ -1,10 +1,8 @@
 package characters;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.io.*;
 
 import static util.RandomNumberGenerator.*;
 
@@ -17,7 +15,7 @@ public class RandomCharacterCreator implements CharacterCreator {
     }
     
     public Character createCharacter() {
-        return new Character();
+        return characterList.get((int) (Math.random() * characterList.size()));
     }
     
     //@Override
