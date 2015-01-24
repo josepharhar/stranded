@@ -36,7 +36,7 @@ public class StrandedApplet extends PApplet {
     
     private PImage background;
 
-    public Printer printer;
+    public ConsolePrinter printer;
     
     private Button leftButton;
     private Button centerButton;
@@ -49,7 +49,7 @@ public class StrandedApplet extends PApplet {
     }
     
     public void setup() {
-        printer = new Printer(this);
+        printer = new ConsolePrinter(this);
         leftButton = new Button(26, 156, 72, 32, loadImage("pictures/leftButton.png"));
         centerButton = new Button(leftButton.getx() + leftButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/centerButton.png"));
         rightButton = new Button(centerButton.getx() + centerButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/rightButton.png"));

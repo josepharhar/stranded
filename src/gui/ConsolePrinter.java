@@ -7,7 +7,7 @@ import processing.core.*;
 
 import static gui.StrandedApplet.*;
 
-public class Printer {
+public class ConsolePrinter {
     //Maximum number of lines to print out at once
     public static final int MAX_TERMINAL_LINES = 10;
     //Maximum number of chars before wrapping the line
@@ -21,7 +21,7 @@ public class Printer {
     private List<String> textQueue;
     private PFont font;
     
-    public Printer(StrandedApplet applet) {
+    public ConsolePrinter(StrandedApplet applet) {
         this.applet = applet;
         
         //Set up the text font and size once here
