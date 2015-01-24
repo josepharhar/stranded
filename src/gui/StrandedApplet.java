@@ -42,7 +42,7 @@ public class StrandedApplet extends PApplet {
     private Button centerButton;
     private Button rightButton;
     
-    private Audio mainAudio;
+    public Audio mainAudio;
     
     public static void main(String[] args) {
         PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
@@ -63,9 +63,9 @@ public class StrandedApplet extends PApplet {
             printer.print("text #" + i);
         }
         try {
-            mainAudio.testAudio();
+            mainAudio.startMainAudio();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+             //TODO Auto-generated catch block
             e.printStackTrace();
         }
         //mainAudio.startMainAudio();

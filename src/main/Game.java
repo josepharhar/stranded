@@ -5,6 +5,7 @@ import gui.StrandedApplet;
 import java.util.ArrayList;
 import java.util.List;
 
+import audio.Audio;
 import processing.core.PApplet;
 import tasks.BasicTaskCreator;
 import tasks.Task;
@@ -38,6 +39,7 @@ public class Game {
     public void promptNextCharacter() {
         Character c = characters.get(0);
         applet.printer.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.getRandomPhrase());
+        applet.mainAudio.updateBeep();
     }
     
     public void assignTask(Task task, Character character) {
