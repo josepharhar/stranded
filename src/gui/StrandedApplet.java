@@ -117,6 +117,7 @@ public class StrandedApplet extends PApplet {
             if (taskPosition < 0) {
                 taskPosition = game.tasks.size() - 1;
             }
+            this.mainAudio.sideBeep();
         } else if (centerButton.isClicked(x, y)) {
             System.out.println("center");
             if (game.tasks.size() > 0) {
@@ -126,12 +127,14 @@ public class StrandedApplet extends PApplet {
             if (taskPosition < 0) {
                 taskPosition = game.tasks.size() - 1;
             }
+            this.mainAudio.centerBeep();
         } else if (rightButton.isClicked(x, y)) {
             System.out.println("right");
             taskPosition += 1;
             if (taskPosition >= game.tasks.size()) {
                 taskPosition = 0;
             }
+            this.mainAudio.sideBeep();
         }
     }
     

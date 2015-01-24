@@ -55,11 +55,12 @@ public class Audio {
     }
     
     public void sideBeep() {
-        SamplePlayer Sbeep = new SamplePlayer(ac, SampleManager.sample("Status_Update.wav"));
+        SamplePlayer Sbeep = new SamplePlayer(ac, SampleManager.sample("Menu_Side_Beep.wav"));
         ac.out.addInput(Sbeep);
     }
     
     public void centerBeep() {
-        
+        SamplePlayer Mbeep = new SamplePlayer(ac, SampleManager.sample("Menu_Center_Beep.wav"));
+        ac.out.addInput(Mbeep);
     }
 }
