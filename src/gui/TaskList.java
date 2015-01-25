@@ -1,8 +1,6 @@
 package gui;
 
 import java.awt.Rectangle;
-import java.util.List;
-import java.util.ArrayList;
 
 import tasks.Task;
 import main.Game;
