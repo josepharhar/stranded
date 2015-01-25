@@ -54,4 +54,14 @@
             "MORALE" : 7,
         }
     },
+    {
+        "name" : "Scavenge abandoned ship nearby",
+        "difficulty" : 2,
+        "risk" : 2,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 7,
+            "ELECTRONICS" : 6
+        },
+    }
 ]
