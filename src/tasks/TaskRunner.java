@@ -35,6 +35,7 @@ public class TaskRunner {
     }
     
     public void startTask(Task job) {
+        job.getCharacter().setAvailable(false);
         game.resources.subtract(job.getCosts());
         long val = 10 + (int)(40*Math.random());
         job.setCompletionTime(System.currentTimeMillis() + val * 1000L);
@@ -42,6 +43,7 @@ public class TaskRunner {
     }
 
     public void finishTask(Task job) {
+        job.getCharacter().setAvailable(true);
         job.setCompleted(true);
         boolean succeeded = succeeds(job);
         job.setSucceeded(succeeded);
