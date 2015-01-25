@@ -13,6 +13,7 @@ import tasks.StorylineTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
 import tasks.TaskRunner;
+import timing.GameTimer;
 import util.RandomNumberGenerator;
 import util.RandomPhraseAccessor;
 import characters.BasicCharacterCreator;
@@ -35,10 +36,12 @@ public class Game {
     
     public Game(StrandedApplet applet) {
         this.applet = applet;
+        GameTimer.initializeTime();
         Game.game = this;
     }
 
     public void start() {
+        GameTimer.startTime();
         tasks.add(new RestTask());
         nextRandomTask = System.currentTimeMillis() + 1000 * (60 + RandomNumberGenerator.getRandomInteger(30));
         TaskCreator storyline = new StorylineTaskCreator();
