@@ -16,8 +16,8 @@ public class TaskDetail extends SidebarItem {
     public TaskDetail(StrandedApplet applet, Game game, Task task) {
         super("Task Detail", applet, game);
         this.task = task;
-        buttonAssign = new Button(applet.SIDEBAR_WIDTH / 2 - 20,
-                applet.SIDEBAR_HEIGHT - 80, 72, 32,
+        buttonAssign = new Button(applet.SIDEBAR_WIDTH / 2 - 72,
+                applet.SIDEBAR_HEIGHT - 90, 144, 32,
                 applet.loadImage("pictures/assign.png"));
     }
 
