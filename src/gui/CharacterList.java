@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Rectangle;
 
+import tasks.Task;
 import main.Game;
 import characters.Character;
 
@@ -17,6 +18,7 @@ public class CharacterList extends SidebarItem {
         int x = 20;
         int y = 10;
         
+        // Loop through idle characters
         for (Character character : game.characters) {
             String text = character.getName();
             
@@ -27,6 +29,22 @@ public class CharacterList extends SidebarItem {
             applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23);
             
             applet.fill(0, 255, 0);
+            applet.text(text, x, y);
+        }
+        
+        // Loop through active characters
+        for (Task task : game.taskRunner.pendingTasks) {
+            Character character = task.getCharacter();
+
+            String text = character.getName();
+            
+            y += 30;
+
+            //draw rectangle (button) under the text
+            applet.fill(128);
+            applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23);
+            
+            applet.fill(255, 255, 0);
             applet.text(text, x, y);
         }
     }

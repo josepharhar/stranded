@@ -89,7 +89,7 @@ public class StrandedApplet extends PApplet {
         if (gameStage == 1) {
             drawGame();
         } else if (gameStage == 0) {
-            drawStart();
+            startScreen.draw();
         }
     }
     
@@ -100,20 +100,6 @@ public class StrandedApplet extends PApplet {
             game.start();
             gameStage = 1;
         }
-    }
-    
-    // Draws the start screen
-    private void drawStart() {
-        background(0);
-        
-        
-        
-        textAlign(CENTER, CENTER);
-        fill(0, 255, 0);
-        textSize(48);
-        text("STRANDED", GAME_WIDTH / 2, GAME_HEIGHT / 2);
-        textSize(18);
-        text("click to start", GAME_WIDTH / 2, GAME_HEIGHT / 2 + 100);
     }
     
     // Called when the screen is clicked during gameStage = 1
