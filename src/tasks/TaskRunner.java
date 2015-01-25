@@ -98,6 +98,7 @@ public class TaskRunner {
         }
         character.setHealth((int)(character.getHealth() - damRoll));
         dp("Character's health is now "+ character.getHealth());
+        game.print(character.getName() + " lost " + (int)damRoll + " health and is now at " + character.getHealth() +".");
         if(character.getHealth() <= 0) {
             game.print("Oh no! " + character.getName() + " has died!",new Color(255,0,0));
             job.setCharacter(null);
@@ -114,6 +115,7 @@ public class TaskRunner {
             }
             character.setHealth((int)(character.getHealth() - damRoll));
             dp("Character's health is now "+ character.getHealth() + " due to risk damage!");
+            game.print(character.getName() + " lost " + (int)damRoll + " health due to risk and is now at " + character.getHealth() +".");
             if(character.getHealth() <= 0) {
                 game.print("Oh no! " + character.getName() + " has died!",new Color(255,0,0));
                 job.setCharacter(null);
