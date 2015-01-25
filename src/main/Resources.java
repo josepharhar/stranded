@@ -8,7 +8,6 @@ public class Resources {
      
     public Resources() {
         map.put(Resource.ELECTRONICS, 20.0);
-        map.put(Resource.FUEL, 20.0);
         map.put(Resource.SCRAP, 20.0);
         map.put(Resource.STATION_HEALTH, 20.0);
         map.put(Resource.MORALE, 20.0);

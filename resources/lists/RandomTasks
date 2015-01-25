@@ -22,15 +22,15 @@
         },
     },
     {
-        "name" : "Pirates stealing fuel",
+        "name" : "Pirates attacking station",
         "difficulty" : 2,
         "risk" : 1,
         "skill" : "FIGHTING",
         "rewards" : {
-            "SCRAP" : 6,
+            "SCRAP" : 4,
         },
         "penalty" : {
-            "FUEL" : 4,
+            "STATION_HEALTH" : 6,
         },
         "duration" : 7,
     },

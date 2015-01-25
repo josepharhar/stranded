@@ -1,7 +1,6 @@
 package gui;
 
 import static main.Resource.ELECTRONICS;
-import static main.Resource.FUEL;
 import static main.Resource.MORALE;
 import static main.Resource.SCRAP;
 import static main.Resource.STATION_HEALTH;
@@ -249,8 +248,6 @@ public class GameScreen {
         applet.text(" " + String.valueOf(applet.game.resources.getResource(ELECTRONICS)), x, y);
         y += yspacing;
         applet.text("FUEL", x, y);
-        y += yspacing;
-        applet.text(" " + String.valueOf(applet.game.resources.getResource(FUEL)), x, y);
         y += yspacing;
         applet.text("STATION_HEALTH", x, y);
         y += yspacing;
