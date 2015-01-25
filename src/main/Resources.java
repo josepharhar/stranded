@@ -18,10 +18,21 @@ public class Resources {
     public double getResource(Resource resource) {
         return map.get(resource);
     }
+    
+    public boolean trySubtract(Map<Resource, Double> values) {
+        for (Map.Entry<Resource, Double> entry : values.entrySet()) {
+            double newVal =  map.get(entry.getKey()) - entry.getValue();
+            if (newVal < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public void subtract(Map<Resource, Double> values) {
         for (Map.Entry<Resource, Double> entry : values.entrySet()) {
-            map.put(entry.getKey(), map.get(entry.getKey()) - entry.getValue());
+            double newVal =  map.get(entry.getKey()) - entry.getValue();
+            map.put(entry.getKey(), Math.max(newVal, 0));
         }
     }
     

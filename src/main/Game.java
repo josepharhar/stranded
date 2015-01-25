@@ -60,6 +60,10 @@ public class Game {
     }
     
     public void assignTask(Task task, Character character) {
+        if (!resources.trySubtract(task.getCosts())) {
+            applet.consolePrinter.print("Insufficient Resources", applet.color(255, 255, 0));
+            return;
+        }
         applet.consolePrinter.print("Task: " + task.getName() + " assigned to character: " + character.getFirstName(), applet.color(255, 255, 0));
         task.setCharacter(character);
         taskRunner.startTask(task);
