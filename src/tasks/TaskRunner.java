@@ -2,7 +2,6 @@ package tasks;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,6 @@ import main.Game;
 import main.Resource;
 import characters.Character;
 import characters.Skill;
-import util.RandomDeathAccessor;
 
 public class TaskRunner {
     private Game game;
@@ -34,8 +32,10 @@ public class TaskRunner {
         job.setSucceeded(succeeded);
         checkRisk(job.getCharacter(),job);
         if (succeeded) {
-            game.resources.add(job.getRewards());
-            levelUp(job.getCharacter(),job);
+            if (job.getPrimarySkill() != Skill.NONE) {
+                game.resources.add(job.getRewards());
+                levelUp(job.getCharacter(),job);
+            }
             if(job.getRewards().containsKey(Resource.HEALING)) {
                 job.getCharacter().setHealth(job.getCharacter().getHealth() + job.getRewards().get(Resource.HEALING).intValue());
             }
@@ -52,6 +52,9 @@ public class TaskRunner {
         dp("Checking job " + job.getName() + " with crew " + job.getCharacter().getName());
         Character c = job.getCharacter();
         Skill primarySkill = job.getPrimarySkill();
+        if (primarySkill == Skill.NONE) {
+            return true;
+        }
         Map<Skill, Double> map = c.getSkills();
         double characterSkill = map.get(primarySkill);
         double characterLuck = c.getLuck();

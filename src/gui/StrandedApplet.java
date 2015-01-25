@@ -42,7 +42,6 @@ public class StrandedApplet extends PApplet {
     public Game game;
 
     public ConsolePrinter consolePrinter;
-    public ControlPrinter controlPrinter;
     
     
     public Audio mainAudio;
@@ -60,7 +59,6 @@ public class StrandedApplet extends PApplet {
         gameScreen = new GameScreen(this);
         
         consolePrinter = new ConsolePrinter(this);
-        controlPrinter = new ControlPrinter(this, game);
         
         mainAudio = new Audio(this);
 

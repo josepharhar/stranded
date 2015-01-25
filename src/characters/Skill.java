@@ -4,4 +4,5 @@ public enum Skill {
     ENGINEERING,
     SCAVENGING,
     FIGHTING,
+    NONE,
 }

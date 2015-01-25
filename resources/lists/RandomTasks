@@ -68,15 +68,4 @@
             "ELECTRONICS" : 7,
         }
     },
-    {
-        "name" : "Heal",
-        "difficulty" : 1,
-        "risk" : 1,
-        "skill" : "SCAVENGING",
-        "rewards" : {
-            "SCRAP" : 6,
-            "HEALING" : 4,
-        }
-        
-    }
 ]

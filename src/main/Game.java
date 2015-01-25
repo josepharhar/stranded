@@ -9,14 +9,12 @@ import java.util.List;
 
 import tasks.BasicTaskCreator;
 import tasks.RandomTaskCreator;
-import tasks.RestTask;
 import tasks.StorylineTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
 import tasks.TaskRunner;
 import timing.DelayedAction;
 import timing.GameTimer;
-import util.RandomNumberGenerator;
 import util.RandomPhraseAccessor;
 import characters.BasicCharacterCreator;
 import characters.Character;
@@ -28,7 +26,7 @@ public class Game {
     public static Game game;
     
     private StrandedApplet applet;
-    public List<Task> tasks = new ArrayList<Task>();
+    public AvailableTasks tasks = new AvailableTasks();
     public List<Character> characters = new ArrayList<Character>();
     public Resources resources = new Resources();
     public TaskRunner taskRunner = new TaskRunner(this);
@@ -43,7 +41,6 @@ public class Game {
 
     public void start() {
         GameTimer.startTime();
-        tasks.add(new RestTask());
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
         TaskCreator taskCreator = new BasicTaskCreator();
@@ -80,7 +77,7 @@ public class Game {
     
     public void promptNextCharacter() {
         Character c = characters.get(0);
-        applet.consolePrinter.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.get(), applet.color(0, 128, 0));
+        applet.consolePrinter.print(c.getName() + ": " + RandomPhraseAccessor.get(), applet.color(0, 128, 0));
         applet.mainAudio.updateBeep();
     }
     
@@ -101,11 +98,7 @@ public class Game {
                 if (task.getSucceeded()) {
                     applet.consolePrinter.print("Task succeeded: " + task.getName(), applet.color(0, 255, 0));
                     if (task.getFollowUpTask() != null) {
-                        if (task.getFollowUpTask() instanceof RestTask) {
-                            tasks.add(0, task.getFollowUpTask());
-                        } else {
-                            tasks.add(task.getFollowUpTask());
-                        }
+                        tasks.add(task.getFollowUpTask());
                     }
                 } else {
                     if (task.getCanRetry()) {
@@ -130,7 +123,7 @@ public class Game {
     }
     
     public void update() {
-        Iterator<Task> iter = tasks.iterator();
+        Iterator<Task> iter = tasks.transientTasksIterator();
         while (iter.hasNext()) {
             Task t = iter.next();
             if (t.isExpired()) {
@@ -162,7 +155,7 @@ public class Game {
         
         System.out.println("called");
         Task t = rtg.createTask();
-        for (Task ot : tasks) {
+        for (Task ot : tasks.getList()) {
             if (ot.getName().equals(t.getName())) return;
         }
         for (Task ot : taskRunner.pendingTasks) {

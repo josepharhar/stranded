@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Rectangle;
+import java.util.List;
 
 import tasks.Task;
 import main.Game;
@@ -17,9 +18,9 @@ public class TaskList extends SidebarItem {
         //location for text to show up
         int x = BUTTON_X_SPACING;
         int y = BUTTON_INIT_SPACING;
-        
-        for (int i = 0; i < game.tasks.size(); i++) {
-            String text = game.tasks.get(i).getName();
+        List<Task> taskList = game.tasks.getList();
+        for (int i = 0; i < taskList.size(); i++) {
+            String text = taskList.get(i).getName();
             
             y += BUTTON_SPACING;
             
@@ -30,7 +31,7 @@ public class TaskList extends SidebarItem {
             applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23, 5, 5, 5, 5);
             
             applet.fill(0, 255, 0);
-            applet.text(game.tasks.get(i).getName(), x, y);
+            applet.text(taskList.get(i).getName(), x, y);
         }
 
         for (Task task : game.taskRunner.pendingTasks) {
@@ -51,8 +52,9 @@ public class TaskList extends SidebarItem {
     
     public void click(float mousex, float mousey) {
         super.click(mousex, mousey);
-        for (int i = 0; i < game.tasks.size(); i++) {
-            String text = game.tasks.get(i).getName();
+        List<Task> taskList = game.tasks.getList();
+        for (int i = 0; i < taskList.size(); i++) {
+            String text = taskList.get(i).getName();
             
             //location for text to show up
             int x = 20;
@@ -61,7 +63,7 @@ public class TaskList extends SidebarItem {
             Rectangle button = new Rectangle(x - 4, y + 2, text.length() * 11 + 4, 23);
             
             if (button.contains(mousex, mousey)) {
-                applet.currentSidebar = new TaskDetail(applet, game, game.tasks.get(i));
+                applet.currentSidebar = new TaskDetail(applet, game, taskList.get(i));
             }
         }
     }
