@@ -86,6 +86,9 @@ public class BasicTaskCreator implements TaskCreator{
                 if (obj.has("canRetry")) {
                     t.setCanRetry(obj.getBoolean("canRetry"));
                 }
+                if (obj.has("risk")) {
+                    t.setRisk(obj.getInt("risk"));
+                }
                 tasks.add(t);
             }
             return tasks;

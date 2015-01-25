@@ -22,8 +22,6 @@ public class Audio {
         this.applet = applet;
         //this.ac = new AudioContext();
         this.mainSource = "Stranded_Theme_Ext.wav";
-        
-        
     }
 
     public void startMainAudio() throws IOException {
@@ -66,5 +64,11 @@ public class Audio {
     public void failSound() {
         SamplePlayer fail = new SamplePlayer(ac, SampleManager.sample("Task_Time_Out.wav"));
         ac.out.addInput(fail);
+    }
+    
+    public void failJingle() {
+        SamplePlayer jing =  new SamplePlayer(ac, SampleManager.sample("Stranded_GameOver"));
+        ac.out.clearInputConnections();
+        ac.out.addInput(jing);
     }
 }

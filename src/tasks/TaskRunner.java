@@ -10,6 +10,7 @@ import main.Game;
 import main.Resource;
 import characters.Character;
 import characters.Skill;
+import util.RandomDeathAccessor;
 
 public class TaskRunner {
     private Game game;
@@ -98,7 +99,7 @@ public class TaskRunner {
         double characterSkill = map.get(skill);
         double characterLuck = character.getLuck();
         
-        double damRoll = 100 - (Math.random()*(2*characterLuck)) - (Math.random()*(characterSkill/2));
+        double damRoll = 100 - (Math.random()*(2*characterLuck)) - (Math.random()*(characterSkill/2)) + (difficulty*(Math.random()));
         if(damRoll < 0) {
             return;
         }
@@ -112,8 +113,10 @@ public class TaskRunner {
     }
     public void checkRisk(Character character, Task job) {
         int risk = job.getRisk();
+        dp("RIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIISK");
         
-        int roll = (int)Math.random()*20;
+        int roll = (int)(Math.random()*20);
+        dp("Player rolled "+roll+" over "+risk+" for risk calc.");
         if (risk > roll) {
             double damRoll = 100 - (Math.random()*(5*character.getLuck()));
             if(damRoll < 0) {
@@ -123,7 +126,8 @@ public class TaskRunner {
             dp("Character's health is now "+ character.getHealth() + " due to risk damage!");
             game.print(character.getName() + " lost " + (int)damRoll + " health due to risk and is now at " + character.getHealth() +".");
             if(character.getHealth() <= 0) {
-                game.print("Oh no! " + character.getName() + " has died!",new Color(255,0,0));
+                String deathString = util.RandomDeathAccessor.get();
+                game.print("Oh no! " + character.getName() + deathString,new Color(255,0,0));
                 job.setCharacter(null);
             }
         }

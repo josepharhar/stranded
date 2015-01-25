@@ -155,6 +155,13 @@ public class Game {
         }
     }
     
+    public void checkLoss() {
+        if((this.taskRunner.pendingTasks.isEmpty() && this.characters.isEmpty()) || this.resources.getResource(Resource.STATION_HEALTH) == 0) {
+            //FAIL;
+            applet.mainAudio.failJingle();
+        }
+    }
+    
     public void print(String str) {
         applet.consolePrinter.print(str, applet.color(100,100,100));
     }

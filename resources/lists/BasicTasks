@@ -2,7 +2,7 @@
     {
         "name" : "Get Scrap",
         "difficulty" : 3,
-        "risk" : 1,
+        "risk" : 30,
         "skill" : "SCAVENGING",
         "rewards" : {
             "SCRAP" : 20,
@@ -11,7 +11,7 @@
     {
         "name" : "Repair hull damage",
         "difficulty" : 5,
-        "risk" : 1,
+        "risk" : 30,
         "skill" : "ENGINEERING",
         "costs" : {
             "SCRAP" : 10,
@@ -47,8 +47,7 @@
         "risk" : 1,
         "skill" : "SCAVENGING",
         "rewards" : {
-            "SCRAP" : 6,
-            "HEALING" : 4,
+            "HEALING" : 60,
         }
         
     },
@@ -58,7 +57,7 @@
         "risk" : 1,
         "skill" : "SCAVENGING",
         "rewards" : {
-            "SCRAP" : 6,
+            "SCRAP" : 10,
         }
         
     }
