@@ -1,0 +1,47 @@
+[
+    {
+        "name" : "Mine passing meteor",
+        "difficulty" : 5,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 4,
+        },
+    },
+    {
+        "name" : "Stop rampaging robot",
+        "difficulty" : 5,
+        "risk" : 1,
+        "skill" : "ENGINEERING",
+        "rewards" : {
+            "SCRAP" : 8,
+        },
+         "penalty" : {
+            "STATION_HEALTH" : 6,
+            "STATION_DEFENSES" : 5,
+        },
+    },
+    {
+        "name" : "Pirates stealing fuel",
+        "difficulty" : 2,
+        "risk" : 1,
+        "skill" : "FIGHTING",
+        "rewards" : {
+            "SCRAP" : 6,
+        },
+        "penalty" : {
+            "FUEL" : 4,
+        },
+        "duration" : 7,
+    },
+    {
+        "name" : "Fix the Toilets",
+        "difficulty" : 9,
+        "canRetry" : false,
+        "risk" : 1,
+        "skill" : "ENGINEERING",
+        "rewards" : {
+            "MORALE" : 7,
+        }
+    },
+]

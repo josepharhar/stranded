@@ -45,13 +45,6 @@
         },
     },
     {
-        "name" : "Fix the Toilets",
-        "difficulty" : 100,
-        "canRetry" : true,
-        "risk" : 1,
-        "skill" : "ENGINEERING",
-    },
-    {
         "name" : "Repair engines",
         "difficulty" : 7,
         "canRetry" : true,

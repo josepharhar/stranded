@@ -6,9 +6,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import audio.Audio;
-import processing.core.PApplet;
-import tasks.BasicTaskCreator;
+import tasks.RandomTaskCreator;
 import tasks.StorylineTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
@@ -37,7 +35,7 @@ public class Game {
     public void start() {
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
-        TaskCreator taskCreator = new BasicTaskCreator();
+        TaskCreator taskCreator = new RandomTaskCreator();
         CharacterCreator characterCreator = new BasicCharacterCreator();
         for (int i = 0; i < 4; i++) {
             tasks.add(taskCreator.createTask());

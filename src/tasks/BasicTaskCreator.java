@@ -61,6 +61,7 @@ public class BasicTaskCreator implements TaskCreator{
                     for (String resource : JSONObject.getNames(rewards)) {
                         map.put(Resource.valueOf(resource), rewards.getDouble(resource));
                     }
+                    t.setRewards(map);
                 }
                 if (obj.has("costs")) {
                     Map<Resource, Double> map = new HashMap<>();
@@ -68,6 +69,7 @@ public class BasicTaskCreator implements TaskCreator{
                     for (String resource : JSONObject.getNames(costs)) {
                         map.put(Resource.valueOf(resource), costs.getDouble(resource));
                     }
+                    t.setCosts(map);
                 }
                 if (obj.has("penalty")) {
                     Map<Resource, Double> map = new HashMap<>();
@@ -75,6 +77,7 @@ public class BasicTaskCreator implements TaskCreator{
                     for (String resource : JSONObject.getNames(penalty)) {
                         map.put(Resource.valueOf(resource), penalty.getDouble(resource));
                     }
+                    t.setPenalty(map);
                 }
                 if (obj.has("duration")) {
                     t.setExpires(true);
