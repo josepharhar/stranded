@@ -38,6 +38,7 @@ public class Game {
     }
 
     public void start() {
+        tasks.add(new RestTask());
         nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(30));
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
@@ -48,7 +49,6 @@ public class Game {
             characters.add(characterCreator.createCharacter());
         }
         promptNextCharacter();
-        tasks.add(new RestTask());
     }
     
     public void promptNextCharacter() {
@@ -83,7 +83,11 @@ public class Game {
             if (t.getSucceeded()) {
                 applet.consolePrinter.print("Task succeeded: " + t.getName(), applet.color(0, 255, 0));
                 if (t.getFollowUpTask() != null) {
-                    tasks.add(t.getFollowUpTask());
+                    if (t.getFollowUpTask() instanceof RestTask) {
+                        tasks.add(0, t.getFollowUpTask());
+                    } else {
+                        tasks.add(t.getFollowUpTask());
+                    }
                 }
             } else {
                 if (t.getCanRetry()) {
@@ -116,7 +120,7 @@ public class Game {
     
     private void handleRandomTask() {
         if (nextRandomTask < System.currentTimeMillis()) {
-            nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(30));
+            nextRandomTask = System.currentTimeMillis() + 1000 * (15 + RandomNumberGenerator.getRandomInteger(30));
             try {
                 Task t = rtg.createTask();
                 for (Task ot : tasks) {

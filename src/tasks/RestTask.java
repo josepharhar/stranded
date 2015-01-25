@@ -7,7 +7,7 @@ public class RestTask extends Task {
         return new RestTask();
     }
     public String getName() {
-        return "Rest";
+        return "Skip";
     }
     public long getCompletionTime() {
         return 1;
