@@ -11,10 +11,15 @@ public class CharacterDetail extends SidebarItem {
     
     //The character that this view is showing
     private Character character;
+
+    private Button buttonAssign;
     
     public CharacterDetail(StrandedApplet applet, Game game, Character character) {
         super("Character Detail", applet, game);
         this.character = character;
+        buttonAssign = new Button(applet.SIDEBAR_WIDTH / 2 - 72,
+                applet.SIDEBAR_HEIGHT - 90, 144, 32,
+                applet.loadImage("pictures/assign.png"));
     }
     
     public void draw() {
@@ -64,5 +69,20 @@ public class CharacterDetail extends SidebarItem {
         applet.fill(0, 255, 0);
         applet.text(" " + character.getLuck(), x, y);
         y += 30;
+
+        // Assign Button
+        buttonAssign.draw(applet);
+    }
+
+    public void click(float mousex, float mousey) {
+        super.click(mousex, mousey);
+        if (buttonAssign.isClicked(mousex, mousey) && character.isAvailable()) {
+            System.out.println("swappign");
+            int index = applet.game.characters.indexOf(character);
+            //swap 0 with index
+            Character temp = applet.game.characters.get(0);
+            applet.game.characters.set(0, character);
+            applet.game.characters.set(index, temp);
+        }
     }
 }

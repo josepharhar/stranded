@@ -39,6 +39,8 @@ public class TaskList extends SidebarItem {
             y += BUTTON_SPACING;
 
             //draw rectangle (button) under the text
+            applet.strokeWeight(2);
+            applet.stroke(192);
             applet.fill(128);
             applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23);
             
