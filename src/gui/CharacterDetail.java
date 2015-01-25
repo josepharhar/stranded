@@ -82,7 +82,8 @@ public class CharacterDetail extends SidebarItem {
             Character temp = applet.game.characters.get(0);
             applet.game.characters.set(0, character);
             applet.game.characters.set(index, temp);
-            applet.currentSidebar = applet.characterList;
+            applet.gameScreen.switchAnimation(0);
+            applet.currentSidebar = applet.taskList;
         }
     }
 }

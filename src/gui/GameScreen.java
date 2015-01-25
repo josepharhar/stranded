@@ -12,6 +12,8 @@ import java.util.List;
 
 import processing.core.PImage;
 import processing.core.PVector;
+import timing.DelayedAction;
+import timing.GameTimer;
 
 public class GameScreen {
     
@@ -39,7 +41,25 @@ public class GameScreen {
         captainFrames[2] = applet.loadImage("pictures/animations/captain_3.png");
         captainFrames[3] = applet.loadImage("pictures/animations/captain_4.png");
         captainFrames[4] = applet.loadImage("pictures/animations/captain_5.png");
-        captainAnimationStartTime = System.currentTimeMillis();
+        captainAnimationStartTime = GameTimer.getTime();
+        
+        doorFrames = new PImage[6];
+        doorFrames[0] = applet.loadImage("pictures/animations/door_1.png");
+        doorFrames[1] = applet.loadImage("pictures/animations/door_2.png");
+        doorFrames[2] = applet.loadImage("pictures/animations/door_3.png");
+        doorFrames[3] = applet.loadImage("pictures/animations/door_4.png");
+        doorFrames[4] = applet.loadImage("pictures/animations/door_5.png");
+        doorFrames[5] = applet.loadImage("pictures/animations/door_6.png");
+        
+        characterFrames = new PImage[5];
+        characterFrames[0] = applet.loadImage("pictures/animations/blank.png");
+        characterFrames[1] = applet.loadImage("pictures/animations/person_1.png");
+        characterFrames[2] = applet.loadImage("pictures/animations/person_2.png");
+        characterFrames[3] = applet.loadImage("pictures/animations/person_3.png");
+        characterFrames[4] = applet.loadImage("pictures/animations/person_4.png");
+        
+        animationType = 0;
+        animStartTime = GameTimer.getTime();
     }
     
     public void draw() {
@@ -47,6 +67,13 @@ public class GameScreen {
         drawStars();
         drawGame();
         drawAnimation();
+        if (GameTimer.isPaused()) {
+            applet.fill(60, 100);
+            applet.rect(0, 0, applet.width, applet.height);
+            applet.fill(255);
+            applet.textSize(25);
+            applet.text("GAME PAUSED", 100, 100);
+        }
     }
     
     // Variables for the state of animations
@@ -54,7 +81,7 @@ public class GameScreen {
     PImage[] characterFrames;
     int[] charxloc;
     int[] charyloc;
-    //0 is coming in, 1 is leaving
+    //0 is coming in, 1 is leaving, 2 is waiting, 3 is nobody
     int animationType;
     long animStartTime;
     
@@ -65,22 +92,98 @@ public class GameScreen {
     PImage[] captainFrames;
     long captainAnimationStartTime;
     
+    public void switchAnimation(int newAnimationType) {
+        System.out.println("switching animation to " + newAnimationType);
+        animationType = newAnimationType;
+        animStartTime = GameTimer.getTime();
+    }
+    
     // Draws the animation of characters
     private void drawAnimation() {
-        long currentTime = System.currentTimeMillis();
+
+//        GameTimer.addAction(new DelayedAction(1500) {
+//            @Override
+//            public void complete() {
+//                
+//            }
+//        });
         
-        long captainDiff = (currentTime - captainAnimationStartTime) % 1000;
+        long currentTime = GameTimer.getTime();
+        
+        double captainDiff = (currentTime - captainAnimationStartTime) / 1000.0;
         if (captainDiff < 2) {
             captainFrameIndex = 0;
-        } else if ()
+        } else if (captainDiff < 2.5) {
+            captainFrameIndex = 1;
+        } else if (captainDiff < 3) {
+            captainFrameIndex = 2;
+        } else if (captainDiff < 3.5) {
+            captainFrameIndex = 3;
+        } else if (captainDiff < 4) {
+            captainFrameIndex = 4;
+        } else {
+            captainAnimationStartTime = GameTimer.getTime();
+        }
         
+        double charDiff = (currentTime - animStartTime) / 1000.0;
+        if (animationType == 0) {
+            if (charDiff < 0.25) {
+                charFrameIndex = 0;
+                doorFrameIndex = 1;
+            } else if (charDiff < 0.5) {
+                doorFrameIndex = 2;
+            } else if (charDiff < 0.75) {
+                doorFrameIndex = 3;
+            } else if (charDiff < 1.0) {
+                doorFrameIndex = 4;
+            } else if (charDiff < 1.25) {
+                doorFrameIndex = 5;
+                charFrameIndex = 1;
+            } else if (charDiff < 1.75) {
+                charFrameIndex = 2;
+            } else if (charDiff < 2.0) {
+                charFrameIndex = 3;
+            } else if (charDiff < 2.25) {
+                charFrameIndex = 4;
+            } else {
+                switchAnimation(2);
+            }
+        } else if (animationType == 1) {
+            if (charDiff < 0.25) {
+                charFrameIndex = 3;
+                doorFrameIndex = 5;
+            } else if (charDiff < 0.5) {
+                charFrameIndex = 2;
+            } else if (charDiff < 0.75) {
+                charFrameIndex = 1;
+            } else if (charDiff < 1.0) {
+                charFrameIndex = 0;
+                doorFrameIndex = 4;
+            } else if (charDiff < 1.25) {
+                doorFrameIndex = 3;
+            } else if (charDiff < 1.5) {
+                doorFrameIndex = 2;
+            } else if (charDiff < 1.75) {
+                doorFrameIndex = 1;
+            } else {
+                switchAnimation(3);
+            }
+        } else if (animationType == 2) {
+            doorFrameIndex = 5;
+            charFrameIndex = 4;
+        } else {
+            if (applet.game.characters.isEmpty()) {
+                charFrameIndex = 0;
+                doorFrameIndex = 0;
+            } else {
+                switchAnimation(0);
+            }
+        }
         
-//        if (currentTime - animStartTime < 500) {
-//            charFrameIndex = 0;
-//        }
+        applet.image(doorFrames[doorFrameIndex], 72, 232);
+        applet.image(characterFrames[charFrameIndex], 98, 232);
+        applet.image(captainFrames[captainFrameIndex], 568, 255);
         
-//        applet.image(characterFrames[charFrameIndex], 100, 100);
-        applet.image(captainFrames[captainFrameIndex], 100, 100);
     }
     
     // Draws and runs the main game
@@ -187,7 +290,7 @@ public class GameScreen {
         }
         
         // Add stars
-        if (Math.random() > 0.2) {
+        if (Math.random() > 0.2 && !GameTimer.isPaused()) {
             float x = 800f;
             float y = applet.random(0, 300);
             float r = applet.random(1f, 2f);
@@ -198,7 +301,9 @@ public class GameScreen {
         applet.noStroke();
         applet.fill(255);
         for (Star star : stars) {
-            star.move();
+            if (!GameTimer.isPaused()) {
+                star.move();
+            }
             applet.ellipse(star.loc.x, star.loc.y, star.r * 2, star.r * 2);
         }
         

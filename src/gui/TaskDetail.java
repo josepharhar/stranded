@@ -107,6 +107,7 @@ public class TaskDetail extends SidebarItem {
                 game.assignTask(task, game.characters.get(0));
             }
             applet.mainAudio.centerBeep();
+            applet.gameScreen.switchAnimation(1);
             applet.currentSidebar = applet.taskList;
         }
     }
