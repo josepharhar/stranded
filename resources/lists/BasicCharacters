@@ -96,6 +96,22 @@
         },
     },
     {
+        "firstName" : "Captain",
+        "lastName" : "Falcon",
+        "occupation" : "Brute",
+        "health" : 120,
+        "stamina" : 50,
+        "loyalty" : 12,
+        "learningPotential" : 5,
+        "deception" : 3,
+        "luck" : 8,
+        "skills" : {
+            "FIGHTING" : 20,
+            "SCAVENGING" : 8,
+            "ENGINEERING" : 2,
+        },
+    },
+    {
         "firstName" : "Lucky",
         "lastName" : "Gambler",
         "occupation" : "Slot Machine Operator",
