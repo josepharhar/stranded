@@ -39,7 +39,6 @@ public class GameScreen {
         drawStars();
         drawGame();
     }
-
     
     // Draws and runs the main game
     private void drawGame() {
@@ -118,16 +117,6 @@ public class GameScreen {
         } else {
             applet.text(" nobody to assign", x, y);
         }
-//        String nextLine = "";
-//        if ((System.currentTimeMillis() / 500) % 2 == 0) {
-//            nextLine += ">";
-//        } else {
-//            nextLine += " ";
-//        }
-//        textSize(14);
-//        nextLine += " What do we do now?";
-//        text(nextLine, x, y);
-//        y += yspacing;
     }
     
  // Called when the screen is clicked during gameStage = 1
@@ -149,32 +138,26 @@ public class GameScreen {
         // Remove stars
         for (int i = stars.size() - 1; i >= 0; i--) {
             Star star = stars.get(i);
-            if (star.loc.x - star.r > applet.GAME_WIDTH / 2 ||
-                    star.loc.x + star.r < -applet.GAME_WIDTH / 2 ||
-                    star.loc.y - star.r > applet.GAME_HEIGHT / 2 ||
-                    star.loc.y + star.r < -applet.GAME_HEIGHT / 2) {
+            if (star.loc.x < 200) {
                 stars.remove(i);
             }
         }
         
         // Add stars
-        if (Math.random() > 0.5) {
-            float x = applet.random(-50, 50);
-            float y = applet.random(-50, 50);
-            float r = applet.random(0.5f, 0.7f);
+        if (Math.random() > 0.2) {
+            float x = 800f;
+            float y = applet.random(0, 300);
+            float r = applet.random(1f, 2f);
             stars.add(new Star(x, y, r));
         }
         
         // Draw stars
         applet.noStroke();
         applet.fill(255);
-        applet.pushMatrix();
-            applet.translate(applet.GAME_WIDTH / 2, applet.GAME_HEIGHT / 2);
-            for (Star star : stars) {
-                star.move();
-                applet.ellipse(star.loc.x, star.loc.y, star.r * 2, star.r * 2);
-            }
-        applet.popMatrix();
+        for (Star star : stars) {
+            star.move();
+            applet.ellipse(star.loc.x, star.loc.y, star.r * 2, star.r * 2);
+        }
         
         // Draw text
         applet.textAlign(applet.CENTER, applet.CENTER);
@@ -193,16 +176,13 @@ public class GameScreen {
         
         public Star(float x, float y, float r) {
             loc = new PVector(x, y);
-            velocity = new PVector(x, y);
-            //velocity.normalize();
-            velocity.mult(0.05f);
             this.r = r;
+            velocity = new PVector((r-.2f) * (r-.2f) * -2, 0);
         }
         
         public void move() {
-            velocity.mult(1 + (r / 100));
+            //velocity.mult(1 + (r / 100));
             loc.add(velocity);
-            this.r *= 1.01f;
         }
     }
     
