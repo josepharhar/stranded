@@ -96,10 +96,6 @@ public class StrandedApplet extends PApplet {
         pushMatrix();
             translate(SIDEBAR_X, SIDEBAR_Y);
             currentSidebar.draw();
-//            image(leftButton.getImage(), leftButton.getx(), leftButton.gety());
-//            image(centerButton.getImage(), centerButton.getx(), centerButton.gety());
-//            image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
-//            controlPrinter.draw();
         popMatrix();
         
         game.updateTasks();
@@ -110,34 +106,6 @@ public class StrandedApplet extends PApplet {
         float x = mouseX - SIDEBAR_X;
         float y = mouseY - SIDEBAR_Y;
         currentSidebar.click(x, y);
-        
-//        float x = mouseX;
-//        float y = mouseY;
-//        if (leftButton.isClicked(x, y)) {
-//            System.out.println("left");
-//            controlPrinter.taskPosition -= 1;
-//            if (controlPrinter.taskPosition < 0) {
-//                controlPrinter.taskPosition = game.tasks.size() - 1;
-//            }
-//            this.mainAudio.sideBeep();
-//        } else if (centerButton.isClicked(x, y)) {
-//            System.out.println("center");
-//            if (game.tasks.size() > 0) {
-//                game.assignTask(game.tasks.get(controlPrinter.taskPosition), game.characters.get(0));
-//            }
-//            controlPrinter.taskPosition -= 1;
-//            if (controlPrinter.taskPosition < 0) {
-//                controlPrinter.taskPosition = game.tasks.size() - 1;
-//            }
-//            this.mainAudio.centerBeep();
-//        } else if (rightButton.isClicked(x, y)) {
-//            System.out.println("right");
-//            controlPrinter.taskPosition += 1;
-//            if (controlPrinter.taskPosition >= game.tasks.size()) {
-//                controlPrinter.taskPosition = 0;
-//            }
-//            this.mainAudio.sideBeep();
-//        }
     }
     
     private void drawView() {
