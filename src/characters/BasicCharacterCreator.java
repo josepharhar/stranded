@@ -53,6 +53,7 @@ public class BasicCharacterCreator implements CharacterCreator {
                 c.setLearning_potential(obj.getInt("learningPotential"));
                 c.setLoyalty(obj.getInt("loyalty"));
                 c.setLuck(obj.getInt("luck"));
+                c.setOccupation(obj.getString("occupation"));
                 
                 Map<Skill, Double> skillMap = new HashMap<>();
                 JSONObject skills = obj.getJSONObject("skills");

@@ -90,9 +90,9 @@
         "deception" : 8,
         "luck" : 25,
         "skills" : {
-            "FIGHTING" : 2,
-            "SCAVENGING" : 6,
-            "ENGINEERING" : 4,
+            "FIGHTING" : 4,
+            "SCAVENGING" : 9,
+            "ENGINEERING" : 17,
         },
     },
     {
