@@ -16,7 +16,7 @@ public class TaskDetail extends SidebarItem {
     public TaskDetail(StrandedApplet applet, Game game, Task task) {
         super("Task Detail", applet, game);
         this.task = task;
-//        buttonAssign = new Button()
+        buttonAssign = new Button(applet.SIDEBAR_WIDTH / 2, applet.SIDEBAR_HEIGHT - 20, 72, 32, applet.loadImage("pictures/assign.png"));
     }
     
     public void draw() {
@@ -31,6 +31,7 @@ public class TaskDetail extends SidebarItem {
         y += 30;
         applet.fill(0, 255, 0);
         applet.text(" " + task.getName(), x, y);
+        y += 30;
 
         //Costs
         applet.fill(0, 128, 0);
@@ -68,6 +69,7 @@ public class TaskDetail extends SidebarItem {
         y += 30;
         applet.fill(0, 255, 0);
         applet.text(" " + task.getDifficulty(), x, y);
+        y += 30;
         
         //Skill
         applet.fill(0, 128, 0);
@@ -75,6 +77,7 @@ public class TaskDetail extends SidebarItem {
         y += 30;
         applet.fill(0, 255, 0);
         applet.text(" " + task.getPrimarySkill(), x, y);
+        y += 30;
         
         //Expiration
         applet.fill(0, 128, 0);
@@ -82,9 +85,12 @@ public class TaskDetail extends SidebarItem {
         y += 30;
         applet.fill(0, 255, 0);
         applet.text(" " + task.getExpirationTime(), x, y);
+        y += 30;
     }
     
     public void click(float mousex, float mousey) {
-        
+        if (buttonAssign.isClicked(mousex, mousey)) {
+            
+        }
     }
 }

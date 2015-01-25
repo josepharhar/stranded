@@ -114,7 +114,9 @@ public class StrandedApplet extends PApplet {
     }
     
     public void mousePressed() {
-        currentSidebar.click(mouseX, mouseY);
+        float x = mouseX - SIDEBAR_X;
+        float y = mouseY - SIDEBAR_Y;
+        currentSidebar.click(x, y);
         
 //        float x = mouseX;
 //        float y = mouseY;

@@ -9,6 +9,9 @@ public abstract class SidebarItem {
     protected StrandedApplet applet;
     protected Game game;
     
+    private Button buttonTasks;
+    private Button buttonCharacters;
+    
     public SidebarItem(String name, StrandedApplet applet, Game game) {
         this.name = name;
         this.applet = applet;
@@ -30,11 +33,16 @@ public abstract class SidebarItem {
         applet.fill(0, 255, 0);
         applet.text(name, SIDEBAR_WIDTH / 2, 10);
         
+        //draw the task and character buttons
+        
+        
         //prepare implementing classes for drawing
         applet.textSize(18);
         applet.textAlign(applet.LEFT, applet.TOP);
     }
     
     //Handles mouse clicks. called when the mouse is clicked inside of the sidebar area
-    public abstract void click(float x, float y);
+    public void click(float x, float y) {
+        //check to see if mouse clicked on task list or character list buttons
+    }
 }

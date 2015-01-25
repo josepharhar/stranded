@@ -43,7 +43,6 @@ public class TaskList extends SidebarItem {
             Rectangle button = new Rectangle(x - 4, y + 2, text.length() * 11 + 4, 23);
             
             if (button.contains(mousex, mousey)) {
-                System.out.println("switching currentSidebar");
                 applet.currentSidebar = new TaskDetail(applet, game, game.tasks.get(i));
             }
         }
