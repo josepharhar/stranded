@@ -98,6 +98,10 @@ public class TaskDetail extends SidebarItem {
 
         // Assign Button
         buttonAssign.draw(applet);
+        
+        if (task.isExpired()) {
+            applet.currentSidebar = applet.taskList;
+        }
     }
 
     public void click(float mousex, float mousey) {
