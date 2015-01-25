@@ -32,16 +32,6 @@
         },
     },
     {
-        "name" : "Repair engines",
-        "difficulty" : 7,
-        "canRetry" : true,
-        "risk" : 1,
-        "skill" : "ENGINEERING",
-        "costs" : {
-            "SCRAP" : 10,
-        },
-    },
-    {
         "name" : "Heal",
         "difficulty" : 1,
         "risk" : 1,
