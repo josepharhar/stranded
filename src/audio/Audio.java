@@ -41,7 +41,7 @@ public class Audio {
         ac = new AudioContext();
         mainPlayer = new SamplePlayer(ac, new Sample(mainSource));
         //mainPlayer.setToLoopStart();
-        //mainPlayer.setKillOnEnd(false);
+        mainPlayer.setKillOnEnd(false);
         //mainPlayer.start();
         g = new Gain(ac, 2, 2);
         g.addInput(mainPlayer);

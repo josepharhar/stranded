@@ -20,7 +20,7 @@ public class BasicTaskCreator implements TaskCreator{
     protected List<Task> taskList;
     
     public BasicTaskCreator(){
-        taskList = readTaskFile("BasicTasks");
+        taskList = readTaskFile("lists/BasicTasks");
     }
 
     @Override
