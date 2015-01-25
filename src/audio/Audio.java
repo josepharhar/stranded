@@ -67,4 +67,10 @@ public class Audio {
         SamplePlayer fail = new SamplePlayer(ac, SampleManager.sample("Task_Time_Out.wav"));
         ac.out.addInput(fail);
     }
+    
+    public void failJingle() {
+        SamplePlayer jing =  new SamplePlayer(ac, SampleManager.sample("Stranded_GameOver"));
+        ac.out.clearInputConnections();
+        ac.out.addInput(jing);
+    }
 }

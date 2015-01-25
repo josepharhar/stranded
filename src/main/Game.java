@@ -155,6 +155,13 @@ public class Game {
         }
     }
     
+    public void checkLoss() {
+        if(this.taskRunner.pendingTasks.isEmpty() && this.characters.isEmpty()) {
+            //FAIL;
+            applet.mainAudio.failJingle();
+        }
+    }
+    
     public void print(String str) {
         applet.consolePrinter.print(str, applet.color(100,100,100));
     }
