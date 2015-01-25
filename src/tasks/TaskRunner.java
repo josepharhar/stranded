@@ -43,6 +43,7 @@ public class TaskRunner {
         job.setCompleted(true);
         boolean succeeded = succeeds(job);
         job.setSucceeded(succeeded);
+        checkRisk(job.getCharacter(),job);
         if (succeeded) {
             game.resources.add(job.getRewards());
             levelUp(job.getCharacter(),job);
@@ -99,6 +100,23 @@ public class TaskRunner {
         if(character.getHealth() <= 0) {
             game.print("Oh no! " + character.getName() + " has died!",new Color(255,0,0));
             job.setCharacter(null);
+        }
+    }
+    public void checkRisk(Character character, Task job) {
+        int risk = job.getRisk();
+        
+        int roll = (int)Math.random()*20;
+        if (risk > roll) {
+            double damRoll = 100 - (Math.random()*(5*character.getLuck()));
+            if(damRoll < 0) {
+                return;
+            }
+            character.setHealth((int)(character.getHealth() - damRoll));
+            dp("Character's health is now "+ character.getHealth() + " due to risk damage!");
+            if(character.getHealth() <= 0) {
+                game.print("Oh no! " + character.getName() + " has died!",new Color(255,0,0));
+                job.setCharacter(null);
+            }
         }
     }
     
