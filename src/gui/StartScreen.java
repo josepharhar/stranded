@@ -16,7 +16,30 @@ public class StartScreen {
         stars = new LinkedList<Star>();
     }
     
-    public void draw() {
+    public void drawStart() {
+        draw();
+        // Draw text
+        applet.textAlign(applet.CENTER, applet.CENTER);
+        applet.fill(0, 255, 0);
+        applet.textSize(48);
+        applet.text("STRANDED", applet.GAME_WIDTH / 2, applet.GAME_HEIGHT / 2);
+        applet.textSize(18);
+        applet.text("click to start", applet.GAME_WIDTH / 2, applet.GAME_HEIGHT / 2 + 100);
+    }
+    
+    public void drawStory() {
+        draw();
+        // Draw Text
+        applet.textAlign(applet.CENTER, applet.CENTER);
+        applet.fill(0, 255, 0);
+        applet.textSize(24);
+        String output = "Good evening Captain! During your adventures in space,\n you and your crew have become trapped on a space station,\n and your ship has become " + 
+                "completely ruined!\n In order to escape from this abandoned station,\n you must direct your crew to find and build parts for a new ship.\n" +
+                "Issue orders to your crew using the menus,\n and try to build your way to victory!\n But be careful, danger lurks around every corner!\n\nclick to begin...";
+        applet.text(output, applet.GAME_WIDTH / 2, 300);
+    }
+    
+    private void draw() {
         applet.background(0);
         
         // Remove stars
@@ -48,14 +71,6 @@ public class StartScreen {
                 applet.ellipse(star.loc.x, star.loc.y, star.r * 2, star.r * 2);
             }
         applet.popMatrix();
-        
-        // Draw text
-        applet.textAlign(applet.CENTER, applet.CENTER);
-        applet.fill(0, 255, 0);
-        applet.textSize(48);
-        applet.text("STRANDED", applet.GAME_WIDTH / 2, applet.GAME_HEIGHT / 2);
-        applet.textSize(18);
-        applet.text("click to start", applet.GAME_WIDTH / 2, applet.GAME_HEIGHT / 2 + 100);
     }
     
     // Represents one of the stars

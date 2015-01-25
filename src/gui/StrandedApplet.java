@@ -29,7 +29,7 @@ public class StrandedApplet extends PApplet {
     public static final int SIDEBAR_Y = 0;
     
     // int that represents what screen should be shown
-    // 0 is the start screen, 1 is the game, 2 is endgame
+    // 0 is the start screen, 1 is the game, 2 is endgame, 3 is start screen with story text
     private int gameStage;
 
     public TaskList taskList;
@@ -81,7 +81,9 @@ public class StrandedApplet extends PApplet {
         if (gameStage == 1) {
             gameScreen.draw();
         } else if (gameStage == 0) {
-            startScreen.draw();
+            startScreen.drawStart();
+        } else if (gameStage == 3) {
+            startScreen.drawStory();
         }
     }
     
@@ -92,6 +94,9 @@ public class StrandedApplet extends PApplet {
         if (gameStage == 1) {
             gameScreen.clickGame();
         } else if (gameStage == 0) {
+            //game.start();
+            gameStage = 3;
+        } else if (gameStage == 3) {
             game.start();
             gameStage = 1;
         }
