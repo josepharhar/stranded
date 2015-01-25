@@ -114,33 +114,35 @@ public class StrandedApplet extends PApplet {
     }
     
     public void mousePressed() {
-        float x = mouseX;
-        float y = mouseY;
-        if (leftButton.isClicked(x, y)) {
-            System.out.println("left");
-            controlPrinter.taskPosition -= 1;
-            if (controlPrinter.taskPosition < 0) {
-                controlPrinter.taskPosition = game.tasks.size() - 1;
-            }
-            this.mainAudio.sideBeep();
-        } else if (centerButton.isClicked(x, y)) {
-            System.out.println("center");
-            if (game.tasks.size() > 0 && game.characters.size() > 0) {
-                game.assignTask(game.tasks.get(controlPrinter.taskPosition), game.characters.get(0));
-                controlPrinter.taskPosition -= 1;
-                if (controlPrinter.taskPosition < 0) {
-                    controlPrinter.taskPosition = Math.max(game.tasks.size() - 1, 0);
-                }
-            }
-            this.mainAudio.centerBeep();
-        } else if (rightButton.isClicked(x, y)) {
-            System.out.println("right");
-            controlPrinter.taskPosition += 1;
-            if (controlPrinter.taskPosition >= game.tasks.size()) {
-                controlPrinter.taskPosition = 0;
-            }
-            this.mainAudio.sideBeep();
-        }
+        currentSidebar.click(mouseX, mouseY);
+        
+//        float x = mouseX;
+//        float y = mouseY;
+//        if (leftButton.isClicked(x, y)) {
+//            System.out.println("left");
+//            controlPrinter.taskPosition -= 1;
+//            if (controlPrinter.taskPosition < 0) {
+//                controlPrinter.taskPosition = game.tasks.size() - 1;
+//            }
+//            this.mainAudio.sideBeep();
+//        } else if (centerButton.isClicked(x, y)) {
+//            System.out.println("center");
+//            if (game.tasks.size() > 0) {
+//                game.assignTask(game.tasks.get(controlPrinter.taskPosition), game.characters.get(0));
+//            }
+//            controlPrinter.taskPosition -= 1;
+//            if (controlPrinter.taskPosition < 0) {
+//                controlPrinter.taskPosition = game.tasks.size() - 1;
+//            }
+//            this.mainAudio.centerBeep();
+//        } else if (rightButton.isClicked(x, y)) {
+//            System.out.println("right");
+//            controlPrinter.taskPosition += 1;
+//            if (controlPrinter.taskPosition >= game.tasks.size()) {
+//                controlPrinter.taskPosition = 0;
+//            }
+//            this.mainAudio.sideBeep();
+//        }
     }
     
 }

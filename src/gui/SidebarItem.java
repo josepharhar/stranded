@@ -3,7 +3,7 @@ package gui;
 import main.Game;
 import static gui.StrandedApplet.*;
 
-public class SidebarItem {
+public abstract class SidebarItem {
     
     protected String name;
     protected StrandedApplet applet;
@@ -34,4 +34,7 @@ public class SidebarItem {
         applet.textSize(18);
         applet.textAlign(applet.LEFT, applet.TOP);
     }
+    
+    //Handles mouse clicks. called when the mouse is clicked inside of the sidebar area
+    public abstract void click(float x, float y);
 }

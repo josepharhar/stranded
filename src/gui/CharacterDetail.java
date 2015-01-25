@@ -11,4 +11,8 @@ public class CharacterDetail extends SidebarItem {
         super("Character Detail", applet, game);
         this.character = character;
     }
+    
+    public void click(float mousex, float mousey) {
+        
+    }
 }

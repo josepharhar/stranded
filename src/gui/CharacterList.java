@@ -6,4 +6,8 @@ public class CharacterList extends SidebarItem {
     public CharacterList(StrandedApplet applet, Game game) {
         super("Character List", applet, game);
     }
+    
+    public void click(float mousex, float mousey) {
+        
+    }
 }
