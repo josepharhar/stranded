@@ -36,6 +36,9 @@ public class TaskRunner {
                 game.resources.add(job.getRewards());
                 levelUp(job.getCharacter(),job);
             }
+            if(job.getName().equals("Wire ship control system")) {
+                game.win();
+            }
             if(job.getRewards().containsKey(Resource.HEALING)) {
                 job.getCharacter().setHealth(job.getCharacter().getHealth() + job.getRewards().get(Resource.HEALING).intValue());
             }

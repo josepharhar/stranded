@@ -33,7 +33,8 @@ public class Game {
     public Resources resources = new Resources();
     public TaskRunner taskRunner = new TaskRunner(this);
     private TaskCreator rtg = new RandomTaskCreator();
-    private RandomCharacterCreator rcc = new RandomCharacterCreator();    
+    private RandomCharacterCreator rcc = new RandomCharacterCreator();
+    public boolean isWon = false;
     
     public Game(StrandedApplet applet) {
         this.applet = applet;
@@ -188,6 +189,11 @@ public class Game {
             //FAIL;
             applet.mainAudio.failJingle();
         }
+    }
+    
+    public void win() {
+        this.isWon = true;
+        applet.gameStage = 2;
     }
     
     public void print(String str) {

@@ -30,7 +30,7 @@ public class StrandedApplet extends PApplet {
     
     // int that represents what screen should be shown
     // 0 is the start screen, 1 is the game, 2 is endgame, 3 is start screen with story text
-    private int gameStage;
+    public int gameStage;
 
     public TaskList taskList;
     public CharacterList characterList;
