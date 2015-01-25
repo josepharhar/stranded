@@ -38,7 +38,7 @@ public class Game {
     }
 
     public void start() {
-        nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(90));
+        nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(30));
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
         TaskCreator taskCreator = new BasicTaskCreator();
@@ -116,7 +116,7 @@ public class Game {
     
     private void handleRandomTask() {
         if (nextRandomTask < System.currentTimeMillis()) {
-            nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(90));
+            nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(30));
             try {
                 Task t = rtg.createTask();
                 for (Task ot : tasks) {
