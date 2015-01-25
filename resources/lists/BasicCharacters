@@ -40,11 +40,11 @@
         "loyalty" : 10,
         "learningPotential" : 30,
         "deception" : 8,
-        "luck" : 40,
+        "luck" : 1000,
         "skills" : {
             "FIGHTING" : 40,
             "SCAVENGING" : 25,
-            "ENGINEERING" : 35,
+            "ENGINEERING" : 55,
         },
     },
     {
@@ -72,7 +72,7 @@
         "loyalty" : 10,
         "learningPotential" : 15,
         "deception" : 20,
-        "luck" : 2,
+        "luck" : 40,
         "skills" : {
             "FIGHTING" : 0,
             "SCAVENGING" : 15,
