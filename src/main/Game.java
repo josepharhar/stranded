@@ -156,7 +156,7 @@ public class Game {
     }
     
     public void checkLoss() {
-        if(this.taskRunner.pendingTasks.isEmpty() && this.characters.isEmpty()) {
+        if((this.taskRunner.pendingTasks.isEmpty() && this.characters.isEmpty()) || this.resources.getResource(Resource.STATION_HEALTH) == 0) {
             //FAIL;
             applet.mainAudio.failJingle();
         }

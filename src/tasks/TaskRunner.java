@@ -99,7 +99,7 @@ public class TaskRunner {
         double characterSkill = map.get(skill);
         double characterLuck = character.getLuck();
         
-        double damRoll = 100 - (Math.random()*(2*characterLuck)) - (Math.random()*(characterSkill/2));
+        double damRoll = 100 - (Math.random()*(2*characterLuck)) - (Math.random()*(characterSkill/2)) + (difficulty*(Math.random()));
         if(damRoll < 0) {
             return;
         }
