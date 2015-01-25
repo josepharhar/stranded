@@ -21,7 +21,7 @@ public class TaskList extends SidebarItem {
         for (int i = 0; i < game.tasks.size(); i++) {
             String text = game.tasks.get(i).getName();
             
-            y += 30;
+            y += 40;
             
             //draw rectangle (button) under the text
             applet.fill(128);
@@ -34,7 +34,7 @@ public class TaskList extends SidebarItem {
         for (Task task : game.taskRunner.pendingTasks) {
             String text = task.getName();
             
-            y += 30;
+            y += 40;
 
             //draw rectangle (button) under the text
             applet.fill(128);
@@ -52,7 +52,7 @@ public class TaskList extends SidebarItem {
             
             //location for text to show up
             int x = 20;
-            int y = 30 * i + 40;
+            int y = 40 * i + 40;
             
             Rectangle button = new Rectangle(x - 4, y + 2, text.length() * 11 + 4, 23);
             
