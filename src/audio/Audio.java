@@ -7,6 +7,7 @@ import net.beadsproject.beads.core.*;
 import net.beadsproject.beads.data.Sample;
 import net.beadsproject.beads.data.SampleManager;
 import net.beadsproject.beads.ugens.*;
+import net.beadsproject.beads.ugens.SamplePlayer.LoopType;
 
 public class Audio {
     
@@ -24,23 +25,11 @@ public class Audio {
         
         
     }
-    
-    public void testAudio() throws IOException {
-        AudioContext ac;
-
-        ac = new AudioContext();
-        
-        String audioFile = "Stranded_Theme_Ext.wav";
-        SamplePlayer player = new SamplePlayer(ac, new Sample(audioFile));
-        ac.out.addInput(player);
-        ac.start();
-        
-    }
 
     public void startMainAudio() throws IOException {
         ac = new AudioContext();
         mainPlayer = new SamplePlayer(ac, new Sample(mainSource));
-        //mainPlayer.setToLoopStart();
+        mainPlayer.setLoopType(LoopType.LOOP_FORWARDS);
         mainPlayer.setKillOnEnd(false);
         //mainPlayer.start();
         g = new Gain(ac, 2, 2);

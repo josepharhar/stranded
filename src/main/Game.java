@@ -41,9 +41,6 @@ public class Game {
         nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(90));
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
-        RestTask rest = new RestTask();
-        rest.setName("Rest");
-        tasks.add(rest);
         TaskCreator taskCreator = new BasicTaskCreator();
         CharacterCreator characterCreator = new BasicCharacterCreator();
         for (int i = 0; i < 4; i++) {
@@ -51,6 +48,7 @@ public class Game {
             characters.add(characterCreator.createCharacter());
         }
         promptNextCharacter();
+        tasks.add(new RestTask());
     }
     
     public void promptNextCharacter() {
