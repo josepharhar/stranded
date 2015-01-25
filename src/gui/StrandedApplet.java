@@ -114,12 +114,12 @@ public class StrandedApplet extends PApplet {
             this.mainAudio.sideBeep();
         } else if (centerButton.isClicked(x, y)) {
             System.out.println("center");
-            if (game.tasks.size() > 0) {
+            if (game.tasks.size() > 0 && game.characters.size() > 0) {
                 game.assignTask(game.tasks.get(controlPrinter.taskPosition), game.characters.get(0));
-            }
-            controlPrinter.taskPosition -= 1;
-            if (controlPrinter.taskPosition < 0) {
-                controlPrinter.taskPosition = Math.max(game.tasks.size() - 1, 0);
+                controlPrinter.taskPosition -= 1;
+                if (controlPrinter.taskPosition < 0) {
+                    controlPrinter.taskPosition = Math.max(game.tasks.size() - 1, 0);
+                }
             }
             this.mainAudio.centerBeep();
         } else if (rightButton.isClicked(x, y)) {

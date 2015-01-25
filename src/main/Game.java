@@ -8,6 +8,7 @@ import java.util.List;
 import audio.Audio;
 import processing.core.PApplet;
 import tasks.BasicTaskCreator;
+import tasks.StorylineTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
 import tasks.TaskRunner;
@@ -18,6 +19,8 @@ import characters.CharacterCreator;
 import characters.Skill;
 
 public class Game {
+    public static Game game;
+    
     private StrandedApplet applet;
     public List<Task> tasks = new ArrayList<Task>();
     public List<Character> characters = new ArrayList<Character>();
@@ -27,9 +30,12 @@ public class Game {
     
     public Game(StrandedApplet applet) {
         this.applet = applet;
+        Game.game = this;
     }
 
     public void start() {
+        TaskCreator storyline = new StorylineTaskCreator();
+        tasks.add(storyline.createTask());
         TaskCreator taskCreator = new BasicTaskCreator();
         CharacterCreator characterCreator = new BasicCharacterCreator();
         for (int i = 0; i < 4; i++) {
@@ -65,6 +71,9 @@ public class Game {
         for (Task t : taskRunner.getCompletedTasks()) {
             if (t.getSucceeded()) {
                 applet.consolePrinter.print("Task succeeded: " + t.getName(), applet.color(0, 255, 0));
+                if (t.getFollowUpTask() != null) {
+                    tasks.add(t.getFollowUpTask());
+                }
             } else {
                 if (t.getCanRetry()) {
                     applet.consolePrinter.print("Retryable task failed: " + t.getName(), applet.color(255, 0, 0));

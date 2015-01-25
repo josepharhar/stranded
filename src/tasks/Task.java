@@ -20,6 +20,7 @@ public class Task {
     private Map<Resource, Double> costs = new HashMap<>();
     private Map<Resource, Double> rewards = new HashMap<>();
     private Map<Resource, Double> penalty = new HashMap<>();
+    private Task followUpTask;
     
     public String getName() {
         return name;
@@ -98,5 +99,11 @@ public class Task {
     }
     public void setPenalty(Map<Resource, Double> penalty) {
         this.penalty = penalty;
+    }
+    public Task getFollowUpTask() {
+        return followUpTask;
+    }
+    public void setFollowUpTask(Task followUpTask) {
+        this.followUpTask = followUpTask;
     }
 }

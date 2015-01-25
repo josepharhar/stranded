@@ -1,0 +1,56 @@
+[
+    {
+        "name" : "Find ship blueprints",
+        "difficulty" : 10,
+        "risk" : 4,
+        "canRetry" : true,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 20,
+        },
+    },
+    {
+        "name" : "Build ship hull",
+        "difficulty" : 12,
+        "risk" : 1,
+        "canRetry" : true,
+        "skill" : "ENGINEERING",
+        "costs" : {
+            "SCRAP" : 100,
+        },
+    },
+    {
+        "name" : "Find ship thrusters",
+        "difficulty" : 8,
+        "risk" : 14,
+        "canRetry" : true,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 20,
+        },
+    },
+    {
+        "name" : "Retieve ship thrusters from robot horde",
+        "difficulty" : 16,
+        "risk" : 16,
+        "canRetry" : true,
+        "skill" : "FIGHTING",
+    },
+    {
+        "name" : "Attach thrusters to ship",
+        "difficulty" : 10,
+        "canRetry" : true,
+        "risk" : 5,
+        "skill" : "ENGINEERING",
+    },
+    {
+        "name" : "Wire ship control system",
+        "difficulty" : 10,
+        "canRetry" : true,
+        "risk" : 5,
+        "skill" : "ENGINEERING",
+        "costs" : {
+            "ELECTRONICS" : 100,
+        },
+    },
+]

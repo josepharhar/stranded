@@ -17,7 +17,7 @@ import characters.Skill;
 
 public class BasicTaskCreator implements TaskCreator{
     
-    private List<Task> taskList;
+    protected List<Task> taskList;
     
     public BasicTaskCreator(){
         taskList = readTaskFile("BasicTasks");
@@ -31,7 +31,7 @@ public class BasicTaskCreator implements TaskCreator{
         return taskList.remove((int) (Math.random() * taskList.size()));
     }
     
-    private List<Task> readTaskFile(String fileName) {
+    protected List<Task> readTaskFile(String fileName) {
         Scanner scanner = null;
         StringBuilder builder = new StringBuilder();
         try {
