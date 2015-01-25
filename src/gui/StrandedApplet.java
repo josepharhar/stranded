@@ -3,10 +3,9 @@ package gui;
 import java.io.IOException;
 
 import main.Game;
-import processing.core.*;
+import processing.core.PApplet;
 import timing.GameTimer;
-import audio.*;
-import static main.Resource.*;
+import audio.Audio;
 
 public class StrandedApplet extends PApplet {
        

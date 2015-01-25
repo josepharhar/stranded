@@ -4,6 +4,7 @@ import gui.StrandedApplet;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import tasks.BasicTaskCreator;
@@ -13,6 +14,7 @@ import tasks.StorylineTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
 import tasks.TaskRunner;
+import timing.DelayedAction;
 import timing.GameTimer;
 import util.RandomNumberGenerator;
 import util.RandomPhraseAccessor;
@@ -31,7 +33,6 @@ public class Game {
     public Resources resources = new Resources();
     public TaskRunner taskRunner = new TaskRunner(this);
     private TaskCreator rtg = new RandomTaskCreator();
-    private long nextRandomTask;
     private RandomCharacterCreator rcc = new RandomCharacterCreator();    
     
     public Game(StrandedApplet applet) {
@@ -43,7 +44,6 @@ public class Game {
     public void start() {
         GameTimer.startTime();
         tasks.add(new RestTask());
-        nextRandomTask = System.currentTimeMillis() + 1000 * (60 + RandomNumberGenerator.getRandomInteger(30));
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
         TaskCreator taskCreator = new BasicTaskCreator();
@@ -59,6 +59,22 @@ public class Game {
             
         }
         
+        long timeUntilFirstTask = (long) ((15 + 30 * Math.random()) * 1000L);
+        GameTimer.addAction(new DelayedAction(timeUntilFirstTask) {
+            @Override
+            public void complete() {
+                addRandomTask();
+            }
+        });
+        
+        long timeUntilFirstCharacter = (long) ((120 + 120 * Math.random()) * 1000L);
+        GameTimer.addAction(new DelayedAction(timeUntilFirstCharacter) {
+            @Override
+            public void complete() {
+                addRandomCharacter();
+            }
+        });
+        
         promptNextCharacter();
     }
     
@@ -68,7 +84,7 @@ public class Game {
         applet.mainAudio.updateBeep();
     }
     
-    public void assignTask(Task task, Character character) {
+    public void assignTask(final Task task, Character character) {
         if (!resources.trySubtract(task.getCosts())) {
             applet.consolePrinter.print("Insufficient Resources", applet.color(255, 255, 0));
             return;
@@ -77,82 +93,93 @@ public class Game {
         task.setCharacter(character);
         taskRunner.startTask(task);
         tasks.remove(task);
+        long timeToComplete = (long) ((10 + 40*Math.random()) * 1000L);
+        GameTimer.addAction(new DelayedAction(timeToComplete) {
+            @Override
+            public void complete() {
+                taskRunner.finishTask(task);
+                if (task.getSucceeded()) {
+                    applet.consolePrinter.print("Task succeeded: " + task.getName(), applet.color(0, 255, 0));
+                    if (task.getFollowUpTask() != null) {
+                        if (task.getFollowUpTask() instanceof RestTask) {
+                            tasks.add(0, task.getFollowUpTask());
+                        } else {
+                            tasks.add(task.getFollowUpTask());
+                        }
+                    }
+                } else {
+                    if (task.getCanRetry()) {
+                        applet.consolePrinter.print("Retryable task failed: " + task.getName(), applet.color(255, 0, 0));
+                        tasks.add(task);
+                    } else {
+                        applet.consolePrinter.print("Task failed: " + task.getName(), applet.color(255, 0, 0));
+                    }
+                }
+                if (task.getCharacter() != null) {
+                   characters.add(task.getCharacter());
+                }
+            }
+        });
         characters.remove(0);
         if(task.getPrimarySkill() == Skill.FIGHTING) {
             applet.mainAudio.fightSounds();
         }
-        updateTasks();
         if (characters.size() > 0) {
             promptNextCharacter();
         }
     }
     
-    public void updateTasks() {
-        handleRandomTask();
-        boolean shouldNotify = characters.size() == 0;
-        for (Task t : taskRunner.getCompletedTasks()) {
-            if (t.getSucceeded()) {
-                applet.consolePrinter.print("Task succeeded: " + t.getName(), applet.color(0, 255, 0));
-                if (t.getFollowUpTask() != null) {
-                    if (t.getFollowUpTask() instanceof RestTask) {
-                        tasks.add(0, t.getFollowUpTask());
-                    } else {
-                        tasks.add(t.getFollowUpTask());
-                    }
-                }
-            } else {
-                if (t.getCanRetry()) {
-                    applet.consolePrinter.print("Retryable task failed: " + t.getName(), applet.color(255, 0, 0));
-                    tasks.add(t);
-                } else {
-                    applet.consolePrinter.print("Task failed: " + t.getName(), applet.color(255, 0, 0));
-                }
-            }
-            if (t.getCharacter() != null)
-               characters.add(t.getCharacter());
-        }
-        long now = System.currentTimeMillis();
-        for (int i = 0; i < tasks.size(); i++) {
-            Task t = tasks.get(i);
-            if (t.isExpires() && t.getExpirationTime() < now) {
+    public void update() {
+        Iterator<Task> iter = tasks.iterator();
+        while (iter.hasNext()) {
+            Task t = iter.next();
+            if (t.isExpired()) {
                 t.setCompleted(true);
                 t.setSucceeded(false);
                 resources.subtract(t.getPenalty());
                 applet.consolePrinter.print("Task " + t.getName() + " has expired", applet.color(128,0,0));
                 applet.mainAudio.failSound();
-                tasks.remove(i);
-                i--;
+                iter.remove();
             }
-        }
-        if (shouldNotify && characters.size() > 0) {
-            promptNextCharacter();
         }
     }
     
-    private void handleRandomTask() {
-        if (nextRandomTask < System.currentTimeMillis()) {
-            nextRandomTask = System.currentTimeMillis() + 1000 * (10 + RandomNumberGenerator.getRandomInteger(25));
-            try {
-                if (Math.random() < 0.08) {
-                    Character newCrew = rcc.createCharacter();
-                    characters.add(newCrew);
-                    print(newCrew.getName() + " has joined your crew!", Color.BLUE);
-                }
-                Task t = rtg.createTask();
-                for (Task ot : tasks) {
-                    if (ot.getName().equals(t.getName())) return;
-                }
-                for (Task ot : taskRunner.pendingTasks) {
-                    if (ot.getName().equals(t.getName())) return;
-                }
-                tasks.add(t);
-                print("Random event caused new task! " + t.getName());
-            } catch (Exception ex) {
-                System.err.println("Don't worry, just debug msg");
-                ex.printStackTrace();
+    private void addRandomCharacter() {
+        Character newCrew = rcc.createCharacter();
+        characters.add(newCrew);
+        print(newCrew.getName() + " has joined your crew!", Color.BLUE);
+        
+        long timeUntilNext = (long) ((120 + 120 * Math.random()) * 1000L);
+        GameTimer.addAction(new DelayedAction(timeUntilNext) {
+            @Override
+            public void complete() {
+                addRandomCharacter();
             }
-            
+        });
+    }
+    
+    private void addRandomTask() {
+        
+        System.out.println("called");
+        Task t = rtg.createTask();
+        for (Task ot : tasks) {
+            if (ot.getName().equals(t.getName())) return;
         }
+        for (Task ot : taskRunner.pendingTasks) {
+            if (ot.getName().equals(t.getName())) return;
+        }
+        tasks.add(t);
+        print("Random event caused new task! " + t.getName());
+        
+        long timeUntilNext = (long) ((15 + 30 * Math.random()) * 1000L);
+        System.out.println("delay: " + timeUntilNext);
+        GameTimer.addAction(new DelayedAction(timeUntilNext) {
+            @Override
+            public void complete() {
+                System.out.println("Completed");
+                addRandomTask();
+            }
+        });
     }
     
     public void checkLoss() {

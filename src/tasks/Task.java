@@ -3,13 +3,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import main.Resource;
+import timing.DelayedAction;
 import characters.Character;
 import characters.Skill;
 
 public class Task {
-    private boolean expires = false;
-    private long expirationTime;
-    private long completionTime;
+    private DelayedAction expirationAction;
+    private boolean expired = false;
     private boolean completed = false;
     private boolean succeeded = false;
     private boolean canRetry = false;
@@ -28,12 +28,6 @@ public class Task {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public long getCompletionTime() {
-        return completionTime;
-    }
-    public void setCompletionTime(long completionTime) {
-        this.completionTime = completionTime;
     }
     public boolean isCompleted() {
         return completed;
@@ -87,22 +81,26 @@ public class Task {
         return penalty;
     }
     public boolean isExpires() {
-        return expires;
+        return expirationAction != null;
     }
-    public void setExpires(boolean expires) {
-        this.expires = expires;
+    public boolean isExpired() {
+        return expired;
     }
-    public long getExpirationTime() {
-        return expirationTime;
+    public long getTimeToExpiration() {
+        if (expirationAction != null) {
+            return expirationAction.getTimeRemaining();
+        } else {
+            return Long.MAX_VALUE;
+        }
+    }
+    public void setExpired(boolean expired) {
+        this.expired = expired;
     }
     public boolean getCanRetry() {
         return canRetry;
     }
     public void setCanRetry(boolean canRetry) {
         this.canRetry = canRetry;
-    }
-    public void setExpirationTime(long expirationTime) {
-        this.expirationTime = expirationTime;
     }
     public void setPenalty(Map<Resource, Double> penalty) {
         this.penalty = penalty;
@@ -113,5 +111,7 @@ public class Task {
     public void setFollowUpTask(Task followUpTask) {
         this.followUpTask = followUpTask;
     }
-    
+    public void setExpirationAction(DelayedAction action) {
+        this.expirationAction = action;
+    }
 }

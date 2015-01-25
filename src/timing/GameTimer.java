@@ -1,11 +1,14 @@
 package timing;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameTimer {
     private static List<DelayedAction> actions = new ArrayList<>();
+    private static List<DelayedAction> actionsToAdd = new LinkedList<>();
     private static boolean running;
     private static long timeBase;
     private static long timeStoppedAt;
@@ -47,17 +50,24 @@ public class GameTimer {
     }
     
     public static void update() {
-        Iterator<DelayedAction> iter = actions.iterator();
-        while (iter.hasNext()) {
-            DelayedAction a = iter.next();
-            if (a.getTimeRemaining() < 0) {
-                a.complete();
-                iter.remove();
+        while (!actionsToAdd.isEmpty()) {
+            actions.add(actionsToAdd.remove(0));
+        }
+        try {
+            Iterator<DelayedAction> iter = actions.iterator();
+            while (iter.hasNext()) {
+                DelayedAction a = iter.next();
+                if (a.getTimeRemaining() < 0) {
+                    a.complete();
+                    iter.remove();
+                }
             }
+        } catch (ConcurrentModificationException ex) {
+            update();
         }
     }
     
     public static void addAction(DelayedAction action) {
-        actions.add(action);
+        actionsToAdd.add(action);
     }
 }

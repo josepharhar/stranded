@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import timing.DelayedAction;
+import timing.GameTimer;
 import characters.Skill;
 import static util.RandomNumberGenerator.getRandomSet;
 
@@ -45,7 +47,7 @@ public class RandomTaskCreator implements TaskCreator {
             int length = array.length();
             for (int i = 0; i < length; i++) {
                 JSONObject obj = array.getJSONObject(i);
-                Task t = new Task();
+                final Task t = new Task();
                 t.setName(obj.getString("name"));
                 t.setDifficulty(getRandomSet(obj.getInt("difficulty")));
                 t.setPrimarySkill(Skill.valueOf(obj.getString("skill")));
@@ -74,8 +76,15 @@ public class RandomTaskCreator implements TaskCreator {
                     t.setPenalty(map);
                 }
                 if (obj.has("duration")) {
-                    t.setExpires(true);
-                    t.setExpirationTime(System.currentTimeMillis() + getRandomSet(obj.getInt("duration")) * 1000L);
+                    
+                    DelayedAction expiration = new DelayedAction(getRandomSet(obj.getInt("duration")) * 1000L) {
+                        @Override
+                        public void complete() {
+                            t.setExpired(true);
+                        }
+                    };
+                    GameTimer.addAction(expiration);
+                    t.setExpirationAction(expiration);
                 }
                 if (obj.has("canRetry")) {
                     t.setCanRetry(obj.getBoolean("canRetry"));

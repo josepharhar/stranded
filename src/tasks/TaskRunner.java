@@ -20,30 +20,14 @@ public class TaskRunner {
         this.game = game;
     }
     
-    public List<Task> getCompletedTasks() {
-        ArrayList<Task> rtn = new ArrayList<>();
-        long now = System.currentTimeMillis();
-        Iterator<Task> iter = pendingTasks.iterator();
-        while (iter.hasNext()) {
-            Task t = iter.next();
-            if (t.getCompletionTime() < now) {
-                rtn.add(t);
-                finishTask(t);
-                iter.remove();
-            }
-        }
-        return rtn;
-    }
-    
     public void startTask(Task job) {
         job.getCharacter().setAvailable(false);
         game.resources.subtract(job.getCosts());
-        long val = 10 + (int)(40*Math.random());
-        job.setCompletionTime(System.currentTimeMillis() + val * 1000L);
         pendingTasks.add(job);
     }
 
     public void finishTask(Task job) {
+        pendingTasks.remove(job);
         job.getCharacter().setAvailable(true);
         job.setCompleted(true);
         boolean succeeded = succeeds(job);

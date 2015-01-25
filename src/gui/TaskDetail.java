@@ -92,7 +92,7 @@ public class TaskDetail extends SidebarItem {
             applet.text("Expiration: ", x, y);
             y += 30;
             applet.fill(0, 255, 0);
-            applet.text(" " + ((task.getExpirationTime() - System.currentTimeMillis()) / 1000L) + " seconds", x, y);
+            applet.text(" " + (task.getTimeToExpiration() / 1000L) + " seconds", x, y);
             y += 30;
         }
 

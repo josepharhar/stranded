@@ -214,7 +214,7 @@ public class GameScreen {
             dialog.draw(applet);
         }
         
-        applet.game.updateTasks();
+        applet.game.update();
     }
     
     private void drawView() {
