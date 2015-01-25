@@ -114,13 +114,19 @@ public class GameScreen {
         double captainDiff = (currentTime - captainAnimationStartTime) / 1000.0;
         if (captainDiff < 2) {
             captainFrameIndex = 0;
-        } else if (captainDiff < 2.5) {
+        } else if (captainDiff < 2.1) {
             captainFrameIndex = 1;
-        } else if (captainDiff < 3) {
+        } else if (captainDiff < 2.2) {
             captainFrameIndex = 2;
-        } else if (captainDiff < 3.5) {
+        } else if (captainDiff < 2.3) {
             captainFrameIndex = 3;
         } else if (captainDiff < 4) {
+            captainFrameIndex = 0;
+        } else if (captainDiff < 5) {
+            captainFrameIndex = 4;
+        } else if (captainDiff < 6) {
+            captainFrameIndex = 0;
+        } else if (captainDiff < 7) {
             captainFrameIndex = 4;
         } else {
             captainAnimationStartTime = GameTimer.getTime();
@@ -128,25 +134,27 @@ public class GameScreen {
         
         double charDiff = (currentTime - animStartTime) / 1000.0;
         if (animationType == 0) {
-            if (charDiff < 0.25) {
+            if (charDiff < 0.1) {
                 charFrameIndex = 0;
                 doorFrameIndex = 1;
-            } else if (charDiff < 0.5) {
+            } else if (charDiff < 0.2) {
                 doorFrameIndex = 2;
-            } else if (charDiff < 0.75) {
+            } else if (charDiff < 0.3) {
                 doorFrameIndex = 3;
-            } else if (charDiff < 1.0) {
+            } else if (charDiff < 0.4) {
                 doorFrameIndex = 4;
-            } else if (charDiff < 1.25) {
+            } else if (charDiff < 0.5) {
                 doorFrameIndex = 5;
-            } else if (charDiff < 1.5) {
+            } else if (charDiff < 0.6) {
                 doorFrameIndex = 6;
                 charFrameIndex = 1;
-            } else if (charDiff < 2.0) {
+            } else if (charDiff < 0.75) {
+                charFrameIndex = 1;
+            } else if (charDiff < 1) {
                 charFrameIndex = 2;
-            } else if (charDiff < 2.25) {
+            } else if (charDiff < 1.25) {
                 charFrameIndex = 3;
-            } else if (charDiff < 2.5) {
+            } else if (charDiff < 1.5) {
                 charFrameIndex = 4;
             } else {
                 switchAnimation(2);
@@ -159,16 +167,16 @@ public class GameScreen {
                 charFrameIndex = 2;
             } else if (charDiff < 0.75) {
                 charFrameIndex = 1;
-            } else if (charDiff < 1.0) {
+            } else if (charDiff < 0.9) {
                 charFrameIndex = 0;
                 doorFrameIndex = 5;
-            } else if (charDiff < 1.25) {
+            } else if (charDiff < 1) {
                 doorFrameIndex = 4;
-            } else if (charDiff < 1.5) {
+            } else if (charDiff < 1.1) {
                 doorFrameIndex = 3;
-            } else if (charDiff < 1.75) {
+            } else if (charDiff < 1.2) {
                 doorFrameIndex = 2;
-            } else if (charDiff < 2.0) {
+            } else if (charDiff < 1.3) {
                 doorFrameIndex = 1;
             } else {
                 switchAnimation(3);
