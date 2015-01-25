@@ -55,7 +55,6 @@ public class StrandedApplet extends PApplet {
         
         game = new Game(this);
         
-        gameStage = 2;
         startScreen = new StartScreen(this);
         gameScreen = new GameScreen(this);
         endScreen = new EndScreen(this);
@@ -109,6 +108,10 @@ public class StrandedApplet extends PApplet {
     public void keyPressed() {
         if ((key == 'p' || key == 'P') && gameStage == 1) {
             GameTimer.stopTime();
+        }
+        //THIS IS TEMPORARY
+        if (key == '|') {
+            gameStage = 2;
         }
     }
     
