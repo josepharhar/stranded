@@ -83,27 +83,27 @@ public class GameScreen {
         
         int yspacing = 18;
         
-        applet.text("Scrap", x, y);
+        applet.text("SCRAP", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(SCRAP)), x, y);
         y += yspacing;
-        applet.text("Electronics", x, y);
+        applet.text("ELECTRONICS", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(ELECTRONICS)), x, y);
         y += yspacing;
-        applet.text("Fuel", x, y);
+        applet.text("FUEL", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(FUEL)), x, y);
         y += yspacing;
-        applet.text("Station Health", x, y);
+        applet.text("STATION_HEALTH", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(STATION_HEALTH)), x, y);
         y += yspacing;
-        applet.text("Station Defenses", x, y);
+        applet.text("STATION_DEFENSES", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(STATION_DEFENSES)), x, y);
         y += yspacing;
-        applet.text("Morale", x, y);
+        applet.text("MORALE", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(MORALE)), x, y);
         y += 30;
