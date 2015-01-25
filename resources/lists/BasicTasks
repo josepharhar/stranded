@@ -47,8 +47,7 @@
         "risk" : 1,
         "skill" : "SCAVENGING",
         "rewards" : {
-            "SCRAP" : 6,
-            "HEALING" : 4,
+            "HEALING" : 60,
         }
         
     },
@@ -58,7 +57,7 @@
         "risk" : 1,
         "skill" : "SCAVENGING",
         "rewards" : {
-            "SCRAP" : 6,
+            "SCRAP" : 10,
         }
         
     }
