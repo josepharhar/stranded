@@ -48,7 +48,7 @@ public class Game {
     
     public void promptNextCharacter() {
         Character c = characters.get(0);
-        applet.consolePrinter.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.getRandomPhrase(), applet.color(0, 128, 0));
+        applet.consolePrinter.print(c.getFirstName() + " " + c.getLastName() + ": " + RandomPhraseAccessor.get(), applet.color(0, 128, 0));
         applet.mainAudio.updateBeep();
     }
     

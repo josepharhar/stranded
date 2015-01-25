@@ -14,7 +14,7 @@ public class BasicCharacterCreator implements CharacterCreator {
     private List<Character> characterList;
     
     public BasicCharacterCreator() {
-        characterList = readCharacterFile("BasicCharacters");
+        characterList = readCharacterFile("lists/BasicCharacters");
     }
     
     @Override
