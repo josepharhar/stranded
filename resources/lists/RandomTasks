@@ -52,7 +52,19 @@
         "skill" : "SCAVENGING",
         "rewards" : {
             "SCRAP" : 6,
-            "ELECTRONICS" : 7
+            "ELECTRONICS" : 7,
+        }
+    },
+    {
+        "name" : "Heal",
+        "difficulty" : 1,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 6,
         },
+        "cost" : {
+           "ELECTRONICS" : 0
+        }
     }
 ]

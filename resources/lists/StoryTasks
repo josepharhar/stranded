@@ -18,6 +18,9 @@
         "costs" : {
             "SCRAP" : 100,
         },
+        "penalty" : {
+           "SCRAP" : -90,
+        }
     },
     {
         "name" : "Find ship thrusters",
@@ -52,5 +55,8 @@
         "costs" : {
             "ELECTRONICS" : 100,
         },
+        "penalty" : {
+           "ELECTRONICS" : -90,
+        }
     },
 ]
