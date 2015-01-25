@@ -2,6 +2,7 @@ package main;
 
 import gui.StrandedApplet;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +83,8 @@ public class Game {
                     applet.consolePrinter.print("Task failed: " + t.getName(), applet.color(255, 0, 0));
                 }
             }
-            characters.add(t.getCharacter());
+            if (t.getCharacter() != null)
+               characters.add(t.getCharacter());
         }
         long now = System.currentTimeMillis();
         for (int i = 0; i < tasks.size(); i++) {
@@ -100,5 +102,12 @@ public class Game {
         if (shouldNotify && characters.size() > 0) {
             promptNextCharacter();
         }
+    }
+    
+    public void print(String str) {
+        applet.consolePrinter.print(str, applet.color(100,100,100));
+    }
+    public void print(String str,Color color) {
+        applet.consolePrinter.print(str, color.getRGB());
     }
 }

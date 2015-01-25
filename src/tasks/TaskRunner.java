@@ -1,5 +1,6 @@
 package tasks;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -95,6 +96,10 @@ public class TaskRunner {
         }
         character.setHealth((int)(character.getHealth() - damRoll));
         dp("Character's health is now "+ character.getHealth());
+        if(character.getHealth() <= 0) {
+            game.print("Oh no! " + character.getName() + " has died!",new Color(255,0,0));
+            job.setCharacter(null);
+        }
     }
     
     private void dp(String s) {

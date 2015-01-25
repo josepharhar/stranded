@@ -23,7 +23,7 @@
     },
     {
         "name" : "Fight off intruders",
-        "difficulty" : 3,
+        "difficulty" : 7,
         "risk" : 1,
         "skill" : "FIGHTING",
         "rewards" : {
