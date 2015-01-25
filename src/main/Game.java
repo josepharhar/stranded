@@ -6,11 +6,13 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import tasks.BasicTaskCreator;
 import tasks.RandomTaskCreator;
 import tasks.StorylineTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
 import tasks.TaskRunner;
+import util.RandomNumberGenerator;
 import util.RandomPhraseAccessor;
 import characters.BasicCharacterCreator;
 import characters.Character;
@@ -25,6 +27,8 @@ public class Game {
     public List<Character> characters = new ArrayList<Character>();
     public Resources resources = new Resources();
     public TaskRunner taskRunner = new TaskRunner(this);
+    private TaskCreator rtg = new RandomTaskCreator();
+    private long nextRandomTask;
     
     
     public Game(StrandedApplet applet) {
@@ -33,9 +37,10 @@ public class Game {
     }
 
     public void start() {
+        nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(90));
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
-        TaskCreator taskCreator = new RandomTaskCreator();
+        TaskCreator taskCreator = new BasicTaskCreator();
         CharacterCreator characterCreator = new BasicCharacterCreator();
         for (int i = 0; i < 4; i++) {
             tasks.add(taskCreator.createTask());
@@ -66,6 +71,7 @@ public class Game {
     }
     
     public void updateTasks() {
+        handleRandomTask();
         boolean shouldNotify = characters.size() == 0;
         for (Task t : taskRunner.getCompletedTasks()) {
             if (t.getSucceeded()) {
@@ -99,6 +105,21 @@ public class Game {
         }
         if (shouldNotify && characters.size() > 0) {
             promptNextCharacter();
+        }
+    }
+    
+    private void handleRandomTask() {
+        if (nextRandomTask < System.currentTimeMillis()) {
+            nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(90));
+            try {
+                Task t = rtg.createTask();
+                tasks.add(t);
+                print("Random event caused new task! " + t.getName());
+            } catch (Exception ex) {
+                System.err.println("Don't worry, just debug msg");
+                ex.printStackTrace();
+            }
+            
         }
     }
     
