@@ -12,6 +12,7 @@ import java.util.List;
 
 import processing.core.PImage;
 import processing.core.PVector;
+import timing.GameTimer;
 
 public class GameScreen {
     
@@ -38,6 +39,13 @@ public class GameScreen {
         applet.background(0);
         drawStars();
         drawGame();
+        if (GameTimer.isPaused()) {
+            applet.fill(60, 100);
+            applet.rect(0, 0, applet.width, applet.height);
+            applet.fill(255);
+            applet.textSize(25);
+            applet.text("GAME PAUSED", 100, 100);
+        }
     }
     
     // Draws and runs the main game
@@ -144,7 +152,7 @@ public class GameScreen {
         }
         
         // Add stars
-        if (Math.random() > 0.2) {
+        if (Math.random() > 0.2 && !GameTimer.isPaused()) {
             float x = 800f;
             float y = applet.random(0, 300);
             float r = applet.random(1f, 2f);
@@ -155,7 +163,9 @@ public class GameScreen {
         applet.noStroke();
         applet.fill(255);
         for (Star star : stars) {
-            star.move();
+            if (!GameTimer.isPaused()) {
+                star.move();
+            }
             applet.ellipse(star.loc.x, star.loc.y, star.r * 2, star.r * 2);
         }
         

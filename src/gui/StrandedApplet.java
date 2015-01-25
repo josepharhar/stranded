@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import main.Game;
 import processing.core.*;
+import timing.GameTimer;
 import audio.*;
 import static main.Resource.*;
 
@@ -79,6 +80,7 @@ public class StrandedApplet extends PApplet {
     }
     
     public void draw() {
+        GameTimer.update();
         if (gameStage == 1) {
             gameScreen.draw();
         } else if (gameStage == 0) {
@@ -87,6 +89,9 @@ public class StrandedApplet extends PApplet {
     }
     
     public void mousePressed() {
+        if (GameTimer.isPaused()) {
+            GameTimer.startTime();
+        }
         if (gameStage == 1) {
             gameScreen.clickGame();
         } else if (gameStage == 0) {
@@ -96,8 +101,8 @@ public class StrandedApplet extends PApplet {
     }
     
     public void keyPressed() {
-        if (keyCode == ESC && gameStage == 1) {
-            // Pause the game
+        if ((key == 'p' || key == 'P') && gameStage == 1) {
+            GameTimer.stopTime();
         }
     }
     
