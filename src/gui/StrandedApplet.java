@@ -40,10 +40,6 @@ public class StrandedApplet extends PApplet {
     public CharacterList characterList;
     //public JobDetail jobDetail;
     
-    private Button leftButton;
-    private Button centerButton;
-    private Button rightButton;
-    
     public Audio mainAudio;
     
     public static void main(String[] args) {
@@ -59,10 +55,6 @@ public class StrandedApplet extends PApplet {
         taskList = new TaskList(this, game);
         characterList = new CharacterList(this, game);
         currentSidebar = taskList;
-        
-        leftButton = new Button(26, 156, 72, 32, loadImage("pictures/leftButton.png"));
-        centerButton = new Button(leftButton.getx() + leftButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/centerButton.png"));
-        rightButton = new Button(centerButton.getx() + centerButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/rightButton.png"));
         
         background = loadImage("pictures/background.png");
         
