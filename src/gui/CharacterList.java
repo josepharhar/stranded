@@ -14,7 +14,7 @@ public class CharacterList extends SidebarItem {
     public void draw() {
         super.draw();
         
-      //location for text to show up
+        //location for text to show up
         int x = 20;
         int y = 10;
         
@@ -25,8 +25,10 @@ public class CharacterList extends SidebarItem {
             y += 40;
 
             //draw rectangle (button) under the text
+            applet.strokeWeight(2);
+            applet.stroke(192);
             applet.fill(128);
-            applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23);
+            applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23, 5, 5, 5, 5);
             
             applet.fill(0, 255, 0);
             applet.text(text, x, y);

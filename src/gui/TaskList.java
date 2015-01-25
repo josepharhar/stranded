@@ -24,8 +24,10 @@ public class TaskList extends SidebarItem {
             y += 40;
             
             //draw rectangle (button) under the text
+            applet.strokeWeight(2);
+            applet.stroke(192);
             applet.fill(128);
-            applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23);
+            applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23, 5, 5, 5, 5);
             
             applet.fill(0, 255, 0);
             applet.text(game.tasks.get(i).getName(), x, y);
