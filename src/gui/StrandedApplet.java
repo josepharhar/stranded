@@ -27,6 +27,10 @@ public class StrandedApplet extends PApplet {
     public static final int TERMINAL_Y = GAME_HEIGHT - TERMINAL_HEIGHT;
     public static final int SIDEBAR_X = TERMINAL_WIDTH;
     public static final int SIDEBAR_Y = 0;
+    
+    // int that represents what screen should be shown
+    // 0 is the start screen, 1 is the game, 2 is endgame
+    private int gameStage;
 
     private Game game;
     
@@ -40,6 +44,8 @@ public class StrandedApplet extends PApplet {
     public CharacterList characterList;
     //public JobDetail jobDetail;
     
+    private Button dialog;
+    
     public Audio mainAudio;
     
     public static void main(String[] args) {
@@ -47,6 +53,8 @@ public class StrandedApplet extends PApplet {
     }
     
     public void setup() {
+        gameStage = 0;
+        
         game = new Game(this);
         
         consolePrinter = new ConsolePrinter(this);
@@ -77,6 +85,50 @@ public class StrandedApplet extends PApplet {
     }
     
     public void draw() {
+        if (gameStage == 1) {
+            drawGame();
+        } else if (gameStage == 0) {
+            drawStart();
+        }
+    }
+    
+    public void mousePressed() {
+        if (gameStage == 1) {
+            clickGame();
+        } else if (gameStage == 0) {
+            gameStage = 1;
+        }
+    }
+    
+    // Draws the start screen
+    private void drawStart() {
+        background(0);
+        
+        textAlign(CENTER, CENTER);
+        fill(0, 255, 0);
+        textSize(48);
+        text("STRANDED", GAME_WIDTH / 2, GAME_HEIGHT / 2);
+        textSize(18);
+        text("click to start", GAME_WIDTH / 2, GAME_HEIGHT / 2 + 100);
+    }
+    
+    // Called when the screen is clicked during gameStage = 1
+    private void clickGame() {
+        //click dialog
+        if (dialog != null) {
+            if (dialog.isClicked(mouseX, mouseY)) {
+                dialog = null;
+            }
+        }
+        
+        //click sidebar
+        float x = mouseX - SIDEBAR_X;
+        float y = mouseY - SIDEBAR_Y;
+        currentSidebar.click(x, y);
+    }
+    
+    // Draws and runs the main game
+    private void drawGame() {
         // Draw Background
         image(background, 0, 0);
         
@@ -98,14 +150,12 @@ public class StrandedApplet extends PApplet {
             currentSidebar.draw();
         popMatrix();
         
-        game.updateTasks();
+        // Draw Dialog
+        if (dialog != null) {
+            dialog.draw(this);
+        }
         
-    }
-    
-    public void mousePressed() {
-        float x = mouseX - SIDEBAR_X;
-        float y = mouseY - SIDEBAR_Y;
-        currentSidebar.click(x, y);
+        game.updateTasks();
     }
     
     private void drawView() {
