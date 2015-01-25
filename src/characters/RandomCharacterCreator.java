@@ -2,12 +2,7 @@ package characters;
 
 import static util.RandomNumberGenerator.getRandomInteger;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import util.RandomNameAccessor;
 
@@ -23,6 +18,7 @@ public class RandomCharacterCreator implements CharacterCreator {
         c.setLearning_potential(getRandomInteger(20));
         c.setLoyalty(getRandomInteger(20));
         c.setLuck(getRandomInteger(20));
+        c.setOccupation("Mathematician");
         
         Map<Skill, Double> skills = c.getSkills();
         skills.put(Skill.ENGINEERING, (double) getRandomInteger(20));

@@ -18,6 +18,7 @@ import util.RandomPhraseAccessor;
 import characters.BasicCharacterCreator;
 import characters.Character;
 import characters.CharacterCreator;
+import characters.RandomCharacterCreator;
 import characters.Skill;
 
 public class Game {
@@ -30,7 +31,7 @@ public class Game {
     public TaskRunner taskRunner = new TaskRunner(this);
     private TaskCreator rtg = new RandomTaskCreator();
     private long nextRandomTask;
-    
+    private RandomCharacterCreator rcc = new RandomCharacterCreator();    
     
     public Game(StrandedApplet applet) {
         this.applet = applet;
@@ -39,15 +40,22 @@ public class Game {
 
     public void start() {
         tasks.add(new RestTask());
-        nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(30));
+        nextRandomTask = System.currentTimeMillis() + 1000 * (60 + RandomNumberGenerator.getRandomInteger(30));
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
         TaskCreator taskCreator = new BasicTaskCreator();
         CharacterCreator characterCreator = new BasicCharacterCreator();
-        for (int i = 0; i < 4; i++) {
-            tasks.add(taskCreator.createTask());
+        for (int i = 0; i < 3; i++) {
             characters.add(characterCreator.createCharacter());
         }
+        try {
+            while (true) {
+                tasks.add(taskCreator.createTask());
+            }
+        } catch (Exception ex) {
+            
+        }
+        
         promptNextCharacter();
     }
     
@@ -120,8 +128,13 @@ public class Game {
     
     private void handleRandomTask() {
         if (nextRandomTask < System.currentTimeMillis()) {
-            nextRandomTask = System.currentTimeMillis() + 1000 * (15 + RandomNumberGenerator.getRandomInteger(30));
+            nextRandomTask = System.currentTimeMillis() + 1000 * (10 + RandomNumberGenerator.getRandomInteger(25));
             try {
+                if (Math.random() < 0.08) {
+                    Character newCrew = rcc.createCharacter();
+                    characters.add(newCrew);
+                    print(newCrew.getName() + " has joined your crew!", Color.BLUE);
+                }
                 Task t = rtg.createTask();
                 for (Task ot : tasks) {
                     if (ot.getName().equals(t.getName())) return;
