@@ -44,4 +44,14 @@
             "MORALE" : 7,
         }
     },
+    {
+        "name" : "Fix the Toilets",
+        "difficulty" : 9,
+        "canRetry" : false,
+        "risk" : 1,
+        "skill" : "ENGINEERING",
+        "rewards" : {
+            "MORALE" : 7,
+        }
+    },
 ]

@@ -18,19 +18,11 @@ import characters.Skill;
 import static util.RandomNumberGenerator.getRandomSet;
 
 public class RandomTaskCreator implements TaskCreator {
-
-    protected List<Task> taskList;
     
-    public RandomTaskCreator(){
-        taskList = readTaskFile("lists/RandomTasks");
-    }
-
     @Override
     public Task createTask() {
-        if (taskList.size() < 1) {
-            throw new RuntimeException("out of advanced tasks");
-        }
-        return taskList.remove((int) (Math.random() * taskList.size()));
+        List<Task> taskList = readTaskFile("lists/RandomTasks");
+        return taskList.get((int) (Math.random() * taskList.size()));
     }
     
     protected List<Task> readTaskFile(String fileName) {

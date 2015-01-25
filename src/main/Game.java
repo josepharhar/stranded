@@ -121,6 +121,12 @@ public class Game {
             nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(90));
             try {
                 Task t = rtg.createTask();
+                for (Task ot : tasks) {
+                    if (ot.getName().equals(t.getName())) return;
+                }
+                for (Task ot : taskRunner.pendingTasks) {
+                    if (ot.getName().equals(t.getName())) return;
+                }
                 tasks.add(t);
                 print("Random event caused new task! " + t.getName());
             } catch (Exception ex) {
