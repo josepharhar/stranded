@@ -31,7 +31,7 @@ public class TaskRunner {
         boolean succeeded = succeeds(job);
         job.setSucceeded(succeeded);
         checkRisk(job.getCharacter(),job);
-        if (succeeded) {
+        if (succeeded && job.getCharacter() != null) {
             if (job.getPrimarySkill() != Skill.NONE) {
                 game.resources.add(job.getRewards());
                 levelUp(job.getCharacter(),job);

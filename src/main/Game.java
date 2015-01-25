@@ -95,7 +95,7 @@ public class Game {
             @Override
             public void complete() {
                 taskRunner.finishTask(task);
-                if (task.getSucceeded()) {
+                if (task.getSucceeded() && task.getCharacter() != null) {
                     applet.consolePrinter.print("Task succeeded: " + task.getName(), applet.color(0, 255, 0));
                     if (task.getFollowUpTask() != null) {
                         tasks.add(task.getFollowUpTask());
