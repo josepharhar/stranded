@@ -153,7 +153,7 @@ public class StrandedApplet extends PApplet {
         textSize(18);
         
         int x = 300;
-        int y = 15;
+        int y = 10;
 
         fill(255);
         
@@ -180,11 +180,17 @@ public class StrandedApplet extends PApplet {
         text("Morale", x, y);
         y += 20;
         text(" " + String.valueOf(game.resources.getResource(MORALE)), x, y);
-        y += 20;
+        y += 30;
+        String nextLine = "";
         if ((System.currentTimeMillis() / 500) % 2 == 0) {
-            text(">", x, y);
+            nextLine += ">";
+        } else {
+            nextLine += " ";
         }
-        
+        textSize(14);
+        nextLine += " What do we do now?";
+        text(nextLine, x, y);
+        y += 20;
     }
     
 }
