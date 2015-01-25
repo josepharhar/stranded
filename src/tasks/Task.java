@@ -17,6 +17,7 @@ public class Task {
     private String name;
     private Skill primarySkill;
     private int difficulty;
+    private int risk;
     private Map<Resource, Double> costs = new HashMap<>();
     private Map<Resource, Double> rewards = new HashMap<>();
     private Map<Resource, Double> penalty = new HashMap<>();
@@ -63,6 +64,12 @@ public class Task {
     }
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
+    }
+    public int getRisk() {
+        return risk;
+    }
+    public void setRisk(int risk) {
+        this.risk = risk;
     }
     public Map<Resource, Double> getCosts() {
         return costs;
