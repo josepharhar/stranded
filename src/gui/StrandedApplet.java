@@ -38,6 +38,7 @@ public class StrandedApplet extends PApplet {
     
     private StartScreen startScreen;
     public GameScreen gameScreen;
+    private EndScreen endScreen;
 
     public Game game;
 
@@ -54,9 +55,10 @@ public class StrandedApplet extends PApplet {
         
         game = new Game(this);
         
-        gameStage = 0;
+        gameStage = 2;
         startScreen = new StartScreen(this);
         gameScreen = new GameScreen(this);
+        endScreen = new EndScreen(this);
         
         consolePrinter = new ConsolePrinter(this);
         
@@ -82,6 +84,8 @@ public class StrandedApplet extends PApplet {
             gameScreen.draw();
         } else if (gameStage == 0) {
             startScreen.drawStart();
+        } else if (gameStage == 2) {
+            endScreen.draw();
         } else if (gameStage == 3) {
             startScreen.drawStory();
         }
