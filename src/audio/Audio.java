@@ -54,7 +54,12 @@ public class Audio {
     }
     
     public void fightSounds() {
-        SamplePlayer fight = new SamplePlayer(ac, SampleManager.sample("Fight_Sounds.wav"));
+        SamplePlayer fight;
+        if(Math.random()*2 > 1) {
+           fight = new SamplePlayer(ac, SampleManager.sample("Fight_Sounds.wav"));
+        }
+        else
+           fight = new SamplePlayer(ac, SampleManager.sample("Fight_Sounds_2.wav"));
         ac.out.addInput(fight);
     }
     
