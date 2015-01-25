@@ -1,17 +1,5 @@
 [
     {
-        "name" : "Repair hull damage",
-        "difficulty" : 5,
-        "risk" : 30,
-        "skill" : "ENGINEERING",
-        "costs" : {
-            "SCRAP" : 10,
-        },
-        "rewards" : {
-            "STATION_HEALTH" : 5,
-        },
-    },
-    {
         "name" : "Fight off robots",
         "difficulty" : 3,
         "risk" : 1,

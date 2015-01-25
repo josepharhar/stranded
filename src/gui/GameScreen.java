@@ -247,8 +247,6 @@ public class GameScreen {
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(ELECTRONICS)), x, y);
         y += yspacing;
-        applet.text("FUEL", x, y);
-        y += yspacing;
         applet.text("STATION_HEALTH", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(STATION_HEALTH)), x, y);
