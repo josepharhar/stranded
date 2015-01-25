@@ -140,4 +140,16 @@ public class Character {
         System.out.println(s);
     }
 
+    public Skill getBestStat() {
+        Skill best = null;
+        Double max = Double.MIN_VALUE;
+        for (Map.Entry<Skill, Double> e : skills.entrySet()){
+            if (e.getValue() > max) {
+                max = e.getValue();
+                best = e.getKey();
+            }
+        }
+        return best;
+    }
+
 }

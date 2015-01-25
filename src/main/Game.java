@@ -25,6 +25,8 @@ import characters.Skill;
 public class Game {
     public static Game game;
     
+    private DelayedAction rta;
+    private DelayedAction rca;
     private StrandedApplet applet;
     public AvailableTasks tasks = new AvailableTasks();
     public List<Character> characters = new ArrayList<Character>();
@@ -57,20 +59,22 @@ public class Game {
         }
         
         long timeUntilFirstTask = (long) ((15 + 30 * Math.random()) * 1000L);
-        GameTimer.addAction(new DelayedAction(timeUntilFirstTask) {
+        rta = new DelayedAction(timeUntilFirstTask) {
             @Override
             public void complete() {
                 addRandomTask();
             }
-        });
+        };
+        GameTimer.addAction(rta);
         
         long timeUntilFirstCharacter = (long) ((120 + 120 * Math.random()) * 1000L);
-        GameTimer.addAction(new DelayedAction(timeUntilFirstCharacter) {
+        rca = new DelayedAction(timeUntilFirstCharacter) {
             @Override
             public void complete() {
                 addRandomCharacter();
             }
-        });
+        };
+        GameTimer.addAction(rca);
         
         promptNextCharacter();
     }
@@ -123,6 +127,12 @@ public class Game {
     }
     
     public void update() {
+        if (rca.getTimeRemaining() < -1000) {
+            addRandomCharacter();
+        }
+        if (rta.getTimeRemaining() < -1000) {
+            addRandomTask();
+        }
         Iterator<Task> iter = tasks.transientTasksIterator();
         while (iter.hasNext()) {
             Task t = iter.next();
@@ -143,17 +153,16 @@ public class Game {
         print(newCrew.getName() + " has joined your crew!", Color.BLUE);
         
         long timeUntilNext = (long) ((120 + 120 * Math.random()) * 1000L);
-        GameTimer.addAction(new DelayedAction(timeUntilNext) {
+        rca = new DelayedAction(timeUntilNext) {
             @Override
             public void complete() {
                 addRandomCharacter();
             }
-        });
+        };
+        GameTimer.addAction(rca);
     }
     
     private void addRandomTask() {
-        
-        System.out.println("called");
         Task t = rtg.createTask();
         for (Task ot : tasks.getList()) {
             if (ot.getName().equals(t.getName())) return;
@@ -165,14 +174,13 @@ public class Game {
         print("Random event caused new task! " + t.getName());
         
         long timeUntilNext = (long) ((15 + 30 * Math.random()) * 1000L);
-        System.out.println("delay: " + timeUntilNext);
-        GameTimer.addAction(new DelayedAction(timeUntilNext) {
+        rta = new DelayedAction(timeUntilNext) {
             @Override
             public void complete() {
-                System.out.println("Completed");
                 addRandomTask();
             }
-        });
+        };
+        GameTimer.addAction(rta);
     }
     
     public void checkLoss() {

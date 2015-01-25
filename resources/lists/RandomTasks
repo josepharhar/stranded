@@ -19,7 +19,6 @@
         },
          "penalty" : {
             "STATION_HEALTH" : 6,
-            "STATION_DEFENSES" : 5,
         },
     },
     {

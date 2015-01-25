@@ -30,7 +30,11 @@ public class TaskList extends SidebarItem {
             applet.fill(128);
             applet.rect(x - 4, y + 2, text.length() * 11 + 4, 23, 5, 5, 5, 5);
             
-            applet.fill(0, 255, 0);
+            if (taskList.get(i).isExpires()) {
+                applet.fill(255,0,0);
+            } else {
+                applet.fill(0, 255, 0);
+            }
             applet.text(taskList.get(i).getName(), x, y);
         }
 

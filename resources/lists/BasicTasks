@@ -18,7 +18,6 @@
         },
         "rewards" : {
             "STATION_HEALTH" : 5,
-            "STATION_DEFENSES" : 10,
         },
     },
     {

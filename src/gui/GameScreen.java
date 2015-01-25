@@ -4,7 +4,6 @@ import static main.Resource.ELECTRONICS;
 import static main.Resource.FUEL;
 import static main.Resource.MORALE;
 import static main.Resource.SCRAP;
-import static main.Resource.STATION_DEFENSES;
 import static main.Resource.STATION_HEALTH;
 
 import java.util.LinkedList;
@@ -257,10 +256,6 @@ public class GameScreen {
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(STATION_HEALTH)), x, y);
         y += yspacing;
-        applet.text("STATION_DEFENSES", x, y);
-        y += yspacing;
-        applet.text(" " + String.valueOf(applet.game.resources.getResource(STATION_DEFENSES)), x, y);
-        y += yspacing;
         applet.text("MORALE", x, y);
         y += yspacing;
         applet.text(" " + String.valueOf(applet.game.resources.getResource(MORALE)), x, y);
@@ -273,6 +268,10 @@ public class GameScreen {
         //textSize(16);
         if (!applet.game.characters.isEmpty()) {
             applet.text(" " + applet.game.characters.get(0).getName(), x, y);
+            y += yspacing;
+            applet.text(" Best: " +  applet.game.characters.get(0).getBestStat(), x, y);
+            y += yspacing;
+            applet.text(" Health: " + applet.game.characters.get(0).getHealth(), x, y);
         } else {
             applet.text(" nobody to assign", x, y);
         }
