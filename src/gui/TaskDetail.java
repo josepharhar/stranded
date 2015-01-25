@@ -92,6 +92,7 @@ public class TaskDetail extends SidebarItem {
     }
     
     public void click(float mousex, float mousey) {
+        super.click(mousex, mousey);
         if (buttonAssign.isClicked(mousex, mousey)) {
             if (game.tasks.size() > 0 && game.characters.size() > 0) {
                 game.assignTask(task, game.characters.get(0));
