@@ -71,7 +71,11 @@ public class TaskDetail extends SidebarItem {
         applet.text("Difficulty: ", x, y);
         y += 30;
         applet.fill(0, 255, 0);
-        applet.text(" " + task.getDifficulty(), x, y);
+        if (task.getDifficulty() < 0) {
+            applet.text(" N/A", x, y);
+        } else {
+            applet.text(" " + task.getDifficulty(), x, y);
+        }
         y += 30;
 
         // Skill

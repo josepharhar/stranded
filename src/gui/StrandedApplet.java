@@ -150,47 +150,60 @@ public class StrandedApplet extends PApplet {
     
     private void drawView() {
         textAlign(LEFT, CENTER);
-        textSize(18);
+        textSize(16);
         
         int x = 300;
         int y = 10;
 
         fill(255);
         
+        int yspacing = 18;
+        
         text("Scrap", x, y);
-        y += 20;
+        y += yspacing;
         text(" " + String.valueOf(game.resources.getResource(SCRAP)), x, y);
-        y += 20;
+        y += yspacing;
         text("Electronics", x, y);
-        y += 20;
+        y += yspacing;
         text(" " + String.valueOf(game.resources.getResource(ELECTRONICS)), x, y);
-        y += 20;
+        y += yspacing;
         text("Fuel", x, y);
-        y += 20;
+        y += yspacing;
         text(" " + String.valueOf(game.resources.getResource(FUEL)), x, y);
-        y += 20;
+        y += yspacing;
         text("Station Health", x, y);
-        y += 20;
+        y += yspacing;
         text(" " + String.valueOf(game.resources.getResource(STATION_HEALTH)), x, y);
-        y += 20;
+        y += yspacing;
         text("Station Defenses", x, y);
-        y += 20;
+        y += yspacing;
         text(" " + String.valueOf(game.resources.getResource(STATION_DEFENSES)), x, y);
-        y += 20;
+        y += yspacing;
         text("Morale", x, y);
-        y += 20;
+        y += yspacing;
         text(" " + String.valueOf(game.resources.getResource(MORALE)), x, y);
         y += 30;
-        String nextLine = "";
-        if ((System.currentTimeMillis() / 500) % 2 == 0) {
-            nextLine += ">";
-        } else {
-            nextLine += " ";
-        }
+        
         textSize(14);
-        nextLine += " What do we do now?";
-        text(nextLine, x, y);
-        y += 20;
+        text("Assigning:", x, y);
+        y += yspacing;
+        
+        //textSize(16);
+        if (!game.characters.isEmpty()) {
+            text(" " + game.characters.get(0).getName(), x, y);
+        } else {
+            text(" nobody to assign", x, y);
+        }
+//        String nextLine = "";
+//        if ((System.currentTimeMillis() / 500) % 2 == 0) {
+//            nextLine += ">";
+//        } else {
+//            nextLine += " ";
+//        }
+//        textSize(14);
+//        nextLine += " What do we do now?";
+//        text(nextLine, x, y);
+//        y += yspacing;
     }
     
 }
