@@ -31,6 +31,8 @@ public class StrandedApplet extends PApplet {
     // int that represents what screen should be shown
     // 0 is the start screen, 1 is the game, 2 is endgame
     private int gameStage;
+    
+    private StartScreen startScreen;
 
     private Game game;
     
@@ -54,6 +56,7 @@ public class StrandedApplet extends PApplet {
     
     public void setup() {
         gameStage = 0;
+        startScreen = new StartScreen(this);
         
         game = new Game(this);
         
@@ -80,8 +83,6 @@ public class StrandedApplet extends PApplet {
             frame.setSize(GAME_WIDTH, GAME_HEIGHT);
         }
         size(GAME_WIDTH, GAME_HEIGHT);
-        
-        game.start();
     }
     
     public void draw() {
@@ -96,6 +97,7 @@ public class StrandedApplet extends PApplet {
         if (gameStage == 1) {
             clickGame();
         } else if (gameStage == 0) {
+            game.start();
             gameStage = 1;
         }
     }
@@ -103,6 +105,8 @@ public class StrandedApplet extends PApplet {
     // Draws the start screen
     private void drawStart() {
         background(0);
+        
+        
         
         textAlign(CENTER, CENTER);
         fill(0, 255, 0);
