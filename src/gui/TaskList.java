@@ -48,6 +48,7 @@ public class TaskList extends SidebarItem {
     }
     
     public void click(float mousex, float mousey) {
+        super.click(mousex, mousey);
         for (int i = 0; i < game.tasks.size(); i++) {
             String text = game.tasks.get(i).getName();
             

@@ -13,6 +13,6 @@ public class CharacterDetail extends SidebarItem {
     }
     
     public void click(float mousex, float mousey) {
-        
+        super.click(mousex, mousey);
     }
 }

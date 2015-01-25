@@ -46,7 +46,12 @@ public abstract class SidebarItem {
     }
     
     //Handles mouse clicks. called when the mouse is clicked inside of the sidebar area
-    public void click(float x, float y) {
+    public void click(float mousex, float mousey) {
         //check to see if mouse clicked on task list or character list buttons
+        if (buttonTasks.isClicked(mousex, mousey)) {
+            applet.currentSidebar = applet.taskList;
+        } else if (buttonCharacters.isClicked(mousex, mousey)) {
+            applet.currentSidebar = applet.characterList;
+        }
     }
 }

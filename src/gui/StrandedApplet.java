@@ -143,11 +143,16 @@ public class StrandedApplet extends PApplet {
     private void drawView() {
         textAlign(CENTER, CENTER);
         textSize(18);
-        fill(128, 128, 128);
         
         int x = 400;
         int y = 30;
+        
+        //draw rectangle behind text
+        fill(0);
+        rect(x - 150, y - 20, 300, 300);
 
+        fill(0, 255, 0);
+        
         text("Scrap", x, y);
         y += 20;
         text(String.valueOf(game.resources.getResource(SCRAP)), x, y);
