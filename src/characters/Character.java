@@ -136,18 +136,6 @@ public class Character {
         return firstName + " " + lastName;
     }
     
-    public boolean levelUp(Task task) {
-        int difficulty = task.getDifficulty();
-        Skill skill = task.getPrimarySkill();
-        Map<Skill, Double> map = getSkills();
-        double learning = map.get(learningPotential);
-        double characterSkill = map.get(skill);
-        double characterLuck = getLuck();
-        
-        double roll = characterSkill + (10 + characterLuck) * learning * Math.random() * Math.random();
-        dp("Character rolled: " + roll + " to beat " + (10 - difficulty) + " and level up.");
-        return roll > 10 - difficulty;
-    }
     private void dp(String s) {
         System.out.println(s);
     }

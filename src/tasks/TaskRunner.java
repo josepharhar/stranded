@@ -44,9 +44,12 @@ public class TaskRunner {
         job.setSucceeded(succeeded);
         if (succeeded) {
             game.resources.add(job.getRewards());
-            job.getCharacter().levelUp(job);
+            levelUp(job.getCharacter(),job);
         } else {
             game.resources.subtract(job.getPenalty());
+            if(job.getPrimarySkill() == Skill.FIGHTING) {
+                survive(job.getCharacter(),job);
+            }
         }
     }
     
@@ -63,6 +66,35 @@ public class TaskRunner {
         double roll = characterSkill + (10 + characterLuck) * Math.random() * Math.random();
         dp("Character rolled: " + roll + " to beat " + (difficulty + 10));
         return roll > difficulty + 10;
+    }
+    
+    public void levelUp(Character character, Task job) {
+        int difficulty = job.getDifficulty();
+        Skill skill = job.getPrimarySkill();
+        Map<Skill, Double> map = character.getSkills();
+        double characterSkill = map.get(skill);
+        double characterLuck = character.getLuck();
+        
+        double roll = characterSkill + (characterLuck) * (character.getLearning_potential() - 5) * Math.random() * Math.random();
+        dp("Character rolled: " + roll/2 + " to beat " + (15 - difficulty) + " and level up.");
+        if(roll/2 > 15 - difficulty) {
+            map.put(skill,characterSkill+1);
+        }
+    }
+    
+    public void survive(Character character, Task job) {
+        int difficulty = job.getDifficulty();
+        Skill skill = job.getPrimarySkill();
+        Map<Skill, Double> map = character.getSkills();
+        double characterSkill = map.get(skill);
+        double characterLuck = character.getLuck();
+        
+        double damRoll = 100 - (Math.random()*(2*characterLuck)) - (Math.random()*(characterSkill/2));
+        if(damRoll < 0) {
+            return;
+        }
+        character.setHealth((int)(character.getHealth() - damRoll));
+        dp("Character's health is now "+ character.getHealth());
     }
     
     private void dp(String s) {
