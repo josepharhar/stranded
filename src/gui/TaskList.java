@@ -34,6 +34,8 @@ public class TaskList extends SidebarItem {
                 applet.fill(255,0,0);
             } else if (taskList.get(i).getName().contains("ship")) {
                 applet.fill(0, 0, 255);
+            } else {
+                applet.fill(0,255,0);
             }
             applet.text(taskList.get(i).getName(), x, y);
         }
