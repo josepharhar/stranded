@@ -31,22 +31,19 @@ public class StrandedApplet extends PApplet {
     // int that represents what screen should be shown
     // 0 is the start screen, 1 is the game, 2 is endgame
     private int gameStage;
+
+    public TaskList taskList;
+    public CharacterList characterList;
+    public SidebarItem currentSidebar;
     
     private StartScreen startScreen;
+    private GameScreen gameScreen;
 
-    private Game game;
-    
-    private PImage background;
+    public Game game;
 
     public ConsolePrinter consolePrinter;
     public ControlPrinter controlPrinter;
     
-    public SidebarItem currentSidebar;
-    public TaskList taskList;
-    public CharacterList characterList;
-    //public JobDetail jobDetail;
-    
-    private Button dialog;
     
     public Audio mainAudio;
     
@@ -55,22 +52,18 @@ public class StrandedApplet extends PApplet {
     }
     
     public void setup() {
-        gameStage = 0;
-        startScreen = new StartScreen(this);
         
         game = new Game(this);
+        
+        gameStage = 0;
+        startScreen = new StartScreen(this);
+        gameScreen = new GameScreen(this);
         
         consolePrinter = new ConsolePrinter(this);
         controlPrinter = new ControlPrinter(this, game);
         
-        taskList = new TaskList(this, game);
-        characterList = new CharacterList(this, game);
-        currentSidebar = taskList;
-        
-        background = loadImage("pictures/background.png");
-        
         mainAudio = new Audio(this);
-        
+
         try {
             mainAudio.startMainAudio();
         } catch (IOException e) {
@@ -87,7 +80,7 @@ public class StrandedApplet extends PApplet {
     
     public void draw() {
         if (gameStage == 1) {
-            drawGame();
+            gameScreen.draw();
         } else if (gameStage == 0) {
             startScreen.draw();
         }
@@ -95,115 +88,13 @@ public class StrandedApplet extends PApplet {
     
     public void mousePressed() {
         if (gameStage == 1) {
-            clickGame();
+            gameScreen.clickGame();
         } else if (gameStage == 0) {
             game.start();
             gameStage = 1;
         }
     }
     
-    // Called when the screen is clicked during gameStage = 1
-    private void clickGame() {
-        //click dialog
-        if (dialog != null) {
-            if (dialog.isClicked(mouseX, mouseY)) {
-                dialog = null;
-            }
-        }
-        
-        //click sidebar
-        float x = mouseX - SIDEBAR_X;
-        float y = mouseY - SIDEBAR_Y;
-        currentSidebar.click(x, y);
-    }
     
-    // Draws and runs the main game
-    private void drawGame() {
-        // Draw Background
-        image(background, 0, 0);
-        
-        // Draw View
-        pushMatrix();
-            translate(VIEW_X, VIEW_Y);
-            drawView();
-        popMatrix();
-        
-        // Draw Terminal
-        pushMatrix();
-            translate(TERMINAL_X, TERMINAL_Y);
-            consolePrinter.draw();
-        popMatrix();
-        
-        // Draw Sidebar
-        pushMatrix();
-            translate(SIDEBAR_X, SIDEBAR_Y);
-            currentSidebar.draw();
-        popMatrix();
-        
-        // Draw Dialog
-        if (dialog != null) {
-            dialog.draw(this);
-        }
-        
-        game.updateTasks();
-    }
-    
-    private void drawView() {
-        textAlign(LEFT, CENTER);
-        textSize(16);
-        
-        int x = 300;
-        int y = 10;
-
-        fill(255);
-        
-        int yspacing = 18;
-        
-        text("Scrap", x, y);
-        y += yspacing;
-        text(" " + String.valueOf(game.resources.getResource(SCRAP)), x, y);
-        y += yspacing;
-        text("Electronics", x, y);
-        y += yspacing;
-        text(" " + String.valueOf(game.resources.getResource(ELECTRONICS)), x, y);
-        y += yspacing;
-        text("Fuel", x, y);
-        y += yspacing;
-        text(" " + String.valueOf(game.resources.getResource(FUEL)), x, y);
-        y += yspacing;
-        text("Station Health", x, y);
-        y += yspacing;
-        text(" " + String.valueOf(game.resources.getResource(STATION_HEALTH)), x, y);
-        y += yspacing;
-        text("Station Defenses", x, y);
-        y += yspacing;
-        text(" " + String.valueOf(game.resources.getResource(STATION_DEFENSES)), x, y);
-        y += yspacing;
-        text("Morale", x, y);
-        y += yspacing;
-        text(" " + String.valueOf(game.resources.getResource(MORALE)), x, y);
-        y += 30;
-        
-        textSize(14);
-        text("Assigning:", x, y);
-        y += yspacing;
-        
-        //textSize(16);
-        if (!game.characters.isEmpty()) {
-            text(" " + game.characters.get(0).getName(), x, y);
-        } else {
-            text(" nobody to assign", x, y);
-        }
-//        String nextLine = "";
-//        if ((System.currentTimeMillis() / 500) % 2 == 0) {
-//            nextLine += ">";
-//        } else {
-//            nextLine += " ";
-//        }
-//        textSize(14);
-//        nextLine += " What do we do now?";
-//        text(nextLine, x, y);
-//        y += yspacing;
-    }
     
 }
