@@ -36,6 +36,19 @@
         "duration" : 7,
     },
     {
+        "name" : "Fight off intruders",
+        "difficulty" : 1,
+        "risk" : 2,
+        "skill" : "FIGHTING",
+        "rewards" : {
+            "SCRAP" : 6,
+        },
+        "penalty" : {
+            "SCRAP" : 6,
+        },
+        "duration" : 6,
+    },
+    {
         "name" : "Fix the Toilets",
         "difficulty" : 9,
         "canRetry" : false,
@@ -62,9 +75,8 @@
         "skill" : "SCAVENGING",
         "rewards" : {
             "SCRAP" : 6,
-        },
-        "cost" : {
-           "ELECTRONICS" : 0
+            "HEALING" : 4,
         }
+        
     }
 ]

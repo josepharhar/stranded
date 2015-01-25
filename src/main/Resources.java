@@ -13,6 +13,7 @@ public class Resources {
         map.put(Resource.STATION_DEFENSES, 20.0);
         map.put(Resource.STATION_HEALTH, 20.0);
         map.put(Resource.MORALE, 20.0);
+        map.put(Resource.HEALING, 0.0);
     }
     
     public double getResource(Resource resource) {

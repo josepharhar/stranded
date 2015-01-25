@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import main.Game;
+import main.Resource;
 import characters.Character;
 import characters.Skill;
 
@@ -48,6 +49,9 @@ public class TaskRunner {
         if (succeeded) {
             game.resources.add(job.getRewards());
             levelUp(job.getCharacter(),job);
+            if(job.getRewards().containsKey(Resource.HEALING)) {
+                job.getCharacter().setHealth(job.getCharacter().getHealth() + job.getRewards().get(Resource.HEALING).intValue());
+            }
         } else {
             game.resources.subtract(job.getPenalty());
             if(job.getPrimarySkill() == Skill.FIGHTING) {

@@ -22,19 +22,6 @@
         },
     },
     {
-        "name" : "Fight off intruders",
-        "difficulty" : 7,
-        "risk" : 1,
-        "skill" : "FIGHTING",
-        "rewards" : {
-            "SCRAP" : 20,
-        },
-        "penalty" : {
-            "SCRAP" : 30,
-        },
-        "duration" : 30,
-    },
-    {
         "name" : "Fight off robots",
         "difficulty" : 3,
         "risk" : 1,
@@ -53,6 +40,17 @@
         "costs" : {
             "SCRAP" : 10,
         },
+    },
+    {
+        "name" : "Heal",
+        "difficulty" : 1,
+        "risk" : 1,
+        "skill" : "SCAVENGING",
+        "rewards" : {
+            "SCRAP" : 6,
+            "HEALING" : 4,
+        }
+        
     }
     
 ]

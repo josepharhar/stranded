@@ -7,4 +7,5 @@ public enum Resource {
     STATION_HEALTH,
     STATION_DEFENSES,
     MORALE,
+    HEALING,
 }
