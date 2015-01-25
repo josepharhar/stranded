@@ -63,7 +63,6 @@ public class StrandedApplet extends PApplet {
         try {
             mainAudio.startMainAudio();
         } catch (IOException e) {
-             //TODO Auto-generated catch block
             e.printStackTrace();
         }
         //mainAudio.startMainAudio();

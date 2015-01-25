@@ -35,7 +35,8 @@ public class TaskRunner {
     
     public void startTask(Task job) {
         game.resources.subtract(job.getCosts());
-        job.setCompletionTime(System.currentTimeMillis() + 20 * 1000L);
+        long val = 10 + (int)(40*Math.random());
+        job.setCompletionTime(System.currentTimeMillis() + val * 1000L);
         pendingTasks.add(job);
     }
 
