@@ -77,12 +77,12 @@ public class CharacterDetail extends SidebarItem {
     public void click(float mousex, float mousey) {
         super.click(mousex, mousey);
         if (buttonAssign.isClicked(mousex, mousey) && character.isAvailable()) {
-            System.out.println("swappign");
             int index = applet.game.characters.indexOf(character);
             //swap 0 with index
             Character temp = applet.game.characters.get(0);
             applet.game.characters.set(0, character);
             applet.game.characters.set(index, temp);
+            applet.currentSidebar = applet.characterList;
         }
     }
 }

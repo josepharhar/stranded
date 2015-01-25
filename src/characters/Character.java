@@ -6,7 +6,7 @@ import tasks.Task;
 
 public class Character {
 
-    private boolean available;
+    private boolean available = true;
     private Task currentTask;
     
     private String firstName;
