@@ -1,7 +1,7 @@
 [
     {
         "name" : "Find ship blueprints",
-        "difficulty" : 10,
+        "difficulty" : 7,
         "risk" : 4,
         "canRetry" : true,
         "skill" : "SCAVENGING",
@@ -11,7 +11,7 @@
     },
     {
         "name" : "Build ship hull",
-        "difficulty" : 12,
+        "difficulty" : 9,
         "risk" : 1,
         "canRetry" : true,
         "skill" : "ENGINEERING",
@@ -34,8 +34,8 @@
     },
     {
         "name" : "Retieve ship thrusters from robot horde",
-        "difficulty" : 16,
-        "risk" : 16,
+        "difficulty" : 15,
+        "risk" : 13,
         "canRetry" : true,
         "skill" : "FIGHTING",
     },
