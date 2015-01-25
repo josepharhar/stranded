@@ -111,6 +111,10 @@ public class StrandedApplet extends PApplet {
         }
         //THIS IS TEMPORARY
         if (key == '|') {
+            game.isWon = true;
+            gameStage = 2;
+        } else if (key == '}') {
+            game.isWon = false;
             gameStage = 2;
         }
     }

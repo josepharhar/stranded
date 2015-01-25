@@ -66,7 +66,7 @@ public class EndScreen {
         
         drawStars();
         
-        if (true) {
+        if (applet.game.isWon) {
             drawWin();
         } else {
             drawLose();
