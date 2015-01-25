@@ -31,7 +31,7 @@ public class StartScreen {
         }
         
         // Add stars
-        if ((System.currentTimeMillis() / 20) % 2 == 0 && Math.random() > 0.5) {
+        if (Math.random() > 0.5) {
             float x = applet.random(-50, 50);
             float y = applet.random(-50, 50);
             float r = applet.random(0.5f, 0.7f);
@@ -63,7 +63,6 @@ public class StartScreen {
         public PVector loc;
         public PVector velocity;
         public float r;
-        public float acceleration;
         
         public Star(float x, float y, float r) {
             loc = new PVector(x, y);
@@ -71,11 +70,10 @@ public class StartScreen {
             //velocity.normalize();
             velocity.mult(0.05f);
             this.r = r;
-            this.acceleration = 1.01f;
         }
         
         public void move() {
-            velocity.mult(acceleration);
+            velocity.mult(1 + (r / 100));
             loc.add(velocity);
             this.r *= 1.01f;
         }

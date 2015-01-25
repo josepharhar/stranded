@@ -149,43 +149,41 @@ public class StrandedApplet extends PApplet {
     }
     
     private void drawView() {
-        textAlign(CENTER, CENTER);
+        textAlign(LEFT, CENTER);
         textSize(18);
         
-        int x = 400;
-        int y = 30;
-        
-        //draw rectangle behind text
-        fill(0);
-        rect(x - 150, y - 20, 300, 300);
+        int x = 300;
+        int y = 15;
 
-        fill(0, 255, 0);
+        fill(255);
         
         text("Scrap", x, y);
         y += 20;
-        text(String.valueOf(game.resources.getResource(SCRAP)), x, y);
+        text(" " + String.valueOf(game.resources.getResource(SCRAP)), x, y);
         y += 20;
         text("Electronics", x, y);
         y += 20;
-        text(String.valueOf(game.resources.getResource(ELECTRONICS)), x, y);
+        text(" " + String.valueOf(game.resources.getResource(ELECTRONICS)), x, y);
         y += 20;
         text("Fuel", x, y);
         y += 20;
-        text(String.valueOf(game.resources.getResource(FUEL)), x, y);
+        text(" " + String.valueOf(game.resources.getResource(FUEL)), x, y);
         y += 20;
         text("Station Health", x, y);
         y += 20;
-        text(String.valueOf(game.resources.getResource(STATION_HEALTH)), x, y);
+        text(" " + String.valueOf(game.resources.getResource(STATION_HEALTH)), x, y);
         y += 20;
         text("Station Defenses", x, y);
         y += 20;
-        text(String.valueOf(game.resources.getResource(STATION_DEFENSES)), x, y);
+        text(" " + String.valueOf(game.resources.getResource(STATION_DEFENSES)), x, y);
         y += 20;
         text("Morale", x, y);
         y += 20;
-        text(String.valueOf(game.resources.getResource(MORALE)), x, y);
+        text(" " + String.valueOf(game.resources.getResource(MORALE)), x, y);
         y += 20;
-        
+        if ((System.currentTimeMillis() / 500) % 2 == 0) {
+            text(">", x, y);
+        }
         
     }
     
