@@ -32,12 +32,55 @@ public class GameScreen {
         applet.taskList = new TaskList(applet, applet.game);
         applet.characterList = new CharacterList(applet, applet.game);
         applet.currentSidebar = applet.taskList;
+        
+        captainFrames = new PImage[5];
+        captainFrames[0] = applet.loadImage("pictures/animations/captain_1.png");
+        captainFrames[1] = applet.loadImage("pictures/animations/captain_2.png");
+        captainFrames[2] = applet.loadImage("pictures/animations/captain_3.png");
+        captainFrames[3] = applet.loadImage("pictures/animations/captain_4.png");
+        captainFrames[4] = applet.loadImage("pictures/animations/captain_5.png");
+        captainAnimationStartTime = System.currentTimeMillis();
     }
     
     public void draw() {
         applet.background(0);
         drawStars();
         drawGame();
+        drawAnimation();
+    }
+    
+    // Variables for the state of animations
+    int charFrameIndex = 0;
+    PImage[] characterFrames;
+    int[] charxloc;
+    int[] charyloc;
+    //0 is coming in, 1 is leaving
+    int animationType;
+    long animStartTime;
+    
+    int doorFrameIndex = 0;
+    PImage[] doorFrames;
+    
+    int captainFrameIndex = 0;
+    PImage[] captainFrames;
+    long captainAnimationStartTime;
+    
+    // Draws the animation of characters
+    private void drawAnimation() {
+        long currentTime = System.currentTimeMillis();
+        
+        long captainDiff = (currentTime - captainAnimationStartTime) % 1000;
+        if (captainDiff < 2) {
+            captainFrameIndex = 0;
+        } else if ()
+        
+        
+//        if (currentTime - animStartTime < 500) {
+//            charFrameIndex = 0;
+//        }
+        
+//        applet.image(characterFrames[charFrameIndex], 100, 100);
+        applet.image(captainFrames[captainFrameIndex], 100, 100);
     }
     
     // Draws and runs the main game
