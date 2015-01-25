@@ -8,6 +8,7 @@ import java.util.List;
 
 import tasks.BasicTaskCreator;
 import tasks.RandomTaskCreator;
+import tasks.RestTask;
 import tasks.StorylineTaskCreator;
 import tasks.Task;
 import tasks.TaskCreator;
@@ -40,6 +41,9 @@ public class Game {
         nextRandomTask = System.currentTimeMillis() + 1000 * (30 + RandomNumberGenerator.getRandomInteger(90));
         TaskCreator storyline = new StorylineTaskCreator();
         tasks.add(storyline.createTask());
+        RestTask rest = new RestTask();
+        rest.setName("Rest");
+        tasks.add(rest);
         TaskCreator taskCreator = new BasicTaskCreator();
         CharacterCreator characterCreator = new BasicCharacterCreator();
         for (int i = 0; i < 4; i++) {
