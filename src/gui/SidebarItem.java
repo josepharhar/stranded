@@ -16,6 +16,9 @@ public abstract class SidebarItem {
         this.name = name;
         this.applet = applet;
         this.game = game;
+        buttonTasks = new Button(applet.SIDEBAR_WIDTH / 2 - 40, applet.SIDEBAR_HEIGHT - 40, 72, 32, applet.loadImage("pictures/leftButton.png"));
+        buttonCharacters = new Button(applet.SIDEBAR_WIDTH / 2 + 20, applet.SIDEBAR_HEIGHT - 40, 72, 32, applet.loadImage("pictures/rightButton.png"));
+        
     }
     
     public String getName() {
@@ -34,7 +37,8 @@ public abstract class SidebarItem {
         applet.text(name, SIDEBAR_WIDTH / 2, 10);
         
         //draw the task and character buttons
-        
+        buttonTasks.draw(applet);
+        buttonCharacters.draw(applet);
         
         //prepare implementing classes for drawing
         applet.textSize(18);

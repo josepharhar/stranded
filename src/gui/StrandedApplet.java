@@ -5,6 +5,7 @@ import java.io.IOException;
 import main.Game;
 import processing.core.*;
 import audio.*;
+import static main.Resource.*;
 
 public class StrandedApplet extends PApplet {
        
@@ -91,6 +92,7 @@ public class StrandedApplet extends PApplet {
         // Draw View
         pushMatrix();
             translate(VIEW_X, VIEW_Y);
+            drawView();
         popMatrix();
         
         // Draw Terminal
@@ -145,6 +147,42 @@ public class StrandedApplet extends PApplet {
 //            }
 //            this.mainAudio.sideBeep();
 //        }
+    }
+    
+    private void drawView() {
+        textAlign(CENTER, CENTER);
+        textSize(18);
+        fill(128, 128, 128);
+        
+        int x = 400;
+        int y = 30;
+
+        text("Scrap", x, y);
+        y += 20;
+        text(String.valueOf(game.resources.getResource(SCRAP)), x, y);
+        y += 20;
+        text("Electronics", x, y);
+        y += 20;
+        text(String.valueOf(game.resources.getResource(ELECTRONICS)), x, y);
+        y += 20;
+        text("Fuel", x, y);
+        y += 20;
+        text(String.valueOf(game.resources.getResource(FUEL)), x, y);
+        y += 20;
+        text("Station Health", x, y);
+        y += 20;
+        text(String.valueOf(game.resources.getResource(STATION_HEALTH)), x, y);
+        y += 20;
+        text("Station Defenses", x, y);
+        y += 20;
+        text(String.valueOf(game.resources.getResource(STATION_DEFENSES)), x, y);
+        y += 20;
+        text("Morale", x, y);
+        y += 20;
+        text(String.valueOf(game.resources.getResource(MORALE)), x, y);
+        y += 20;
+        
+        
     }
     
 }

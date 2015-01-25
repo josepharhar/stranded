@@ -11,7 +11,7 @@ public class ConsolePrinter {
     //Maximum number of lines to print out at once
     public static final int MAX_TERMINAL_LINES = 10;
     //Maximum number of chars before wrapping the line
-    public static final int MAX_TERMINAL_WIDTH = 43;
+    public static final int MAX_TERMINAL_WIDTH = 60;
     
     //The PApplet to draw to
     private StrandedApplet applet;

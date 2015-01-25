@@ -12,7 +12,7 @@ import characters.Skill;
 
 public class TaskRunner {
     private Game game;
-    private List<Task> pendingTasks = new ArrayList<Task>();
+    public List<Task> pendingTasks = new ArrayList<Task>();
 
     public TaskRunner(Game game) {
         this.game = game;
