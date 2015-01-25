@@ -15,11 +15,11 @@ public class CharacterDetail extends SidebarItem {
     private Button buttonAssign;
     
     public CharacterDetail(StrandedApplet applet, Game game, Character character) {
-        super("Character Detail", applet, game);
+        super("Crew Member Detail", applet, game);
         this.character = character;
         buttonAssign = new Button(applet.SIDEBAR_WIDTH / 2 - 72,
                 applet.SIDEBAR_HEIGHT - 90, 144, 32,
-                applet.loadImage("pictures/assign.png"));
+                applet.loadImage("pictures/buttons/assign_button.png"));
     }
     
     public void draw() {

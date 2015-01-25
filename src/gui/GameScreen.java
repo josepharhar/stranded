@@ -43,13 +43,14 @@ public class GameScreen {
         captainFrames[4] = applet.loadImage("pictures/animations/captain_5.png");
         captainAnimationStartTime = GameTimer.getTime();
         
-        doorFrames = new PImage[6];
+        doorFrames = new PImage[7];
         doorFrames[0] = applet.loadImage("pictures/animations/door_1.png");
         doorFrames[1] = applet.loadImage("pictures/animations/door_2.png");
         doorFrames[2] = applet.loadImage("pictures/animations/door_3.png");
         doorFrames[3] = applet.loadImage("pictures/animations/door_4.png");
         doorFrames[4] = applet.loadImage("pictures/animations/door_5.png");
         doorFrames[5] = applet.loadImage("pictures/animations/door_6.png");
+        doorFrames[6] = applet.loadImage("pictures/animations/door_7.png");
         
         characterFrames = new PImage[5];
         characterFrames[0] = applet.loadImage("pictures/animations/blank.png");
@@ -138,12 +139,14 @@ public class GameScreen {
                 doorFrameIndex = 4;
             } else if (charDiff < 1.25) {
                 doorFrameIndex = 5;
+            } else if (charDiff < 1.5) {
+                doorFrameIndex = 6;
                 charFrameIndex = 1;
-            } else if (charDiff < 1.75) {
-                charFrameIndex = 2;
             } else if (charDiff < 2.0) {
-                charFrameIndex = 3;
+                charFrameIndex = 2;
             } else if (charDiff < 2.25) {
+                charFrameIndex = 3;
+            } else if (charDiff < 2.5) {
                 charFrameIndex = 4;
             } else {
                 switchAnimation(2);
@@ -151,25 +154,27 @@ public class GameScreen {
         } else if (animationType == 1) {
             if (charDiff < 0.25) {
                 charFrameIndex = 3;
-                doorFrameIndex = 5;
+                doorFrameIndex = 6;
             } else if (charDiff < 0.5) {
                 charFrameIndex = 2;
             } else if (charDiff < 0.75) {
                 charFrameIndex = 1;
             } else if (charDiff < 1.0) {
                 charFrameIndex = 0;
-                doorFrameIndex = 4;
+                doorFrameIndex = 5;
             } else if (charDiff < 1.25) {
-                doorFrameIndex = 3;
+                doorFrameIndex = 4;
             } else if (charDiff < 1.5) {
-                doorFrameIndex = 2;
+                doorFrameIndex = 3;
             } else if (charDiff < 1.75) {
+                doorFrameIndex = 2;
+            } else if (charDiff < 2.0) {
                 doorFrameIndex = 1;
             } else {
                 switchAnimation(3);
             }
         } else if (animationType == 2) {
-            doorFrameIndex = 5;
+            doorFrameIndex = 6;
             charFrameIndex = 4;
         } else {
             if (applet.game.characters.isEmpty()) {

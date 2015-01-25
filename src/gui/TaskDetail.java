@@ -18,7 +18,7 @@ public class TaskDetail extends SidebarItem {
         this.task = task;
         buttonAssign = new Button(applet.SIDEBAR_WIDTH / 2 - 72,
                 applet.SIDEBAR_HEIGHT - 90, 144, 32,
-                applet.loadImage("pictures/assign.png"));
+                applet.loadImage("pictures/buttons/assign_button.png"));
     }
 
     public void draw() {

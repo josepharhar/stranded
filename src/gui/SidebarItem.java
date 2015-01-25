@@ -21,8 +21,8 @@ public abstract class SidebarItem {
         this.applet = applet;
         this.game = game;
         
-        buttonTasks = new Button(applet.SIDEBAR_WIDTH / 2 - 72 - 10, applet.SIDEBAR_HEIGHT - 40, 72, 32, applet.loadImage("pictures/leftButton.png"));
-        buttonCharacters = new Button(applet.SIDEBAR_WIDTH / 2 + 10, applet.SIDEBAR_HEIGHT - 40, 72, 32, applet.loadImage("pictures/rightButton.png"));
+        buttonTasks = new Button(applet.SIDEBAR_WIDTH / 2 - 72 - 10, applet.SIDEBAR_HEIGHT - 40, 72, 32, applet.loadImage("pictures/buttons/task_button.png"));
+        buttonCharacters = new Button(applet.SIDEBAR_WIDTH / 2 + 10, applet.SIDEBAR_HEIGHT - 40, 72, 32, applet.loadImage("pictures/buttons/crew_button.png"));
     }
     
     public String getName() {
