@@ -32,7 +32,7 @@ public class ControlPrinter {
             taskPosition--; 
         }
         //translate to the bottom-left text position
-        applet.translate(20, CONTROL_HEIGHT);
+        applet.translate(20, SIDEBAR_HEIGHT);
         
         if (game.tasks.size() > 0) {
             Task currentTask = game.tasks.get(taskPosition);

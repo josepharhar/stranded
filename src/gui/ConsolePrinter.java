@@ -64,6 +64,10 @@ public class ConsolePrinter {
         //translate to the bottom of the terminal
         applet.translate(0, TERMINAL_HEIGHT);
         
+        //make sure the correct text align is set
+        applet.textAlign(LEFT, BOTTOM);
+        applet.textSize(18);
+        
         boolean usedCarrot = false;
         for (int i = 0; i < textQueue.size(); i++) {
             String output = "";

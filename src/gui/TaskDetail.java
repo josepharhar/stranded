@@ -1,5 +1,6 @@
 package gui;
 
+import main.Game;
 import tasks.Task;
 
 public class TaskDetail extends SidebarItem {
@@ -7,8 +8,8 @@ public class TaskDetail extends SidebarItem {
     //The job that this detail is showing
     private Task task;
     
-    public TaskDetail(StrandedApplet applet, Task task) {
-        super("Task Detail", applet);
+    public TaskDetail(StrandedApplet applet, Game game, Task task) {
+        super("Task Detail", applet, game);
         this.task = task;
     }
     

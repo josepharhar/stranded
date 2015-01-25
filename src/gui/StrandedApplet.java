@@ -1,13 +1,9 @@
 package gui;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
 import main.Game;
 import processing.core.*;
-import tasks.Task;
 import audio.*;
 
 public class StrandedApplet extends PApplet {
@@ -19,7 +15,7 @@ public class StrandedApplet extends PApplet {
     public static final int VIEW_HEIGHT = 400;
     public static final int VIEW_WIDTH = 800;
     public static final int TERMINAL_HEIGHT = 200;
-    public static final int TERMINAL_WIDTH = 500;
+    public static final int TERMINAL_WIDTH = 700;
     public static final int SIDEBAR_HEIGHT = 600;
     public static final int SIDEBAR_WIDTH = 300;
     
@@ -59,8 +55,8 @@ public class StrandedApplet extends PApplet {
         consolePrinter = new ConsolePrinter(this);
         controlPrinter = new ControlPrinter(this, game);
         
-        taskList = new TaskList(this);
-        characterList = new CharacterList(this);
+        taskList = new TaskList(this, game);
+        characterList = new CharacterList(this, game);
         currentSidebar = taskList;
         
         leftButton = new Button(26, 156, 72, 32, loadImage("pictures/leftButton.png"));

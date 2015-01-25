@@ -30,8 +30,8 @@ public class Button {
      */
     public boolean isClicked(float x, float y) {
         //sets the incoming mouse coordinates to be relative to the control box
-        x -= (GAME_WIDTH - CONTROL_WIDTH);
-        y -= (GAME_HEIGHT - CONTROL_HEIGHT);
+        x -= (GAME_WIDTH - SIDEBAR_WIDTH);
+        y -= (GAME_HEIGHT - SIDEBAR_HEIGHT);
         return rect.contains((int)x, (int)y);
     }
     
