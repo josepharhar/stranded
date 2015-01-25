@@ -15,13 +15,13 @@ public class TaskList extends SidebarItem {
         super.draw();
         
         //location for text to show up
-        int x = 20;
-        int y = 10;
+        int x = BUTTON_X_SPACING;
+        int y = BUTTON_INIT_SPACING;
         
         for (int i = 0; i < game.tasks.size(); i++) {
             String text = game.tasks.get(i).getName();
             
-            y += 40;
+            y += BUTTON_SPACING;
             
             //draw rectangle (button) under the text
             applet.strokeWeight(2);
@@ -36,7 +36,7 @@ public class TaskList extends SidebarItem {
         for (Task task : game.taskRunner.pendingTasks) {
             String text = task.getName();
             
-            y += 40;
+            y += BUTTON_SPACING;
 
             //draw rectangle (button) under the text
             applet.fill(128);
@@ -54,10 +54,12 @@ public class TaskList extends SidebarItem {
             
             //location for text to show up
             int x = 20;
-            int y = 40 * i + 40;
+            int y = BUTTON_SPACING * i + BUTTON_INIT_SPACING + BUTTON_SPACING;
             
             Rectangle button = new Rectangle(x - 4, y + 2, text.length() * 11 + 4, 23);
             
+            System.out.println("mousex: " + mousex + ", mousey: " + mousey);
+            System.out.println("bounds: " + button.x + "-" + (button.x+button.width) + ", " + button.y + "-" + (button.y+button.height));
             if (button.contains(mousex, mousey)) {
                 applet.currentSidebar = new TaskDetail(applet, game, game.tasks.get(i));
             }

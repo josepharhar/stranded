@@ -5,6 +5,10 @@ import static gui.StrandedApplet.*;
 
 public abstract class SidebarItem {
     
+    protected static final int BUTTON_INIT_SPACING = 10;
+    protected static final int BUTTON_SPACING = 40;
+    protected static final int BUTTON_X_SPACING = 20;
+    
     protected String name;
     protected StrandedApplet applet;
     protected Game game;
