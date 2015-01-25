@@ -12,6 +12,9 @@ public class RestTask extends Task {
     public long getCompletionTime() {
         return 1;
     }
+    public int getDifficulty() {
+        return -10;
+    }
     public Skill getPrimarySkill() {
         return Skill.SCAVENGING;
     }
