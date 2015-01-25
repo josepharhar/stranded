@@ -95,6 +95,10 @@ public class StrandedApplet extends PApplet {
         }
     }
     
-    
+    public void keyPressed() {
+        if (keyCode == ESC && gameStage == 1) {
+            // Pause the game
+        }
+    }
     
 }
