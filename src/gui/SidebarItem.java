@@ -1,13 +1,17 @@
 package gui;
 
+import main.Game;
+
 public class SidebarItem {
     
-    private String name;
-    private StrandedApplet applet;
+    protected String name;
+    protected StrandedApplet applet;
+    protected Game game;
     
-    public SidebarItem(String name, StrandedApplet applet) {
+    public SidebarItem(String name, StrandedApplet applet, Game game) {
         this.name = name;
         this.applet = applet;
+        this.game = game;
     }
     
     public String getName() {
@@ -19,6 +23,8 @@ public class SidebarItem {
      * @precondition The applet has translated to the top-left corner of the sidebar
      */
     public void draw() {
-        
+        //draw name of the sidebar
+        applet.fill(0, 255, 0);
+        applet.text(name, 10, 20);
     }
 }

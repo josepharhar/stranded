@@ -20,16 +20,16 @@ public class StrandedApplet extends PApplet {
     public static final int VIEW_WIDTH = 800;
     public static final int TERMINAL_HEIGHT = 200;
     public static final int TERMINAL_WIDTH = 500;
-    public static final int CONTROL_HEIGHT = 600;
-    public static final int CONTROL_WIDTH = 300;
+    public static final int SIDEBAR_HEIGHT = 600;
+    public static final int SIDEBAR_WIDTH = 300;
     
     // Locations of "frames" on the screen
     public static final int VIEW_X = 0;
     public static final int VIEW_Y = 0;
     public static final int TERMINAL_X = 0;
     public static final int TERMINAL_Y = GAME_HEIGHT - TERMINAL_HEIGHT;
-    public static final int CONTROL_X = TERMINAL_WIDTH;
-    public static final int CONTROL_Y = GAME_HEIGHT - CONTROL_HEIGHT;
+    public static final int SIDEBAR_X = TERMINAL_WIDTH;
+    public static final int SIDEBAR_Y = 0;
 
     private Game game;
     
@@ -39,8 +39,8 @@ public class StrandedApplet extends PApplet {
     public ControlPrinter controlPrinter;
     
     public SidebarItem currentSidebar;
-    public JobList jobList;
-    public 
+    public TaskList taskList;
+    public CharacterList characterList;
     //public JobDetail jobDetail;
     
     private Button leftButton;
@@ -59,9 +59,9 @@ public class StrandedApplet extends PApplet {
         consolePrinter = new ConsolePrinter(this);
         controlPrinter = new ControlPrinter(this, game);
         
-        jobList = new JobList();
-        //jobDetail = new JobDetail();
-        currentSidebar = jobList;
+        taskList = new TaskList(this);
+        characterList = new CharacterList(this);
+        currentSidebar = taskList;
         
         leftButton = new Button(26, 156, 72, 32, loadImage("pictures/leftButton.png"));
         centerButton = new Button(leftButton.getx() + leftButton.getWidth() + 16, 156, 72, 32, loadImage("pictures/centerButton.png"));
@@ -103,13 +103,14 @@ public class StrandedApplet extends PApplet {
             consolePrinter.draw();
         popMatrix();
         
-        // Draw Control
+        // Draw Sidebar
         pushMatrix();
-            translate(CONTROL_X, CONTROL_Y);
-            image(leftButton.getImage(), leftButton.getx(), leftButton.gety());
-            image(centerButton.getImage(), centerButton.getx(), centerButton.gety());
-            image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
-            controlPrinter.draw();
+            translate(SIDEBAR_X, SIDEBAR_Y);
+            currentSidebar.draw();
+//            image(leftButton.getImage(), leftButton.getx(), leftButton.gety());
+//            image(centerButton.getImage(), centerButton.getx(), centerButton.gety());
+//            image(rightButton.getImage(), rightButton.getx(), rightButton.gety());
+//            controlPrinter.draw();
         popMatrix();
         
         game.updateTasks();
