@@ -174,7 +174,7 @@ public class Game {
         tasks.add(t);
         print("Random event caused new task! " + t.getName());
         
-        long timeUntilNext = (long) ((15 + 30 * Math.random()) * 1000L);
+        long timeUntilNext = (long) ((10 + 20 * Math.random()) * 1000L);
         rta = new DelayedAction(timeUntilNext) {
             @Override
             public void complete() {
