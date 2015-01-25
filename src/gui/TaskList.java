@@ -58,8 +58,6 @@ public class TaskList extends SidebarItem {
             
             Rectangle button = new Rectangle(x - 4, y + 2, text.length() * 11 + 4, 23);
             
-            System.out.println("mousex: " + mousex + ", mousey: " + mousey);
-            System.out.println("bounds: " + button.x + "-" + (button.x+button.width) + ", " + button.y + "-" + (button.y+button.height));
             if (button.contains(mousex, mousey)) {
                 applet.currentSidebar = new TaskDetail(applet, game, game.tasks.get(i));
             }
