@@ -108,7 +108,36 @@ public class EndScreen {
     }
     
     private void drawLose() {
+        timeDiff = (currentTime - startTime) / 1000.0;
         
+        if (timeDiff < 0.5) {
+            currentFrame = 0;
+        } else if (timeDiff < 1.0) {
+            currentFrame = 1;
+        } else if (timeDiff < 1.5) {
+            currentFrame = 2;
+        } else if (timeDiff < 2.0) {
+            currentFrame = 3;
+        } else if (timeDiff < 2.5) {
+            currentFrame = 4;
+        } else if (timeDiff < 3.0) {
+            currentFrame = 5;
+        } else if (timeDiff < 3.5) {
+            currentFrame = 6;
+        } else if (timeDiff < 4.0) {
+            currentFrame = 7;
+        } else if (timeDiff < 4.5) {
+            currentFrame = 8;
+        }
+        
+        if (timeDiff < 4.5) {
+            applet.image(explode[currentFrame], 400, 300);
+        } else {
+            applet.fill(0, 255, 0);
+            applet.textAlign(applet.CENTER, applet.CENTER);
+            applet.textSize(48);
+            applet.text("Game Over", applet.GAME_WIDTH / 2, applet.GAME_HEIGHT / 2 - 100);
+        }
     }
     
     private void moveStars() {
