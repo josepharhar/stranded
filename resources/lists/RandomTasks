@@ -58,7 +58,7 @@
         }
     },
     {
-        "name" : "Scavenge abandoned ship",
+        "name" : "Scavenge abandoned vessel",
         "difficulty" : 2,
         "risk" : 2,
         "skill" : "SCAVENGING",
