@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.Frame;
 import java.io.IOException;
 
 import main.Game;
@@ -44,15 +46,13 @@ public class StrandedApplet extends PApplet {
 
     public ConsolePrinter consolePrinter;
     
-    
     public Audio mainAudio;
     
-    public static void main(String[] args) {
-        PApplet.main(new String[] { "--present", "gui.StrandedApplet" });
+    public StrandedApplet(Frame strandedFrame) {
+        super.frame = strandedFrame;
     }
     
     public void setup() {
-        
         game = new Game(this);
         
         startScreen = new StartScreen(this);
@@ -69,12 +69,12 @@ public class StrandedApplet extends PApplet {
             e.printStackTrace();
         }
         //mainAudio.startMainAudio();
-        
-        if (frame != null) {
-            frame.setResizable(true);
-            frame.setSize(GAME_WIDTH, GAME_HEIGHT);
-        }
+
         size(GAME_WIDTH, GAME_HEIGHT);
+        
+        //change some frame settings now that the embedded processing applet is in the frame
+        frame.pack();
+        frame.setLocationRelativeTo(null);
     }
     
     public void draw() {
