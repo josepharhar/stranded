@@ -11,8 +11,8 @@ public class RandomNameAccessor {
     private static List<String> lasts = new ArrayList<>();
 
     static {
-        try (Scanner ls = new Scanner(new File("lists/LastNames"));
-                Scanner fs = new Scanner(new File("lists/FirstNames"))) 
+        try (Scanner ls = new Scanner(new File("resources/lists/LastNames"));
+                Scanner fs = new Scanner(new File("resources/lists/FirstNames"))) 
                 {
             while (fs.hasNext()) {
                 firsts.add(fs.next());

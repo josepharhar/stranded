@@ -23,7 +23,7 @@ public class RandomTaskCreator implements TaskCreator {
     
     @Override
     public Task createTask() {
-        List<Task> taskList = readTaskFile("lists/RandomTasks");
+        List<Task> taskList = readTaskFile("resources/lists/RandomTasks");
         return taskList.get((int) (Math.random() * taskList.size()));
     }
     

@@ -14,7 +14,7 @@ import characters.Character;
 public class RandomObjectAccessor extends RandomListAccessor {
     private static List<String> list;
     public static String get() {
-        if (list == null) list = readList("lists/RandomObjects");
+        if (list == null) list = readList("resources/lists/RandomObjects");
         return list.get(RandomNumberGenerator.getRandomInteger(list.size()));
     }
 }

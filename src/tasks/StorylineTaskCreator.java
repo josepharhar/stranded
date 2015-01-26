@@ -3,7 +3,7 @@ package tasks;
 public class StorylineTaskCreator extends BasicTaskCreator {
     
     public StorylineTaskCreator() {
-        taskList = readTaskFile("lists/StoryTasks");
+        taskList = readTaskFile("resources/lists/StoryTasks");
     }
     
     @Override

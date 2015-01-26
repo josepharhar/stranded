@@ -21,7 +21,7 @@ public class Audio {
     public Audio(StrandedApplet applet) {
         this.applet = applet;
         //this.ac = new AudioContext();
-        this.mainSource = "Stranded_Theme_Ext.wav";
+        this.mainSource = "resources/Stranded_Theme_Ext.wav";
     }
 
     public void startMainAudio() throws IOException {
