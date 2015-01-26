@@ -1,11 +1,11 @@
 package gui;
 
-import processing.core.*;
-import timing.GameTimer;
-import gui.StartScreen.Star;
-
 import java.util.LinkedList;
 import java.util.List;
+
+import processing.core.PImage;
+import processing.core.PVector;
+import timing.GameTimer;
 
 public class EndScreen {
     
@@ -17,7 +17,7 @@ public class EndScreen {
     
     private int currentFrame;
     
-    private long startTime;
+    private long startTime = 0;
     private long currentTime;
     private double timeDiff;
     
@@ -54,11 +54,13 @@ public class EndScreen {
         explode[8] = applet.loadImage("pictures/end/explode_9.png");
         
         ship = applet.loadImage("pictures/end/ship_big.png");
-        
-        startTime = System.currentTimeMillis();
     }
     
     public void draw() {
+        if (startTime == 0) {
+            startTime = System.currentTimeMillis();
+        }
+        
         applet.background(0);
         
         currentTime = System.currentTimeMillis();
@@ -77,25 +79,27 @@ public class EndScreen {
     private void drawWin() {
         timeDiff = (currentTime - startTime) / 1000.0;
         
-        if (timeDiff < 0.5) {
+        if (timeDiff < 1.0) {
             currentFrame = 0;
-        } else if (timeDiff < 1.0) {
+        } else if (timeDiff < 1.1) {
+            currentFrame = 1;
+        } else if (timeDiff < 1.2) {
+            currentFrame = 2;
+        } else if (timeDiff < 1.3) {
             currentFrame = 1;
         } else if (timeDiff < 1.5) {
-            currentFrame = 2;
-        } else if (timeDiff < 2.0) {
             currentFrame = 3;
-        } else if (timeDiff < 2.5) {
+        } else if (timeDiff < 1.6) {
             currentFrame = 4;
-        } else if (timeDiff < 3.0) {
+        } else if (timeDiff < 1.7) {
             currentFrame = 5;
-        } else if (timeDiff < 3.5) {
+        } else if (timeDiff < 1.8) {
             currentFrame = 6;
-        } else if (timeDiff < 4.0) {
+        } else if (timeDiff < 1.9) {
             currentFrame = 7;
         }
         
-        if (timeDiff < 4.0) {
+        if (timeDiff < 2.0) {
             applet.image(escape[currentFrame], 400, 300);
         } else {
             applet.fill(0, 255, 0);
@@ -110,29 +114,36 @@ public class EndScreen {
     private void drawLose() {
         timeDiff = (currentTime - startTime) / 1000.0;
         
-        if (timeDiff < 0.5) {
+        if (timeDiff < 1.0) {
             currentFrame = 0;
-        } else if (timeDiff < 1.0) {
+        } else if (timeDiff < 1.2) {
+            currentFrame = 1;
+        } else if (timeDiff < 1.3) {
+            currentFrame = 2;
+        } else if (timeDiff < 1.4) {
             currentFrame = 1;
         } else if (timeDiff < 1.5) {
             currentFrame = 2;
-        } else if (timeDiff < 2.0) {
+        } else if (timeDiff < 1.6) {
             currentFrame = 3;
-        } else if (timeDiff < 2.5) {
+        } else if (timeDiff < 1.7) {
             currentFrame = 4;
-        } else if (timeDiff < 3.0) {
+        } else if (timeDiff < 1.8) {
             currentFrame = 5;
-        } else if (timeDiff < 3.5) {
+        } else if (timeDiff < 1.9) {
             currentFrame = 6;
-        } else if (timeDiff < 4.0) {
+        } else if (timeDiff < 2.0) {
+            currentFrame = 5;
+        } else if (timeDiff < 2.1) {
             currentFrame = 7;
-        } else if (timeDiff < 4.5) {
+        } else if (timeDiff < 2.2) {
             currentFrame = 8;
         }
         
-        if (timeDiff < 4.5) {
+        if (timeDiff < 3.5) {
             applet.image(explode[currentFrame], 400, 300);
         } else {
+            applet.image(explode[currentFrame], 400, 300);
             applet.fill(0, 255, 0);
             applet.textAlign(applet.CENTER, applet.CENTER);
             applet.textSize(48);

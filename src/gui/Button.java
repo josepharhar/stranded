@@ -10,6 +10,10 @@ public class Button {
     private Rectangle rect;
     //picture of the button
     private PImage image;
+    //picture of pressed button
+    private PImage pressedImage;
+    //picture of disabled button
+    private PImage disabledImage;
     
     /**
      * @param x coordinate of top-left corner in relation to the control box
@@ -18,9 +22,10 @@ public class Button {
      * @param height of button
      * @param image of button
      */
-    public Button(int x, int y, int width, int height, PImage image) {
+    public Button(int x, int y, int width, int height, PImage image, PImage pressedImage) {
         rect = new Rectangle(x, y, width, height);
         this.image = image;
+        this.pressedImage = pressedImage;
     }
     
     /**
