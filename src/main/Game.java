@@ -185,15 +185,17 @@ public class Game {
     }
     
     public void checkLoss() {
-        if((this.taskRunner.pendingTasks.isEmpty() && this.characters.isEmpty()) || this.resources.getResource(Resource.STATION_HEALTH) == 0) {
+        if((this.taskRunner.pendingTasks.isEmpty() && this.characters.isEmpty()) || this.resources.getResource(Resource.STATION_HEALTH) < 0.1) {
             //FAIL;
             applet.mainAudio.failJingle();
+            GameTimer.stopTime();
         }
     }
     
     public void win() {
         this.isWon = true;
         applet.gameStage = 2;
+        GameTimer.stopTime();
     }
     
     public void print(String str) {

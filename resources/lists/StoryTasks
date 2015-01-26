@@ -48,7 +48,7 @@
     },
     {
         "name" : "Wire ship control system",
-        "difficulty" : 10,
+        "difficulty" : 1,
         "canRetry" : true,
         "risk" : 5,
         "skill" : "ENGINEERING",
