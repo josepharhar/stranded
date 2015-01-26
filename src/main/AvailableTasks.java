@@ -19,6 +19,7 @@ public class AvailableTasks {
         List<Task> rtn = new ArrayList<>();
         rtn.add(healTask);
         rtn.add(scavengeTask);
+        rtn.add(improveStation);
         rtn.addAll(tasks);
         return rtn;
     }
@@ -32,6 +33,8 @@ public class AvailableTasks {
             scavengeTask = createScavengeTask();
         } else if (t == healTask) {
             healTask = createHealTask();
+        } else if (t == improveStation) {
+            improveStation = createStationTask();
         } else {
             tasks.remove(t);
         }
