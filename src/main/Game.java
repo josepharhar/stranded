@@ -187,6 +187,7 @@ public class Game {
     public void checkLoss() {
         if((this.taskRunner.pendingTasks.isEmpty() && this.characters.isEmpty()) || this.resources.getResource(Resource.STATION_HEALTH) < 0.1) {
             //FAIL;
+            applet.gameStage = 2;
             applet.mainAudio.failJingle();
             GameTimer.stopTime();
         }
